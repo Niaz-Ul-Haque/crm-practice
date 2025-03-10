@@ -28,7 +28,7 @@ export default function SettingsPage() {
         />
         <button
           onClick={() => setShowFeedback(true)}
-          className="text-blue-600 text-sm hover:underline"
+          className="text-purple-600 text-sm hover:underline"
         >
           Give Feedback
         </button>

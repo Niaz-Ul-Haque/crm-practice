@@ -90,7 +90,7 @@ export default function PolicyDetailPage() {
                         className="flex items-center justify-between p-3 border rounded-md"
                       >
                         <div className="flex items-center">
-                          <FileText className="h-5 w-5 text-blue-500 mr-2" />
+                          <FileText className="h-5 w-5 text-purple-500 mr-2" />
                           <span>{doc}</span>
                         </div>
                         <Button variant="ghost" size="sm">

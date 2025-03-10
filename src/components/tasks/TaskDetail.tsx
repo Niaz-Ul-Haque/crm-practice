@@ -52,7 +52,7 @@ const TaskDetail: React.FC<TaskDetailProps> = ({
   const getTaskTypeIcon = (type: string) => {
     switch (type) {
       case "call":
-        return <Phone size={20} className="text-blue-500" />;
+        return <Phone size={20} className="text-purple-500" />;
       case "meeting":
         return <Calendar size={20} className="text-green-500" />;
       case "email":
@@ -74,7 +74,7 @@ const TaskDetail: React.FC<TaskDetailProps> = ({
       case "medium":
         return "text-amber-600";
       case "low":
-        return "text-blue-600";
+        return "text-purple-600";
       default:
         return "text-gray-600";
     }
@@ -83,7 +83,7 @@ const TaskDetail: React.FC<TaskDetailProps> = ({
   const getStatusStyles = (status: string) => {
     switch (status) {
       case "pending":
-        return "bg-blue-100 text-blue-800";
+        return "bg-blue-100 text-purple-800";
       case "in_progress":
         return "bg-amber-100 text-amber-800";
       case "completed":
@@ -205,7 +205,7 @@ const TaskDetail: React.FC<TaskDetailProps> = ({
             <div className="space-y-2">
               <div className="flex items-start">
                 <div className="mr-2 bg-blue-100 p-1 rounded-full">
-                  <Clock size={16} className="text-blue-600" />
+                  <Clock size={16} className="text-purple-600" />
                 </div>
                 <div>
                   <p className="text-sm font-medium">Created</p>
@@ -250,7 +250,7 @@ const TaskDetail: React.FC<TaskDetailProps> = ({
             <div className="border-t pt-4">
               <p className="text-sm text-gray-500 mb-2">Related Client</p>
               <div className="flex items-center">
-                <Avatar className="h-10 w-10 bg-blue-100 text-blue-600 mr-3">
+                <Avatar className="h-10 w-10 bg-blue-100 text-purple-600 mr-3">
                   <AvatarFallback>
                     {client.firstName[0]}
                     {client.lastName[0]}

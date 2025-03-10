@@ -96,7 +96,7 @@ const LeftNavigation: React.FC<LeftNavigationProps> = ({
                   "flex items-center py-2 text-sm rounded-md transition-colors",
                   collapsed ? "justify-center px-2" : "px-4",
                   isActive
-                    ? "bg-blue-50 text-blue-600"
+                    ? "bg-blue-50 text-purple-600"
                     : "text-gray-700 hover:bg-gray-100"
                 )}
                 title={collapsed ? item.name : undefined}

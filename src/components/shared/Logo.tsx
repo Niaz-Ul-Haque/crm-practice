@@ -32,8 +32,14 @@ const Logo: React.FC<LogoProps> = ({
     >
       {!collapsed && (
         <React.Fragment>
-          <Shield size={iconSize[size]} className="text-blue-600 mr-2" />
-          <span>LynIQ</span>
+          <img
+            src="/logo.png"
+            alt="logo"
+            width={160}
+            height={160}
+            className="mr-2"
+          />
+          {/* <span>LynIQ</span> */}
         </React.Fragment>
       )}
     </div>

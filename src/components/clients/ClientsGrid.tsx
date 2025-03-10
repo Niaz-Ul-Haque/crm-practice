@@ -45,7 +45,7 @@ const ClientsGrid: React.FC<ClientsGridProps> = ({ clients }) => {
                     size="md"
                   />
                   <div className="ml-3">
-                    <h3 className="font-medium group-hover:text-blue-600 transition-colors">
+                    <h3 className="font-medium group-hover:text-purple-600 transition-colors">
                       {client.firstName} {client.lastName}
                     </h3>
                     <span

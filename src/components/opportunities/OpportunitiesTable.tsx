@@ -60,7 +60,7 @@ const OpportunitiesTable: React.FC<OpportunitiesTableProps> = ({
   const getStatusStyles = (status: string) => {
     switch (status) {
       case "eligible":
-        return "bg-blue-100 text-blue-800";
+        return "bg-blue-100 text-purple-800";
       case "pending_review":
         return "bg-amber-100 text-amber-800";
       case "in_progress":
@@ -90,7 +90,7 @@ const OpportunitiesTable: React.FC<OpportunitiesTableProps> = ({
       case "medium":
         return "text-amber-600";
       case "low":
-        return "text-blue-600";
+        return "text-purple-600";
       default:
         return "text-gray-600";
     }

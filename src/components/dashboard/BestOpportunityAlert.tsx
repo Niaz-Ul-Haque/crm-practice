@@ -32,13 +32,13 @@ const BestOpportunityAlert: React.FC<BestOpportunityAlertProps> = ({
     >
       <Card className="bg-blue-50 border border-blue-100">
         <CardHeader>
-          <CardTitle className="text-blue-700 flex items-center">
+          <CardTitle className="text-purple-700 flex items-center">
             <CalendarClock className="mr-2" size={20} />
             Best Opportunity Alert
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-blue-600 mb-4">
+          <p className="text-purple-600 mb-4">
             {opportunities.length} clients have policies expiring soon. These
             represent your best opportunities.
           </p>
@@ -56,7 +56,7 @@ const BestOpportunityAlert: React.FC<BestOpportunityAlertProps> = ({
                     {formatDate(new Date(opp.expiryDate))}
                   </p>
                   <p className="text-sm mt-1">
-                    <span className="text-blue-600 font-medium">
+                    <span className="text-purple-600 font-medium">
                       Opportunity:
                     </span>{" "}
                     {opp.opportunity}

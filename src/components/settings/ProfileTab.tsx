@@ -63,7 +63,7 @@ const ProfileTab: React.FC<ProfileTabProps> = ({ user }) => {
         <CardContent>
           <form onSubmit={handleSubmit}>
             <div className="flex items-center mb-6">
-              <div className="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 font-bold text-2xl mr-6 relative">
+              <div className="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center text-purple-500 font-bold text-2xl mr-6 relative">
                 {formData.firstName[0]}
                 {formData.lastName[0]}
                 <div className="absolute bottom-0 right-0 bg-white p-1 rounded-full border">

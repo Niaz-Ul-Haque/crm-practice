@@ -98,7 +98,7 @@ export default function ResetPasswordPage() {
               <Label
                 htmlFor="password"
                 className={`transition-colors duration-200 ${
-                  focusedField === "password" ? "text-blue-600" : ""
+                  focusedField === "password" ? "text-purple-600" : ""
                 }`}
               >
                 New Password
@@ -221,7 +221,7 @@ export default function ResetPasswordPage() {
               <Label
                 htmlFor="confirmPassword"
                 className={`transition-colors duration-200 ${
-                  focusedField === "confirmPassword" ? "text-blue-600" : ""
+                  focusedField === "confirmPassword" ? "text-purple-600" : ""
                 }`}
               >
                 Confirm New Password

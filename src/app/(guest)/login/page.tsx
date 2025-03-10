@@ -88,7 +88,7 @@ export default function LoginPage() {
               <Label
                 htmlFor="email"
                 className={`transition-colors duration-200 ${
-                  focusedField === "email" ? "text-blue-600" : ""
+                  focusedField === "email" ? "text-purple-600" : ""
                 }`}
               >
                 Email
@@ -113,14 +113,14 @@ export default function LoginPage() {
                 <Label
                   htmlFor="password"
                   className={`transition-colors duration-200 ${
-                    focusedField === "password" ? "text-blue-600" : ""
+                    focusedField === "password" ? "text-purple-600" : ""
                   }`}
                 >
                   Password
                 </Label>
                 <Link
                   href="/forgot-password"
-                  className="text-sm text-blue-600 hover:underline"
+                  className="text-sm text-purple-600 hover:underline"
                 >
                   Forgot?
                 </Link>
@@ -167,7 +167,10 @@ export default function LoginPage() {
             </Button>
             <div className="text-center text-sm">
               Don&apos;t have an account?{" "}
-              <Link href="/register" className="text-blue-600 hover:underline">
+              <Link
+                href="/register"
+                className="text-purple-600 hover:underline"
+              >
                 Register
               </Link>
             </div>

@@ -33,7 +33,7 @@ const BestOpportunityAlert: React.FC<BestOpportunityAlertProps> = ({
     >
       <Card className="bg-blue-50 border border-blue-100">
         <CardHeader>
-          <CardTitle className="flex items-center text-blue-700">
+          <CardTitle className="flex items-center text-purple-700">
             <CalendarClock className="mr-2" size={20} />
             Best Opportunity Alert
           </CardTitle>
@@ -75,10 +75,10 @@ const BestOpportunityAlert: React.FC<BestOpportunityAlertProps> = ({
           </div>
 
           <div className="space-y-2">
-            <p className="text-sm text-blue-700 font-medium">
+            <p className="text-sm text-purple-700 font-medium">
               Opportunity Details:
             </p>
-            <p className="text-sm text-blue-600">{opportunity.description}</p>
+            <p className="text-sm text-purple-600">{opportunity.description}</p>
           </div>
 
           <div className="flex justify-between mt-4">

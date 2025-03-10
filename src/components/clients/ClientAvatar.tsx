@@ -36,7 +36,7 @@ const ClientAvatar: React.FC<ClientAvatarProps> = ({
 
   return (
     <div
-      className={`${sizeClasses[size]} bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-semibold`}
+      className={`${sizeClasses[size]} bg-blue-100 text-purple-600 rounded-full flex items-center justify-center font-semibold`}
     >
       {initials || <User size={size === "lg" ? 24 : size === "md" ? 18 : 14} />}
     </div>

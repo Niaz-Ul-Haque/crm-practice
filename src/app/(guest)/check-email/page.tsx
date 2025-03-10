@@ -30,7 +30,7 @@ export default function CheckEmailPage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4 text-center">
-          <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+          <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-purple-600">
             <Mail size={32} />
           </div>
 

@@ -26,7 +26,6 @@ const Header: React.FC = () => {
   const user = useAppSelector((state) => state.auth.user);
   const logout = useLogout();
 
-  // Get first letter of first and last name for avatar
   const getInitials = () => {
     if (!user?.name) return "U";
     const parts = user.name.split(" ");
@@ -77,7 +76,7 @@ const Header: React.FC = () => {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 font-bold">
+                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-purple-500 font-bold">
                   {getInitials()}
                 </div>
                 <span className="hidden sm:inline">{user?.name || "User"}</span>

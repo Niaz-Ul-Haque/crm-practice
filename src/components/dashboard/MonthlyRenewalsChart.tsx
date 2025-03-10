@@ -31,7 +31,6 @@ const MonthlyRenewalsChart: React.FC<MonthlyRenewalsChartProps> = ({
     value: data.data[index],
   }));
 
-  // Find current month index (for highlighting)
   const currentMonthIndex = new Date().getMonth();
 
   return (
@@ -60,11 +59,11 @@ const MonthlyRenewalsChart: React.FC<MonthlyRenewalsChartProps> = ({
             border: "none",
           }}
         />
-        <Bar dataKey="value" fill="#3B82F6" radius={[4, 4, 0, 0]}>
+        <Bar dataKey="value" fill="#F03BF6FF" radius={[4, 4, 0, 0]}>
           {chartData.map((entry, index) => (
             <Cell
               key={`cell-${index}`}
-              fill={index === currentMonthIndex ? "#2563EB" : "#3B82F6"}
+              fill={index === currentMonthIndex ? "#8B25EBFF" : "#F03BF6FF"}
               fillOpacity={index === currentMonthIndex ? 1 : 0.75}
             />
           ))}

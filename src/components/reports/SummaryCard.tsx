@@ -62,7 +62,7 @@ const SummaryCard: React.FC<SummaryCardProps> = ({
                 </div>
               )}
             </div>
-            <div className="p-2 rounded-md bg-blue-50 text-blue-600">
+            <div className="p-2 rounded-md bg-blue-50 text-purple-600">
               {icon}
             </div>
           </div>

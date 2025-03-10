@@ -42,7 +42,7 @@ const ClientTimeline: React.FC<ClientTimelineProps> = ({ activities }) => {
   const getActivityIcon = (type: ActivityType) => {
     switch (type) {
       case "message":
-        return <MessageSquare className="h-4 w-4 text-blue-500" />;
+        return <MessageSquare className="h-4 w-4 text-purple-500" />;
       case "document":
         return <FileText className="h-4 w-4 text-purple-500" />;
       case "call":

@@ -96,7 +96,7 @@ export default function ForgotPasswordPage() {
                 <Label
                   htmlFor="email"
                   className={`transition-colors duration-200 ${
-                    focusedField === "email" ? "text-blue-600" : ""
+                    focusedField === "email" ? "text-purple-600" : ""
                   }`}
                 >
                   Email Address
@@ -143,7 +143,7 @@ export default function ForgotPasswordPage() {
                 )}
               </Button>
               <div className="text-center text-sm">
-                <Link href="/login" className="text-blue-600 hover:underline">
+                <Link href="/login" className="text-purple-600 hover:underline">
                   Back to login
                 </Link>
               </div>

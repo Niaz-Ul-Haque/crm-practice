@@ -43,7 +43,7 @@ const OpportunityRecommendations: React.FC<OpportunityRecommendationsProps> = ({
       case "medium":
         return "text-amber-600";
       case "low":
-        return "text-blue-600";
+        return "text-purple-600";
       default:
         return "text-gray-600";
     }
@@ -197,7 +197,7 @@ const OpportunityRecommendations: React.FC<OpportunityRecommendationsProps> = ({
         <Card className="h-full">
           <CardHeader>
             <CardTitle className="flex items-center text-lg">
-              <Zap className="text-blue-500 w-5 h-5 mr-2" />
+              <Zap className="text-purple-500 w-5 h-5 mr-2" />
               Client Savings
             </CardTitle>
           </CardHeader>
@@ -220,7 +220,7 @@ const OpportunityRecommendations: React.FC<OpportunityRecommendationsProps> = ({
                           )
                           .join(" ")}
                       </p>
-                      <span className="text-blue-600 font-medium">
+                      <span className="text-purple-600 font-medium">
                         {formatCurrency(opp.potentialSavings || 0)}
                       </span>
                     </div>

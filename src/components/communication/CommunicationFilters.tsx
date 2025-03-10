@@ -180,7 +180,7 @@ const CommunicationFilters: React.FC<CommunicationFiltersProps> = ({
         <div className="flex items-center text-sm flex-wrap">
           <span className="text-gray-500 mr-2">Active filters:</span>
           {searchTerm && (
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mr-2 mb-1">
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-purple-800 mr-2 mb-1">
               Search: {searchTerm}
             </span>
           )}

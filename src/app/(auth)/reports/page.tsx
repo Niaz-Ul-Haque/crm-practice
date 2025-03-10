@@ -148,7 +148,7 @@ export default function ReportsPage() {
                 <button
                   className={`px-3 py-1 text-sm rounded-md ${
                     distributionView === "count"
-                      ? "bg-blue-100 text-blue-800"
+                      ? "bg-blue-100 text-purple-800"
                       : "bg-gray-100 text-gray-800"
                   }`}
                   onClick={() => setDistributionView("count")}
@@ -158,7 +158,7 @@ export default function ReportsPage() {
                 <button
                   className={`px-3 py-1 text-sm rounded-md ${
                     distributionView === "revenue"
-                      ? "bg-blue-100 text-blue-800"
+                      ? "bg-blue-100 text-purple-800"
                       : "bg-gray-100 text-gray-800"
                   }`}
                   onClick={() => setDistributionView("revenue")}

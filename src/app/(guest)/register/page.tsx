@@ -99,7 +99,7 @@ export default function RegisterPage() {
                 <Label
                   htmlFor="firstName"
                   className={`transition-colors duration-200 ${
-                    focusedField === "firstName" ? "text-blue-600" : ""
+                    focusedField === "firstName" ? "text-purple-600" : ""
                   }`}
                 >
                   First Name
@@ -122,7 +122,7 @@ export default function RegisterPage() {
                 <Label
                   htmlFor="lastName"
                   className={`transition-colors duration-200 ${
-                    focusedField === "lastName" ? "text-blue-600" : ""
+                    focusedField === "lastName" ? "text-purple-600" : ""
                   }`}
                 >
                   Last Name
@@ -146,7 +146,7 @@ export default function RegisterPage() {
               <Label
                 htmlFor="email"
                 className={`transition-colors duration-200 ${
-                  focusedField === "email" ? "text-blue-600" : ""
+                  focusedField === "email" ? "text-purple-600" : ""
                 }`}
               >
                 Email
@@ -170,7 +170,7 @@ export default function RegisterPage() {
               <Label
                 htmlFor="password"
                 className={`transition-colors duration-200 ${
-                  focusedField === "password" ? "text-blue-600" : ""
+                  focusedField === "password" ? "text-purple-600" : ""
                 }`}
               >
                 Password
@@ -194,7 +194,7 @@ export default function RegisterPage() {
               <Label
                 htmlFor="confirmPassword"
                 className={`transition-colors duration-200 ${
-                  focusedField === "confirmPassword" ? "text-blue-600" : ""
+                  focusedField === "confirmPassword" ? "text-purple-600" : ""
                 }`}
               >
                 Confirm Password
@@ -242,7 +242,7 @@ export default function RegisterPage() {
             </Button>
             <div className="text-center text-sm">
               Already have an account?{" "}
-              <Link href="/login" className="text-blue-600 hover:underline">
+              <Link href="/login" className="text-purple-600 hover:underline">
                 Sign in
               </Link>
             </div>

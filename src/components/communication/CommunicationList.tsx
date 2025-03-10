@@ -28,7 +28,7 @@ const CommunicationList: React.FC<CommunicationListProps> = ({
   const getTypeIcon = (type: string) => {
     switch (type) {
       case "email":
-        return <Mail size={16} className="text-blue-500" />;
+        return <Mail size={16} className="text-purple-500" />;
       case "call":
         return <Phone size={16} className="text-green-500" />;
       case "sms":
@@ -38,7 +38,7 @@ const CommunicationList: React.FC<CommunicationListProps> = ({
       case "note":
         return <FileText size={16} className="text-gray-500" />;
       default:
-        return <Mail size={16} className="text-blue-500" />;
+        return <Mail size={16} className="text-purple-500" />;
     }
   };
 

@@ -39,7 +39,7 @@ const RecentActivity: React.FC<RecentActivityProps> = ({
   const getActivityIcon = (type: ActivityType) => {
     switch (type) {
       case "policy_renewal":
-        return <RefreshCw size={18} className="text-blue-500" />;
+        return <RefreshCw size={18} className="text-purple-500" />;
       case "client_added":
         return <UserPlus size={18} className="text-green-500" />;
       case "task_completed":

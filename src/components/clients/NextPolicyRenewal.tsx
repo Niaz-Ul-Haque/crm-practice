@@ -46,7 +46,7 @@ const NextPolicyRenewal: React.FC<NextPolicyRenewalProps> = ({
     >
       <Card className={`${getUrgencyColor()}`}>
         <CardHeader>
-          <CardTitle className="flex items-center text-blue-700">
+          <CardTitle className="flex items-center text-purple-700">
             <CalendarClock className="mr-2" size={20} />
             Next Policy Renewal
           </CardTitle>

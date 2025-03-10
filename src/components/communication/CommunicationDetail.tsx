@@ -62,7 +62,7 @@ const CommunicationDetail: React.FC<CommunicationDetailProps> = ({
   const getTypeIcon = (type: string) => {
     switch (type) {
       case "email":
-        return <Mail size={20} className="text-blue-500" />;
+        return <Mail size={20} className="text-purple-500" />;
       case "call":
         return <Phone size={20} className="text-green-500" />;
       case "sms":
@@ -72,7 +72,7 @@ const CommunicationDetail: React.FC<CommunicationDetailProps> = ({
       case "note":
         return <FileText size={20} className="text-gray-500" />;
       default:
-        return <Mail size={20} className="text-blue-500" />;
+        return <Mail size={20} className="text-purple-500" />;
     }
   };
 
@@ -164,7 +164,7 @@ const CommunicationDetail: React.FC<CommunicationDetailProps> = ({
 
           {client && (
             <div className="mb-4 p-3 bg-gray-50 rounded-md border flex items-center">
-              <Avatar className="h-10 w-10 bg-blue-100 text-blue-600">
+              <Avatar className="h-10 w-10 bg-blue-100 text-purple-600">
                 <AvatarFallback>
                   {client.firstName[0]}
                   {client.lastName[0]}
@@ -234,7 +234,7 @@ const CommunicationDetail: React.FC<CommunicationDetailProps> = ({
                         className="flex items-center justify-between p-2 border rounded-md"
                       >
                         <div className="flex items-center">
-                          <File size={16} className="text-blue-500 mr-2" />
+                          <File size={16} className="text-purple-500 mr-2" />
                           <span>{attachment}</span>
                         </div>
                         <Button variant="ghost" size="sm">
