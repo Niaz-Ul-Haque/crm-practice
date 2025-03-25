@@ -1,8 +1,8 @@
 // src/components/dashboard/SummaryCard.tsx
-import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowUpRight, ArrowDownRight } from "lucide-react";
-import { motion } from "framer-motion";
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ArrowUpRight, ArrowDownRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface SummaryCardProps {
   title: string;
@@ -19,7 +19,7 @@ const SummaryCard: React.FC<SummaryCardProps> = ({
   timeFrame,
   delay = 0,
 }) => {
-  const isPositive = change?.startsWith("+");
+  const isPositive = change?.startsWith('+');
 
   return (
     <motion.div
@@ -42,7 +42,7 @@ const SummaryCard: React.FC<SummaryCardProps> = ({
               ) : (
                 <ArrowDownRight className="text-red-500 mr-1" size={16} />
               )}
-              <span className={isPositive ? "text-green-600" : "text-red-600"}>
+              <span className={isPositive ? 'text-green-600' : 'text-red-600'}>
                 {change}
               </span>
               {timeFrame && (

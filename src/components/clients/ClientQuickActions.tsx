@@ -1,10 +1,10 @@
 // src/components/clients/ClientQuickActions.tsx
-"use client";
+'use client';
 
-import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 import {
   Mail,
   Phone,
@@ -14,7 +14,7 @@ import {
   MessageSquare,
   PenSquare,
   Clock,
-} from "lucide-react";
+} from 'lucide-react';
 
 interface ClientQuickActionsProps {
   clientName: string;
@@ -26,43 +26,43 @@ const ClientQuickActions: React.FC<ClientQuickActionsProps> = ({
   const actions = [
     {
       icon: <Mail size={16} />,
-      label: "Send Email",
-      action: () => console.log("Send Email"),
+      label: 'Send Email',
+      action: () => console.log('Send Email'),
     },
     {
       icon: <Phone size={16} />,
-      label: "Call Client",
-      action: () => console.log("Call Client"),
+      label: 'Call Client',
+      action: () => console.log('Call Client'),
     },
     {
       icon: <Calendar size={16} />,
-      label: "Schedule Meeting",
-      action: () => console.log("Schedule Meeting"),
+      label: 'Schedule Meeting',
+      action: () => console.log('Schedule Meeting'),
     },
     {
       icon: <Plus size={16} />,
-      label: "Add Policy",
-      action: () => console.log("Add Policy"),
+      label: 'Add Policy',
+      action: () => console.log('Add Policy'),
     },
     {
       icon: <FileText size={16} />,
-      label: "Upload Document",
-      action: () => console.log("Upload Document"),
+      label: 'Upload Document',
+      action: () => console.log('Upload Document'),
     },
     {
       icon: <MessageSquare size={16} />,
-      label: "Send Message",
-      action: () => console.log("Send Message"),
+      label: 'Send Message',
+      action: () => console.log('Send Message'),
     },
     {
       icon: <PenSquare size={16} />,
-      label: "Add Note",
-      action: () => console.log("Add Note"),
+      label: 'Add Note',
+      action: () => console.log('Add Note'),
     },
     {
       icon: <Clock size={16} />,
-      label: "Set Reminder",
-      action: () => console.log("Set Reminder"),
+      label: 'Set Reminder',
+      action: () => console.log('Set Reminder'),
     },
   ];
 

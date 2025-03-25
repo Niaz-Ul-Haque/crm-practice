@@ -1,10 +1,10 @@
 // src/components/shared/UserFeedbackWidget.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { X } from "lucide-react";
+import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { X } from 'lucide-react';
 
 interface UserFeedbackWidgetProps {
   onClose?: () => void;
@@ -16,7 +16,7 @@ const UserFeedbackWidget: React.FC<UserFeedbackWidgetProps> = ({
   onSubmit,
 }) => {
   const [rating, setRating] = useState<number | null>(null);
-  const [feedback, setFeedback] = useState("");
+  const [feedback, setFeedback] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = () => {
@@ -70,8 +70,8 @@ const UserFeedbackWidget: React.FC<UserFeedbackWidgetProps> = ({
                   className={`w-8 h-8 rounded-full text-sm flex items-center justify-center transition-colors
                     ${
                       rating === num
-                        ? "bg-blue-600 text-white"
-                        : "bg-white border border-gray-300 hover:border-blue-400"
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-white border border-gray-300 hover:border-blue-400'
                     }`}
                 >
                   {num}

@@ -1,13 +1,13 @@
 // src/components/opportunities/OpportunityRecommendations.tsx
-"use client";
+'use client';
 
-import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Opportunity } from "@/data/opportunitiesData";
-import { formatCurrency } from "@/lib/formatters";
-import { ChevronRight, Star, Zap } from "lucide-react";
-import { motion } from "framer-motion";
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Opportunity } from '@/data/opportunitiesData';
+import { formatCurrency } from '@/lib/formatters';
+import { ChevronRight, Star, Zap } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface OpportunityRecommendationsProps {
   opportunities: Opportunity[];
@@ -21,8 +21,8 @@ const OpportunityRecommendations: React.FC<OpportunityRecommendationsProps> = ({
   const highPriorityOpportunities = opportunities
     .filter(
       (opp) =>
-        opp.priority === "high" &&
-        (opp.status === "eligible" || opp.status === "pending_review")
+        opp.priority === 'high' &&
+        (opp.status === 'eligible' || opp.status === 'pending_review')
     )
     .slice(0, 3);
 
@@ -38,14 +38,14 @@ const OpportunityRecommendations: React.FC<OpportunityRecommendationsProps> = ({
 
   const getPriorityStyles = (priority: string) => {
     switch (priority) {
-      case "high":
-        return "text-red-600";
-      case "medium":
-        return "text-amber-600";
-      case "low":
-        return "text-purple-600";
+      case 'high':
+        return 'text-red-600';
+      case 'medium':
+        return 'text-amber-600';
+      case 'low':
+        return 'text-purple-600';
       default:
-        return "text-gray-600";
+        return 'text-gray-600';
     }
   };
 
@@ -75,12 +75,12 @@ const OpportunityRecommendations: React.FC<OpportunityRecommendationsProps> = ({
                     <div className="flex justify-between items-start">
                       <p className="font-medium">
                         {opp.type
-                          .split("_")
+                          .split('_')
                           .map(
                             (word) =>
                               word.charAt(0).toUpperCase() + word.slice(1)
                           )
-                          .join(" ")}
+                          .join(' ')}
                       </p>
                       <span
                         className={`flex items-center text-xs ${getPriorityStyles(
@@ -111,7 +111,7 @@ const OpportunityRecommendations: React.FC<OpportunityRecommendationsProps> = ({
                   onClick={() =>
                     window.scrollTo({
                       top: document.body.scrollHeight,
-                      behavior: "smooth",
+                      behavior: 'smooth',
                     })
                   }
                 >
@@ -147,12 +147,12 @@ const OpportunityRecommendations: React.FC<OpportunityRecommendationsProps> = ({
                     <div className="flex justify-between items-start">
                       <p className="font-medium">
                         {opp.type
-                          .split("_")
+                          .split('_')
                           .map(
                             (word) =>
                               word.charAt(0).toUpperCase() + word.slice(1)
                           )
-                          .join(" ")}
+                          .join(' ')}
                       </p>
                       <span className="text-green-600 font-medium">
                         {formatCurrency(opp.potentialRevenue || 0)}
@@ -177,7 +177,7 @@ const OpportunityRecommendations: React.FC<OpportunityRecommendationsProps> = ({
                   onClick={() =>
                     window.scrollTo({
                       top: document.body.scrollHeight,
-                      behavior: "smooth",
+                      behavior: 'smooth',
                     })
                   }
                 >
@@ -213,12 +213,12 @@ const OpportunityRecommendations: React.FC<OpportunityRecommendationsProps> = ({
                     <div className="flex justify-between items-start">
                       <p className="font-medium">
                         {opp.type
-                          .split("_")
+                          .split('_')
                           .map(
                             (word) =>
                               word.charAt(0).toUpperCase() + word.slice(1)
                           )
-                          .join(" ")}
+                          .join(' ')}
                       </p>
                       <span className="text-purple-600 font-medium">
                         {formatCurrency(opp.potentialSavings || 0)}
@@ -243,7 +243,7 @@ const OpportunityRecommendations: React.FC<OpportunityRecommendationsProps> = ({
                   onClick={() =>
                     window.scrollTo({
                       top: document.body.scrollHeight,
-                      behavior: "smooth",
+                      behavior: 'smooth',
                     })
                   }
                 >

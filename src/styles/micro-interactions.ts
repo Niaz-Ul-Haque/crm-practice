@@ -1,8 +1,8 @@
 // src/styles/micro-interactions.ts
+
 import { designSystem } from './design-system';
 
 export const microInteractions = {
-  // Hover effects
   hover: {
     subtle: {
       scale: 'transform: scale(1.01)',
@@ -10,7 +10,8 @@ export const microInteractions = {
     },
     lift: {
       transform: 'transform: translateY(-2px)',
-      shadow: 'box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+      shadow:
+        'box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
       transition: `all ${designSystem.transitions.duration.fast} ${designSystem.transitions.timing.easeOut}`,
     },
     highlight: {
@@ -18,8 +19,7 @@ export const microInteractions = {
       transition: `border-color ${designSystem.transitions.duration.fast} ${designSystem.transitions.timing.easeInOut}`,
     },
   },
-  
-  // Click/tap feedback
+
   click: {
     scale: {
       active: 'transform: scale(0.97)',
@@ -30,16 +30,14 @@ export const microInteractions = {
       transition: `transform ${designSystem.transitions.duration.fast} ${designSystem.transitions.timing.easeInOut}`,
     },
   },
-  
-  // Focus states
+
   focus: {
     glow: {
       boxShadow: `0 0 0 2px ${designSystem.colors.primary[100]}`,
       transition: `box-shadow ${designSystem.transitions.duration.fast} ${designSystem.transitions.timing.easeInOut}`,
     },
   },
-  
-  // Transitions for page/component changes
+
   transitions: {
     fadeIn: {
       from: 'opacity: 0',
@@ -58,8 +56,7 @@ export const microInteractions = {
       exiting: 'opacity: 0; transform: translateY(-5px)',
     },
   },
-  
-  // Loading states
+
   loading: {
     pulse: {
       animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -78,12 +75,12 @@ export const microInteractions = {
           100% { background-position: 200% 0; }
         }
       `,
-      background: 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%)',
+      background:
+        'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%)',
       backgroundSize: '200% 100%',
     },
   },
-  
-  // Success/Error feedback
+
   feedback: {
     success: {
       animation: 'successFade 2s ease-out',
@@ -107,9 +104,7 @@ export const microInteractions = {
   },
 };
 
-// Predefined animation sets for common UI patterns
 export const animationPatterns = {
-  // For main content areas when navigating between pages
   pageTransition: {
     enter: `
       opacity: 0;
@@ -126,8 +121,7 @@ export const animationPatterns = {
       transition: opacity ${designSystem.transitions.duration.fast} ${designSystem.transitions.timing.easeIn}, transform ${designSystem.transitions.duration.fast} ${designSystem.transitions.timing.easeIn};
     `,
   },
-  
-  // For modal dialogs and popovers
+
   modalTransition: {
     overlay: {
       enter: `opacity: 0;`,
@@ -140,16 +134,14 @@ export const animationPatterns = {
       exit: `opacity: 0; transform: scale(0.95); transition: opacity ${designSystem.transitions.duration.fast} ${designSystem.transitions.timing.easeIn}, transform ${designSystem.transitions.duration.fast} ${designSystem.transitions.timing.easeIn};`,
     },
   },
-  
-  // For list items (staggered reveal)
+
   listItemTransition: {
     item: (index: number) => ({
       enter: `opacity: 0; transform: translateY(10px);`,
       enterActive: `opacity: 1; transform: translateY(0); transition: opacity ${designSystem.transitions.duration.normal} ${designSystem.transitions.timing.easeOut}, transform ${designSystem.transitions.duration.normal} ${designSystem.transitions.timing.easeOut}; transition-delay: ${index * 50}ms;`,
     }),
   },
-  
-  // For buttons and interactive elements
+
   buttonInteraction: {
     hover: `transform: translateY(-1px); box-shadow: ${designSystem.shadows.md};`,
     active: `transform: translateY(0); box-shadow: ${designSystem.shadows.sm};`,

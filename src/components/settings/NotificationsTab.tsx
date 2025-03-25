@@ -1,13 +1,13 @@
 // src/components/settings/NotificationsTab.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
-import { motion } from "framer-motion";
-import { useToast } from "@/components/ui/use-toast";
+import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
+import { motion } from 'framer-motion';
+import { useToast } from '@/components/ui/use-toast';
 
 const NotificationsTab: React.FC = () => {
   const { toast } = useToast();
@@ -33,7 +33,7 @@ const NotificationsTab: React.FC = () => {
 
   const handleCheckboxChange = (
     category: string,
-    channel: "email" | "inApp"
+    channel: 'email' | 'inApp'
   ) => {
     setNotificationSettings((prev) => ({
       ...prev,
@@ -51,32 +51,32 @@ const NotificationsTab: React.FC = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       toast({
-        title: "Preferences Saved",
-        description: "Your notification preferences have been updated.",
+        title: 'Preferences Saved',
+        description: 'Your notification preferences have been updated.',
       });
     }, 1000);
   };
 
   const notificationCategories = [
     {
-      id: "policyExpirations",
-      name: "Policy Expirations",
-      description: "Receive notifications about policy expirations",
+      id: 'policyExpirations',
+      name: 'Policy Expirations',
+      description: 'Receive notifications about policy expirations',
     },
     {
-      id: "clientBirthdays",
-      name: "Client Birthdays",
-      description: "Receive notifications about client birthdays",
+      id: 'clientBirthdays',
+      name: 'Client Birthdays',
+      description: 'Receive notifications about client birthdays',
     },
     {
-      id: "taskReminders",
-      name: "Task Reminders",
-      description: "Receive notifications about task reminders",
+      id: 'taskReminders',
+      name: 'Task Reminders',
+      description: 'Receive notifications about task reminders',
     },
     {
-      id: "systemUpdates",
-      name: "System Updates",
-      description: "Receive notifications about system updates",
+      id: 'systemUpdates',
+      name: 'System Updates',
+      description: 'Receive notifications about system updates',
     },
   ];
 
@@ -114,7 +114,7 @@ const NotificationsTab: React.FC = () => {
                           ].email
                         }
                         onCheckedChange={() =>
-                          handleCheckboxChange(category.id, "email")
+                          handleCheckboxChange(category.id, 'email')
                         }
                       />
                       <Label
@@ -133,7 +133,7 @@ const NotificationsTab: React.FC = () => {
                           ].inApp
                         }
                         onCheckedChange={() =>
-                          handleCheckboxChange(category.id, "inApp")
+                          handleCheckboxChange(category.id, 'inApp')
                         }
                       />
                       <Label
@@ -153,7 +153,7 @@ const NotificationsTab: React.FC = () => {
                 disabled={isSubmitting}
                 className="relative overflow-hidden"
               >
-                <span className={isSubmitting ? "invisible" : "visible"}>
+                <span className={isSubmitting ? 'invisible' : 'visible'}>
                   Save Preferences
                 </span>
                 {isSubmitting && (
@@ -164,7 +164,7 @@ const NotificationsTab: React.FC = () => {
                       transition={{
                         duration: 1,
                         repeat: Infinity,
-                        ease: "linear",
+                        ease: 'linear',
                       }}
                     />
                   </span>

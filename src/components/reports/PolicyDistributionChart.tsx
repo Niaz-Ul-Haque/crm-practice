@@ -1,7 +1,7 @@
 // src/components/reports/PolicyDistributionChart.tsx
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 import {
   PieChart,
   Pie,
@@ -9,28 +9,28 @@ import {
   Cell,
   Tooltip,
   Legend,
-} from "recharts";
-import { PolicyDistribution } from "@/data/reportsData";
-import { formatCurrency } from "@/lib/formatters";
+} from 'recharts';
+import { PolicyDistribution } from '@/data/reportsData';
+import { formatCurrency } from '@/lib/formatters';
 
 interface PolicyDistributionChartProps {
   data: PolicyDistribution[];
-  dataKey?: "count" | "revenue";
+  dataKey?: 'count' | 'revenue';
 }
 
 const COLORS = [
-  "#0088FE",
-  "#00C49F",
-  "#FFBB28",
-  "#FF8042",
-  "#8884D8",
-  "#82CA9D",
-  "#FFC658",
+  '#0088FE',
+  '#00C49F',
+  '#FFBB28',
+  '#FF8042',
+  '#8884D8',
+  '#82CA9D',
+  '#FFC658',
 ];
 
 const PolicyDistributionChart: React.FC<PolicyDistributionChartProps> = ({
   data,
-  dataKey = "count",
+  dataKey = 'count',
 }) => {
   const renderLabel = ({
     cx,
@@ -53,7 +53,7 @@ const PolicyDistributionChart: React.FC<PolicyDistributionChartProps> = ({
         x={x}
         y={y}
         fill="white"
-        textAnchor={x > cx ? "start" : "end"}
+        textAnchor={x > cx ? 'start' : 'end'}
         dominantBaseline="central"
         fontSize={12}
       >
@@ -82,7 +82,7 @@ const PolicyDistributionChart: React.FC<PolicyDistributionChartProps> = ({
         </Pie>
         <Tooltip
           formatter={(value, name, props) => {
-            if (dataKey === "revenue") {
+            if (dataKey === 'revenue') {
               return [formatCurrency(value as number), name];
             }
             return [value, name];

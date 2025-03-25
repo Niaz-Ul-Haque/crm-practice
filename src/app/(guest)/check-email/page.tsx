@@ -1,5 +1,5 @@
 // src/app/(guest)/check-email/page.tsx
-"use client";
+'use client';
 
 import {
   Card,
@@ -7,11 +7,11 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowLeft, Mail } from "lucide-react";
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ArrowLeft, Mail } from 'lucide-react';
 
 export default function CheckEmailPage() {
   return (

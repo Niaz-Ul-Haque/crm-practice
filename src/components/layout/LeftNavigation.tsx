@@ -1,9 +1,9 @@
 // src/components/layout/LeftNavigation.tsx
-"use client";
+'use client';
 
-import React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard,
   Users,
@@ -16,9 +16,9 @@ import {
   Settings,
   ChevronLeft,
   ChevronRight,
-} from "lucide-react";
-import Logo from "@/components/shared/Logo";
-import { cn } from "@/lib/utils";
+} from 'lucide-react';
+import Logo from '@/components/shared/Logo';
+import { cn } from '@/lib/utils';
 
 interface NavItem {
   name: string;
@@ -40,40 +40,40 @@ const LeftNavigation: React.FC<LeftNavigationProps> = ({
 
   const navItems: NavItem[] = [
     {
-      name: "Dashboard",
-      href: "/dashboard",
+      name: 'Dashboard',
+      href: '/dashboard',
       icon: <LayoutDashboard size={18} />,
     },
-    { name: "Clients", href: "/clients", icon: <Users size={18} /> },
-    { name: "Policies", href: "/policies", icon: <FileText size={18} /> },
+    { name: 'Clients', href: '/clients', icon: <Users size={18} /> },
+    { name: 'Policies', href: '/policies', icon: <FileText size={18} /> },
     {
-      name: "Opportunities",
-      href: "/opportunities",
+      name: 'Opportunities',
+      href: '/opportunities',
       icon: <Star size={18} />,
     },
-    { name: "Documents", href: "/documents", icon: <FolderOpen size={18} /> },
+    { name: 'Documents', href: '/documents', icon: <FolderOpen size={18} /> },
     {
-      name: "Communication",
-      href: "/communication",
+      name: 'Communication',
+      href: '/communication',
       icon: <MessageSquare size={18} />,
     },
-    { name: "Tasks", href: "/tasks", icon: <CalendarCheck size={18} /> },
-    { name: "Reports", href: "/reports", icon: <BarChart size={18} /> },
-    { name: "Settings", href: "/settings", icon: <Settings size={18} /> },
+    { name: 'Tasks', href: '/tasks', icon: <CalendarCheck size={18} /> },
+    { name: 'Reports', href: '/reports', icon: <BarChart size={18} /> },
+    { name: 'Settings', href: '/settings', icon: <Settings size={18} /> },
   ];
 
   return (
     <aside
       className={cn(
-        "fixed inset-y-0 left-0 bg-white border-r border-gray-200 z-10 transition-all duration-300",
-        collapsed ? "w-20" : "w-64"
+        'fixed inset-y-0 left-0 bg-white border-r border-gray-200 z-10 transition-all duration-300',
+        collapsed ? 'w-20' : 'w-64'
       )}
     >
       <div className="h-full flex flex-col">
         <div
           className={cn(
-            "flex items-center p-6",
-            collapsed ? "justify-center" : "justify-between"
+            'flex items-center p-6',
+            collapsed ? 'justify-center' : 'justify-between'
           )}
         >
           <Logo size="lg" collapsed={collapsed} />
@@ -93,15 +93,15 @@ const LeftNavigation: React.FC<LeftNavigationProps> = ({
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "flex items-center py-2 text-sm rounded-md transition-colors",
-                  collapsed ? "justify-center px-2" : "px-4",
+                  'flex items-center py-2 text-sm rounded-md transition-colors',
+                  collapsed ? 'justify-center px-2' : 'px-4',
                   isActive
-                    ? "bg-blue-50 text-purple-600"
-                    : "text-gray-700 hover:bg-gray-100"
+                    ? 'bg-blue-50 text-purple-600'
+                    : 'text-gray-700 hover:bg-gray-100'
                 )}
                 title={collapsed ? item.name : undefined}
               >
-                <span className={collapsed ? "" : "mr-3"}>{item.icon}</span>
+                <span className={collapsed ? '' : 'mr-3'}>{item.icon}</span>
                 {!collapsed && <span>{item.name}</span>}
               </Link>
             );

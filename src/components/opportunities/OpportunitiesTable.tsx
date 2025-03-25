@@ -1,9 +1,9 @@
 // src/components/opportunities/OpportunitiesTable.tsx
-"use client";
+'use client';
 
-import React from "react";
-import { Opportunity, getClientForOpportunity } from "@/data/opportunitiesData";
-import { Button } from "@/components/ui/button";
+import React from 'react';
+import { Opportunity, getClientForOpportunity } from '@/data/opportunitiesData';
+import { Button } from '@/components/ui/button';
 import {
   ArrowUpDown,
   MoreHorizontal,
@@ -12,27 +12,27 @@ import {
   X,
   Clock,
   Calendar,
-} from "lucide-react";
+} from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { motion } from "framer-motion";
+} from '@/components/ui/dropdown-menu';
+import { motion } from 'framer-motion';
 
 interface OpportunitiesTableProps {
   opportunities: Opportunity[];
   sortField?: string;
-  sortDirection?: "asc" | "desc";
+  sortDirection?: 'asc' | 'desc';
   onSort?: (field: string) => void;
   onViewDetails?: (id: string) => void;
 }
 
 const OpportunitiesTable: React.FC<OpportunitiesTableProps> = ({
   opportunities,
-  sortField = "priority",
-  sortDirection = "asc",
+  sortField = 'priority',
+  sortDirection = 'asc',
   onSort,
   onViewDetails,
 }) => {
@@ -51,7 +51,7 @@ const OpportunitiesTable: React.FC<OpportunitiesTableProps> = ({
       {children}
       <ArrowUpDown
         className={`ml-2 h-4 w-4 ${
-          sortField === field ? "opacity-100" : "opacity-40"
+          sortField === field ? 'opacity-100' : 'opacity-40'
         }`}
       />
     </div>
@@ -59,40 +59,40 @@ const OpportunitiesTable: React.FC<OpportunitiesTableProps> = ({
 
   const getStatusStyles = (status: string) => {
     switch (status) {
-      case "eligible":
-        return "bg-blue-100 text-purple-800";
-      case "pending_review":
-        return "bg-amber-100 text-amber-800";
-      case "in_progress":
-        return "bg-purple-100 text-purple-800";
-      case "recommended":
-        return "bg-indigo-100 text-indigo-800";
-      case "rejected":
-        return "bg-red-100 text-red-800";
-      case "completed":
-        return "bg-green-100 text-green-800";
+      case 'eligible':
+        return 'bg-blue-100 text-purple-800';
+      case 'pending_review':
+        return 'bg-amber-100 text-amber-800';
+      case 'in_progress':
+        return 'bg-purple-100 text-purple-800';
+      case 'recommended':
+        return 'bg-indigo-100 text-indigo-800';
+      case 'rejected':
+        return 'bg-red-100 text-red-800';
+      case 'completed':
+        return 'bg-green-100 text-green-800';
       default:
-        return "bg-gray-100 text-gray-800";
+        return 'bg-gray-100 text-gray-800';
     }
   };
 
   const formatStatus = (status: string) => {
     return status
-      .split("_")
+      .split('_')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
+      .join(' ');
   };
 
   const getPriorityStyles = (priority: string) => {
     switch (priority) {
-      case "high":
-        return "text-red-600";
-      case "medium":
-        return "text-amber-600";
-      case "low":
-        return "text-purple-600";
+      case 'high':
+        return 'text-red-600';
+      case 'medium':
+        return 'text-amber-600';
+      case 'low':
+        return 'text-purple-600';
       default:
-        return "text-gray-600";
+        return 'text-gray-600';
     }
   };
 
@@ -135,10 +135,10 @@ const OpportunitiesTable: React.FC<OpportunitiesTableProps> = ({
                   <div className="text-sm font-medium">
                     {client
                       ? `${client.firstName} ${client.lastName}`
-                      : "Unknown Client"}
+                      : 'Unknown Client'}
                   </div>
                   <div className="text-sm">
-                    {opportunity.type.split("_").join(" ")}
+                    {opportunity.type.split('_').join(' ')}
                   </div>
                   <div className="col-span-2 text-sm">
                     <p className="line-clamp-2">{opportunity.description}</p>

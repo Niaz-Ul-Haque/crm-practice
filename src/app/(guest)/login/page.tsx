@@ -1,57 +1,57 @@
 // src/app/(guest)/login/page.tsx
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useAppDispatch } from "@/app/redux/hooks";
-import { loginSuccess } from "@/app/redux/slices/authSlice";
-import Link from "next/link";
-import { motion } from "framer-motion";
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { useAppDispatch } from '@/app/redux/hooks';
+import { loginSuccess } from '@/app/redux/slices/authSlice';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function LoginPage() {
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [isLoggingIn, setIsLoggingIn] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!email || !password) {
-      setError("Please enter both email and password");
+      setError('Please enter both email and password');
       return;
     }
 
     setIsLoggingIn(true);
-    setError("");
+    setError('');
 
     setTimeout(() => {
-      if (email === "demo@example.com" && password === "password") {
+      if (email === 'demo@example.com' && password === 'password') {
         dispatch(
           loginSuccess({
             user: {
-              id: "1",
-              name: "Jane Smith",
-              email: "demo@example.com",
+              id: '1',
+              name: 'Jane Smith',
+              email: 'demo@example.com',
             },
           })
         );
-        router.push("/dashboard");
+        router.push('/dashboard');
       } else {
-        setError("Invalid credentials. Try demo@example.com / password");
+        setError('Invalid credentials. Try demo@example.com / password');
         setIsLoggingIn(false);
       }
     }, 1000);
@@ -78,7 +78,7 @@ export default function LoginPage() {
               <motion.div
                 className="bg-red-50 text-red-600 p-3 rounded-md text-sm"
                 initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
+                animate={{ opacity: 1, height: 'auto' }}
                 transition={{ duration: 0.2 }}
               >
                 {error}
@@ -88,7 +88,7 @@ export default function LoginPage() {
               <Label
                 htmlFor="email"
                 className={`transition-colors duration-200 ${
-                  focusedField === "email" ? "text-purple-600" : ""
+                  focusedField === 'email' ? 'text-purple-600' : ''
                 }`}
               >
                 Email
@@ -99,12 +99,12 @@ export default function LoginPage() {
                 placeholder="your@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                onFocus={() => setFocusedField("email")}
+                onFocus={() => setFocusedField('email')}
                 onBlur={() => setFocusedField(null)}
                 className={`transition-all duration-200 ${
-                  focusedField === "email"
-                    ? "border-blue-400 ring-1 ring-blue-200"
-                    : ""
+                  focusedField === 'email'
+                    ? 'border-blue-400 ring-1 ring-blue-200'
+                    : ''
                 }`}
               />
             </div>
@@ -113,7 +113,7 @@ export default function LoginPage() {
                 <Label
                   htmlFor="password"
                   className={`transition-colors duration-200 ${
-                    focusedField === "password" ? "text-purple-600" : ""
+                    focusedField === 'password' ? 'text-purple-600' : ''
                   }`}
                 >
                   Password
@@ -130,12 +130,12 @@ export default function LoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                onFocus={() => setFocusedField("password")}
+                onFocus={() => setFocusedField('password')}
                 onBlur={() => setFocusedField(null)}
                 className={`transition-all duration-200 ${
-                  focusedField === "password"
-                    ? "border-blue-400 ring-1 ring-blue-200"
-                    : ""
+                  focusedField === 'password'
+                    ? 'border-blue-400 ring-1 ring-blue-200'
+                    : ''
                 }`}
               />
             </div>
@@ -146,7 +146,7 @@ export default function LoginPage() {
             >
               <span
                 className={`inline-block transition-all duration-200 ${
-                  isLoggingIn ? "opacity-0" : "opacity-100"
+                  isLoggingIn ? 'opacity-0' : 'opacity-100'
                 }`}
               >
                 Login
@@ -159,14 +159,14 @@ export default function LoginPage() {
                     transition={{
                       duration: 1,
                       repeat: Infinity,
-                      ease: "linear",
+                      ease: 'linear',
                     }}
                   />
                 </span>
               )}
             </Button>
             <div className="text-center text-sm">
-              Don&apos;t have an account?{" "}
+              Don&apos;t have an account?{' '}
               <Link
                 href="/register"
                 className="text-purple-600 hover:underline"

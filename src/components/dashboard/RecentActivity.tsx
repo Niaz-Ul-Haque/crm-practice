@@ -1,30 +1,43 @@
 // src/components/dashboard/RecentActivity.tsx
-import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   RefreshCw,
   UserPlus,
   CheckSquare,
   FileEdit,
   MessageSquare,
-} from "lucide-react";
-import { motion } from "framer-motion";
-import { formatDistanceToNow } from "date-fns";
+  Calendar,
+  DollarSign,
+  Target,
+} from 'lucide-react';
+import { motion } from 'framer-motion';
+import { formatDistanceToNow } from 'date-fns';
 
-type ActivityType =
-  | "policy_renewal"
-  | "client_added"
-  | "task_completed"
-  | "policy_change"
-  | "message_sent";
+export type ActivityType =
+  | 'policy_renewal'
+  | 'client_added'
+  | 'task_completed'
+  | 'policy_change'
+  | 'message_sent'
+  | 'meeting_scheduled'
+  | 'opportunity_created'
+  | 'premium_payment';
 
 export interface ActivityItem {
   type: ActivityType;
   client?: string;
+  clientId?: string;
   policyType?: string;
+  policyId?: string;
   task?: string;
+  taskId?: string;
   change?: string;
   date: string;
+  opportunity?: string;
+  opportunityId?: string;
+  amount?: number;
+  subject?: string;
 }
 
 interface RecentActivityProps {
@@ -38,33 +51,47 @@ const RecentActivity: React.FC<RecentActivityProps> = ({
 }) => {
   const getActivityIcon = (type: ActivityType) => {
     switch (type) {
-      case "policy_renewal":
+      case 'policy_renewal':
         return <RefreshCw size={18} className="text-purple-500" />;
-      case "client_added":
+      case 'client_added':
         return <UserPlus size={18} className="text-green-500" />;
-      case "task_completed":
+      case 'task_completed':
         return <CheckSquare size={18} className="text-purple-500" />;
-      case "policy_change":
+      case 'policy_change':
         return <FileEdit size={18} className="text-amber-500" />;
-      case "message_sent":
-        return <MessageSquare size={18} className="text-pink-500" />;
+      case 'message_sent':
+        return <MessageSquare size={18} className="text-blue-500" />;
+      case 'meeting_scheduled':
+        return <Calendar size={18} className="text-indigo-500" />;
+      case 'opportunity_created':
+        return <Target size={18} className="text-red-500" />;
+      case 'premium_payment':
+        return <DollarSign size={18} className="text-green-500" />;
+      default:
+        return <MessageSquare size={18} className="text-gray-500" />;
     }
   };
 
   const getActivityText = (activity: ActivityItem): string => {
     switch (activity.type) {
-      case "policy_renewal":
-        return `${activity.client}'s ${activity.policyType} was renewed`;
-      case "client_added":
+      case 'policy_renewal':
+        return `${activity.client}'s ${activity.policyType || 'policy'} was renewed`;
+      case 'client_added':
         return `${activity.client} was added as a new client`;
-      case "task_completed":
-        return `${activity.task} with ${activity.client} was completed`;
-      case "policy_change":
-        return `${activity.client}'s ${activity.policyType} had a change: ${activity.change}`;
-      case "message_sent":
+      case 'task_completed':
+        return `Task "${activity.task}" ${activity.client ? `with ${activity.client}` : ''} was completed`;
+      case 'policy_change':
+        return `${activity.client}'s ${activity.policyType || 'policy'} had a change: ${activity.change || 'updated'}`;
+      case 'message_sent':
         return `Message sent to ${activity.client}`;
+      case 'meeting_scheduled':
+        return `Meeting scheduled with ${activity.client}${activity.subject ? `: ${activity.subject}` : ''}`;
+      case 'opportunity_created':
+        return `New opportunity: ${activity.opportunity || ''}${activity.client ? ` for ${activity.client}` : ''}`;
+      case 'premium_payment':
+        return `Premium payment of ${activity.amount ? `$${activity.amount.toLocaleString()}` : ''} received from ${activity.client}${activity.policyType ? ` for ${activity.policyType}` : ''}`;
       default:
-        return "";
+        return `Activity with ${activity.client || 'client'}`;
     }
   };
 

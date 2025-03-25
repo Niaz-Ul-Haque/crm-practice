@@ -1,10 +1,10 @@
-// Modify your MainLayout.tsx to be more efficient
-"use client";
+'use client';
 
-import React, { useState, useCallback } from "react";
-import LeftNavigation from "./LeftNavigation";
-import Header from "./Header";
-import { usePathname } from "next/navigation";
+import React, { useState, useCallback } from 'react';
+import LeftNavigation from './LeftNavigation';
+import Header from './Header';
+import { usePathname } from 'next/navigation';
+import ChatWidget from '../chat/ChatWidget';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -27,12 +27,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       />
       <div
         className={`flex-1 flex flex-col overflow-hidden transition-all duration-200 ${
-          sidebarCollapsed ? "ml-20" : "ml-64"
+          sidebarCollapsed ? 'ml-20' : 'ml-64'
         }`}
       >
         <Header />
         <main className="flex-1 overflow-y-auto p-8">{children}</main>
       </div>
+      <ChatWidget />
     </div>
   );
 };

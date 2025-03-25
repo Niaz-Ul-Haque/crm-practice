@@ -1,13 +1,13 @@
 // src/app/(auth)/policies/[id]/edit/page.tsx
-"use client";
+'use client';
 
-import React from "react";
-import { useParams, useRouter } from "next/navigation";
-import PageTitle from "@/components/shared/PageTitle";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
-import PolicyForm from "@/components/policies/PolicyForm";
-import { getPolicyById } from "@/data/policiesData";
+import React from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import PageTitle from '@/components/shared/PageTitle';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft } from 'lucide-react';
+import PolicyForm from '@/components/policies/PolicyForm';
+import { getPolicyById } from '@/data/policiesData';
 
 export default function EditPolicyPage() {
   const params = useParams();
@@ -23,7 +23,7 @@ export default function EditPolicyPage() {
         <p className="mb-6">
           The policy you are trying to edit does not exist.
         </p>
-        <Button onClick={() => router.push("/policies")}>
+        <Button onClick={() => router.push('/policies')}>
           <ArrowLeft className="mr-2 h-4 w-4" /> Back to Policies
         </Button>
       </div>

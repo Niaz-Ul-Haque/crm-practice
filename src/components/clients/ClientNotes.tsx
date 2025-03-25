@@ -1,13 +1,13 @@
 // src/components/clients/ClientNotes.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Textarea } from "@/components/ui/textarea";
-import { PlusCircle, Save } from "lucide-react";
-import { formatDistanceToNow } from "date-fns";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Textarea } from '@/components/ui/textarea';
+import { PlusCircle, Save } from 'lucide-react';
+import { formatDistanceToNow } from 'date-fns';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export interface Note {
   id: string;
@@ -26,7 +26,7 @@ const ClientNotes: React.FC<ClientNotesProps> = ({
   initialNotes,
 }) => {
   const [notes, setNotes] = useState<Note[]>(initialNotes);
-  const [newNote, setNewNote] = useState("");
+  const [newNote, setNewNote] = useState('');
   const [isAddingNote, setIsAddingNote] = useState(false);
   console.log(clientId);
   const handleAddNote = () => {
@@ -40,7 +40,7 @@ const ClientNotes: React.FC<ClientNotesProps> = ({
     };
 
     setNotes((prev) => [note, ...prev]);
-    setNewNote("");
+    setNewNote('');
     setIsAddingNote(false);
   };
 
@@ -64,7 +64,7 @@ const ClientNotes: React.FC<ClientNotesProps> = ({
           {isAddingNote && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
+              animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               className="mb-4"
             >
@@ -80,7 +80,7 @@ const ClientNotes: React.FC<ClientNotesProps> = ({
                   size="sm"
                   onClick={() => {
                     setIsAddingNote(false);
-                    setNewNote("");
+                    setNewNote('');
                   }}
                 >
                   Cancel

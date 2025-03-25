@@ -1,35 +1,35 @@
 // src/app/(guest)/register/page.tsx
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useAppDispatch } from "@/app/redux/hooks";
-import { loginSuccess } from "@/app/redux/slices/authSlice";
-import Link from "next/link";
-import { motion } from "framer-motion";
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { useAppDispatch } from '@/app/redux/hooks';
+import { loginSuccess } from '@/app/redux/slices/authSlice';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function RegisterPage() {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
   });
   const [isRegistering, setIsRegistering] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,29 +41,29 @@ export default function RegisterPage() {
     e.preventDefault();
 
     if (!form.firstName || !form.lastName || !form.email || !form.password) {
-      setError("All fields are required");
+      setError('All fields are required');
       return;
     }
 
     if (form.password !== form.confirmPassword) {
-      setError("Passwords do not match");
+      setError('Passwords do not match');
       return;
     }
 
     setIsRegistering(true);
-    setError("");
+    setError('');
 
     setTimeout(() => {
       dispatch(
         loginSuccess({
           user: {
-            id: "1",
+            id: '1',
             name: `${form.firstName} ${form.lastName}`,
             email: form.email,
           },
         })
       );
-      router.push("/dashboard");
+      router.push('/dashboard');
     }, 1000);
   };
 
@@ -88,7 +88,7 @@ export default function RegisterPage() {
               <motion.div
                 className="bg-red-50 text-red-600 p-3 rounded-md text-sm"
                 initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
+                animate={{ opacity: 1, height: 'auto' }}
                 transition={{ duration: 0.2 }}
               >
                 {error}
@@ -99,7 +99,7 @@ export default function RegisterPage() {
                 <Label
                   htmlFor="firstName"
                   className={`transition-colors duration-200 ${
-                    focusedField === "firstName" ? "text-purple-600" : ""
+                    focusedField === 'firstName' ? 'text-purple-600' : ''
                   }`}
                 >
                   First Name
@@ -109,12 +109,12 @@ export default function RegisterPage() {
                   name="firstName"
                   value={form.firstName}
                   onChange={handleChange}
-                  onFocus={() => setFocusedField("firstName")}
+                  onFocus={() => setFocusedField('firstName')}
                   onBlur={() => setFocusedField(null)}
                   className={`transition-all duration-200 ${
-                    focusedField === "firstName"
-                      ? "border-blue-400 ring-1 ring-blue-200"
-                      : ""
+                    focusedField === 'firstName'
+                      ? 'border-blue-400 ring-1 ring-blue-200'
+                      : ''
                   }`}
                 />
               </div>
@@ -122,7 +122,7 @@ export default function RegisterPage() {
                 <Label
                   htmlFor="lastName"
                   className={`transition-colors duration-200 ${
-                    focusedField === "lastName" ? "text-purple-600" : ""
+                    focusedField === 'lastName' ? 'text-purple-600' : ''
                   }`}
                 >
                   Last Name
@@ -132,12 +132,12 @@ export default function RegisterPage() {
                   name="lastName"
                   value={form.lastName}
                   onChange={handleChange}
-                  onFocus={() => setFocusedField("lastName")}
+                  onFocus={() => setFocusedField('lastName')}
                   onBlur={() => setFocusedField(null)}
                   className={`transition-all duration-200 ${
-                    focusedField === "lastName"
-                      ? "border-blue-400 ring-1 ring-blue-200"
-                      : ""
+                    focusedField === 'lastName'
+                      ? 'border-blue-400 ring-1 ring-blue-200'
+                      : ''
                   }`}
                 />
               </div>
@@ -146,7 +146,7 @@ export default function RegisterPage() {
               <Label
                 htmlFor="email"
                 className={`transition-colors duration-200 ${
-                  focusedField === "email" ? "text-purple-600" : ""
+                  focusedField === 'email' ? 'text-purple-600' : ''
                 }`}
               >
                 Email
@@ -157,12 +157,12 @@ export default function RegisterPage() {
                 type="email"
                 value={form.email}
                 onChange={handleChange}
-                onFocus={() => setFocusedField("email")}
+                onFocus={() => setFocusedField('email')}
                 onBlur={() => setFocusedField(null)}
                 className={`transition-all duration-200 ${
-                  focusedField === "email"
-                    ? "border-blue-400 ring-1 ring-blue-200"
-                    : ""
+                  focusedField === 'email'
+                    ? 'border-blue-400 ring-1 ring-blue-200'
+                    : ''
                 }`}
               />
             </div>
@@ -170,7 +170,7 @@ export default function RegisterPage() {
               <Label
                 htmlFor="password"
                 className={`transition-colors duration-200 ${
-                  focusedField === "password" ? "text-purple-600" : ""
+                  focusedField === 'password' ? 'text-purple-600' : ''
                 }`}
               >
                 Password
@@ -181,12 +181,12 @@ export default function RegisterPage() {
                 type="password"
                 value={form.password}
                 onChange={handleChange}
-                onFocus={() => setFocusedField("password")}
+                onFocus={() => setFocusedField('password')}
                 onBlur={() => setFocusedField(null)}
                 className={`transition-all duration-200 ${
-                  focusedField === "password"
-                    ? "border-blue-400 ring-1 ring-blue-200"
-                    : ""
+                  focusedField === 'password'
+                    ? 'border-blue-400 ring-1 ring-blue-200'
+                    : ''
                 }`}
               />
             </div>
@@ -194,7 +194,7 @@ export default function RegisterPage() {
               <Label
                 htmlFor="confirmPassword"
                 className={`transition-colors duration-200 ${
-                  focusedField === "confirmPassword" ? "text-purple-600" : ""
+                  focusedField === 'confirmPassword' ? 'text-purple-600' : ''
                 }`}
               >
                 Confirm Password
@@ -205,12 +205,12 @@ export default function RegisterPage() {
                 type="password"
                 value={form.confirmPassword}
                 onChange={handleChange}
-                onFocus={() => setFocusedField("confirmPassword")}
+                onFocus={() => setFocusedField('confirmPassword')}
                 onBlur={() => setFocusedField(null)}
                 className={`transition-all duration-200 ${
-                  focusedField === "confirmPassword"
-                    ? "border-blue-400 ring-1 ring-blue-200"
-                    : ""
+                  focusedField === 'confirmPassword'
+                    ? 'border-blue-400 ring-1 ring-blue-200'
+                    : ''
                 }`}
               />
             </div>
@@ -221,7 +221,7 @@ export default function RegisterPage() {
             >
               <span
                 className={`inline-block transition-all duration-200 ${
-                  isRegistering ? "opacity-0" : "opacity-100"
+                  isRegistering ? 'opacity-0' : 'opacity-100'
                 }`}
               >
                 Register
@@ -234,14 +234,14 @@ export default function RegisterPage() {
                     transition={{
                       duration: 1,
                       repeat: Infinity,
-                      ease: "linear",
+                      ease: 'linear',
                     }}
                   />
                 </span>
               )}
             </Button>
             <div className="text-center text-sm">
-              Already have an account?{" "}
+              Already have an account?{' '}
               <Link href="/login" className="text-purple-600 hover:underline">
                 Sign in
               </Link>

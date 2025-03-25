@@ -1,20 +1,20 @@
 // src/app/(auth)/communication/page.tsx
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
-import PageTitle from "@/components/shared/PageTitle";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
-import CommunicationList from "@/components/communication/CommunicationList";
-import CommunicationDetail from "@/components/communication/CommunicationDetail";
-import NewMessageForm from "@/components/communication/NewMessageForm";
-import CommunicationFilters from "@/components/communication/CommunicationFilters";
+import React, { useState, useEffect } from 'react';
+import PageTitle from '@/components/shared/PageTitle';
+import { Button } from '@/components/ui/button';
+import { Plus } from 'lucide-react';
+import CommunicationList from '@/components/communication/CommunicationList';
+import CommunicationDetail from '@/components/communication/CommunicationDetail';
+import NewMessageForm from '@/components/communication/NewMessageForm';
+import CommunicationFilters from '@/components/communication/CommunicationFilters';
 import {
   communicationsData,
   Communication,
   getClientForCommunication,
-} from "@/data/communicationData";
-import { motion } from "framer-motion";
+} from '@/data/communicationData';
+import { motion } from 'framer-motion';
 
 export default function CommunicationPage() {
   const [communications, setCommunications] =
@@ -26,7 +26,7 @@ export default function CommunicationPage() {
   >(null);
   const [isComposing, setIsComposing] = useState(false);
   const [filters, setFilters] = useState({
-    searchTerm: "",
+    searchTerm: '',
     types: [] as string[],
     statuses: [] as string[],
     hasAttachments: false,
@@ -101,7 +101,7 @@ export default function CommunicationPage() {
   };
 
   const handleSendMessage = (message: any) => {
-    console.log("Sending message:", message);
+    console.log('Sending message:', message);
 
     const newMessage: Communication = {
       id: Date.now().toString(),
@@ -110,12 +110,12 @@ export default function CommunicationPage() {
       subject: message.subject,
       content: message.message,
       sentAt: new Date().toISOString(),
-      sender: "jane.smith@insurance.com",
-      recipient: "client@example.com",
+      sender: 'jane.smith@insurance.com',
+      recipient: 'client@example.com',
       attachments:
         message.attachments.length > 0 ? message.attachments : undefined,
       isRead: true,
-      status: message.schedule ? "scheduled" : "sent",
+      status: message.schedule ? 'scheduled' : 'sent',
       scheduledFor: message.schedule
         ? `${message.scheduledDate}T${message.scheduledTime}:00Z`
         : undefined,

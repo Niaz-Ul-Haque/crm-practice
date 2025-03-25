@@ -1,8 +1,8 @@
 // src/app/(auth)/documents/page.tsx
-"use client";
+'use client';
 
-import React from "react";
-import PageTitle from "@/components/shared/PageTitle";
+import React from 'react';
+import PageTitle from '@/components/shared/PageTitle';
 
 export default function DocumentsPage() {
   return (

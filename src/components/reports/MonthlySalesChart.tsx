@@ -1,7 +1,7 @@
 // src/components/reports/MonthlySalesChart.tsx
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 import {
   BarChart,
   Bar,
@@ -12,9 +12,9 @@ import {
   Legend,
   ReferenceLine,
   ResponsiveContainer,
-} from "recharts";
-import { SalesData } from "@/data/reportsData";
-import { formatCurrency } from "@/lib/formatters";
+} from 'recharts';
+import { SalesData } from '@/data/reportsData';
+import { formatCurrency } from '@/lib/formatters';
 
 interface MonthlySalesChartProps {
   data: SalesData[];
@@ -38,7 +38,7 @@ const MonthlySalesChart: React.FC<MonthlySalesChartProps> = ({ data }) => {
         />
         <Tooltip
           formatter={(value, name) => {
-            if (name === "revenue" || name === "target") {
+            if (name === 'revenue' || name === 'target') {
               return [formatCurrency(value as number), name];
             }
             return [value, name];

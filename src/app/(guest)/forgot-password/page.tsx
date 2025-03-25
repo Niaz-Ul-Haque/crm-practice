@@ -1,38 +1,38 @@
 // src/app/(guest)/forgot-password/page.tsx
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowLeft, Check } from "lucide-react";
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ArrowLeft, Check } from 'lucide-react';
 
 export default function ForgotPasswordPage() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!email) {
-      setError("Please enter your email address");
+      setError('Please enter your email address');
       return;
     }
 
     setIsSubmitting(true);
-    setError("");
+    setError('');
 
     setTimeout(() => {
       setIsSubmitting(false);
@@ -68,7 +68,7 @@ export default function ForgotPasswordPage() {
               </div>
               <h3 className="text-lg font-medium">Check your email</h3>
               <p className="text-sm text-gray-500">
-                We&apos;ve sent password reset instructions to{" "}
+                We&apos;ve sent password reset instructions to{' '}
                 <span className="font-medium">{email}</span>
               </p>
               <div className="pt-4">
@@ -86,7 +86,7 @@ export default function ForgotPasswordPage() {
                 <motion.div
                   className="bg-red-50 text-red-600 p-3 rounded-md text-sm"
                   initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
+                  animate={{ opacity: 1, height: 'auto' }}
                   transition={{ duration: 0.2 }}
                 >
                   {error}
@@ -96,7 +96,7 @@ export default function ForgotPasswordPage() {
                 <Label
                   htmlFor="email"
                   className={`transition-colors duration-200 ${
-                    focusedField === "email" ? "text-purple-600" : ""
+                    focusedField === 'email' ? 'text-purple-600' : ''
                   }`}
                 >
                   Email Address
@@ -107,12 +107,12 @@ export default function ForgotPasswordPage() {
                   placeholder="your@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  onFocus={() => setFocusedField("email")}
+                  onFocus={() => setFocusedField('email')}
                   onBlur={() => setFocusedField(null)}
                   className={`transition-all duration-200 ${
-                    focusedField === "email"
-                      ? "border-blue-400 ring-1 ring-blue-200"
-                      : ""
+                    focusedField === 'email'
+                      ? 'border-blue-400 ring-1 ring-blue-200'
+                      : ''
                   }`}
                 />
               </div>
@@ -123,7 +123,7 @@ export default function ForgotPasswordPage() {
               >
                 <span
                   className={`inline-block transition-all duration-200 ${
-                    isSubmitting ? "opacity-0" : "opacity-100"
+                    isSubmitting ? 'opacity-0' : 'opacity-100'
                   }`}
                 >
                   Send Reset Instructions
@@ -136,7 +136,7 @@ export default function ForgotPasswordPage() {
                       transition={{
                         duration: 1,
                         repeat: Infinity,
-                        ease: "linear",
+                        ease: 'linear',
                       }}
                     />
                   </span>

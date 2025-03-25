@@ -1,5 +1,5 @@
 // src/components/shared/PageTitle.tsx
-import React from "react";
+import React from 'react';
 
 interface PageTitleProps {
   title: string;

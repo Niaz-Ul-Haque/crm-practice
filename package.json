@@ -6,7 +6,14 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "check-format": "prettier --check ."
+  },
+  "eslintConfig": {
+    "ignorePatterns": [
+      "**/*"
+    ]
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.3",
@@ -22,12 +29,14 @@
     "@reduxjs/toolkit": "^2.6.1",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
+    "axios": "^1.8.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.4.10",
+    "llamaai": "^1.0.4",
     "lucide-react": "^0.479.0",
-    "next": "15.2.1",
+    "next": "^15.2.4",
     "next-redux-wrapper": "^8.1.0",
     "postcss-import": "^16.1.0",
     "react": "^19.0.0",
@@ -46,7 +55,9 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.2.1",
+    "eslint-config-prettier": "^10.1.1",
     "postcss": "^8.5.3",
+    "prettier": "^3.5.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
   }

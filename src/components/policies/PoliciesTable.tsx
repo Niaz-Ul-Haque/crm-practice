@@ -1,16 +1,16 @@
 // src/components/policies/PoliciesTable.tsx
-"use client";
+'use client';
 
-import React from "react";
-import { Policy } from "@/data/policiesData";
-import { getClientNameById } from "@/data/policiesData";
+import React from 'react';
+import { Policy } from '@/data/policiesData';
+import { getClientNameById } from '@/data/policiesData';
 import {
   formatCurrency,
   formatPolicyType,
   formatPolicyStatus,
-} from "@/lib/formatters";
-import { formatDate } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+} from '@/lib/formatters';
+import { formatDate } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 import {
   ArrowUpDown,
   MoreHorizontal,
@@ -18,27 +18,27 @@ import {
   Edit,
   Trash,
   RefreshCw,
-} from "lucide-react";
+} from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import Link from "next/link";
-import { motion } from "framer-motion";
+} from '@/components/ui/dropdown-menu';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 interface PoliciesTableProps {
   policies: Policy[];
   sortField?: string;
-  sortDirection?: "asc" | "desc";
+  sortDirection?: 'asc' | 'desc';
   onSort?: (field: string) => void;
 }
 
 const PoliciesTable: React.FC<PoliciesTableProps> = ({
   policies,
-  sortField = "endDate",
-  sortDirection = "asc",
+  sortField = 'endDate',
+  sortDirection = 'asc',
   onSort,
 }) => {
   const SortableHeader = ({
@@ -55,7 +55,7 @@ const PoliciesTable: React.FC<PoliciesTableProps> = ({
       {children}
       <ArrowUpDown
         className={`ml-2 h-4 w-4 ${
-          sortField === field ? "opacity-100" : "opacity-40"
+          sortField === field ? 'opacity-100' : 'opacity-40'
         }`}
       />
     </div>

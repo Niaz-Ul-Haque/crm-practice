@@ -1,17 +1,17 @@
 // src/components/policies/PolicyDetails.tsx
-"use client";
+'use client';
 
-import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import {
   formatCurrency,
   formatPolicyType,
   formatPolicyStatus,
-} from "@/lib/formatters";
-import { formatDate } from "@/lib/utils";
-import { Policy } from "@/data/policiesData";
-import { getClientNameById } from "@/data/policiesData";
+} from '@/lib/formatters';
+import { formatDate } from '@/lib/utils';
+import { Policy } from '@/data/policiesData';
+import { getClientNameById } from '@/data/policiesData';
 import {
   Edit,
   Calendar,
@@ -19,9 +19,9 @@ import {
   Shield,
   FileText,
   User,
-} from "lucide-react";
-import Link from "next/link";
-import { motion } from "framer-motion";
+} from 'lucide-react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 interface PolicyDetailsProps {
   policy: Policy;

@@ -1,14 +1,14 @@
 // src/components/tasks/CalendarView.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Plus } from "lucide-react";
-import { Task } from "@/data/tasksData";
-import { getClientForTask } from "@/data/tasksData";
-import { formatDate } from "@/lib/utils";
-import { motion } from "framer-motion";
+import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ChevronLeft, ChevronRight, Plus } from 'lucide-react';
+import { Task } from '@/data/tasksData';
+import { getClientForTask } from '@/data/tasksData';
+import { formatDate } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 interface CalendarViewProps {
   tasks: Task[];
@@ -51,21 +51,21 @@ const CalendarView: React.FC<CalendarViewProps> = ({
   };
 
   const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ];
 
-  const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   const getTasksForDate = (day: number) => {
     const date = new Date(year, month, day);
@@ -104,14 +104,14 @@ const CalendarView: React.FC<CalendarViewProps> = ({
       } else {
         const dailyTasks = getTasksForDate(dayNumber);
         const hasHighPriorityTask = dailyTasks.some(
-          (task) => task.priority === "high"
+          (task) => task.priority === 'high'
         );
 
         days.push(
           <div
             key={dayNumber}
             className={`h-24 border relative overflow-hidden hover:bg-gray-50 ${
-              isToday(dayNumber) ? "bg-blue-50" : "bg-white"
+              isToday(dayNumber) ? 'bg-blue-50' : 'bg-white'
             }`}
           >
             <div className="p-1">
@@ -119,8 +119,8 @@ const CalendarView: React.FC<CalendarViewProps> = ({
                 <span
                   className={`inline-block w-6 h-6 text-center ${
                     isToday(dayNumber)
-                      ? "bg-blue-600 text-white rounded-full"
-                      : ""
+                      ? 'bg-blue-600 text-white rounded-full'
+                      : ''
                   }`}
                 >
                   {dayNumber}
@@ -132,18 +132,18 @@ const CalendarView: React.FC<CalendarViewProps> = ({
 
               <div className="mt-1 space-y-1 max-h-16 overflow-hidden">
                 {dailyTasks.map((task, index) => {
-                  if (index >= 2) return null; // Only show 2 tasks max
+                  if (index >= 2) return null;
 
                   return (
                     <div
                       key={task.id}
                       onClick={() => onSelectTask && onSelectTask(task.id)}
                       className={`text-xs truncate cursor-pointer p-1 rounded ${
-                        task.priority === "high"
-                          ? "bg-red-100 text-red-800"
-                          : task.priority === "medium"
-                          ? "bg-amber-100 text-amber-800"
-                          : "bg-blue-100 text-purple-800"
+                        task.priority === 'high'
+                          ? 'bg-red-100 text-red-800'
+                          : task.priority === 'medium'
+                            ? 'bg-amber-100 text-amber-800'
+                            : 'bg-blue-100 text-purple-800'
                       }`}
                     >
                       {task.title}

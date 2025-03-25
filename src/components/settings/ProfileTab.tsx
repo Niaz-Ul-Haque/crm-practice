@@ -1,14 +1,14 @@
 // src/components/settings/ProfileTab.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Camera } from "lucide-react";
-import { motion } from "framer-motion";
-import { useToast } from "@/components/ui/use-toast";
+import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Camera } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { useToast } from '@/components/ui/use-toast';
 
 interface ProfileTabProps {
   user: {
@@ -22,14 +22,14 @@ const ProfileTab: React.FC<ProfileTabProps> = ({ user }) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: user.name?.split(" ")[0] || "",
-    lastName: user.name?.split(" ")[1] || "",
-    email: user.email || "",
-    phone: "(555) 123-4567",
-    address: "123 Main St",
-    city: "Anytown",
-    state: "CA",
-    zipCode: "12345",
+    firstName: user.name?.split(' ')[0] || '',
+    lastName: user.name?.split(' ')[1] || '',
+    email: user.email || '',
+    phone: '(555) 123-4567',
+    address: '123 Main St',
+    city: 'Anytown',
+    state: 'CA',
+    zipCode: '12345',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,8 +44,8 @@ const ProfileTab: React.FC<ProfileTabProps> = ({ user }) => {
     setTimeout(() => {
       setIsSubmitting(false);
       toast({
-        title: "Profile Updated",
-        description: "Your profile information has been updated successfully.",
+        title: 'Profile Updated',
+        description: 'Your profile information has been updated successfully.',
       });
     }, 1000);
   };
@@ -164,7 +164,7 @@ const ProfileTab: React.FC<ProfileTabProps> = ({ user }) => {
                 disabled={isSubmitting}
                 className="relative overflow-hidden"
               >
-                <span className={isSubmitting ? "invisible" : "visible"}>
+                <span className={isSubmitting ? 'invisible' : 'visible'}>
                   Save Changes
                 </span>
                 {isSubmitting && (
@@ -175,7 +175,7 @@ const ProfileTab: React.FC<ProfileTabProps> = ({ user }) => {
                       transition={{
                         duration: 1,
                         repeat: Infinity,
-                        ease: "linear",
+                        ease: 'linear',
                       }}
                     />
                   </span>

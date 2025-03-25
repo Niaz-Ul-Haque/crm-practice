@@ -1,18 +1,18 @@
 // src/components/communication/CommunicationFilters.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Search, X, Filter, ChevronDown } from "lucide-react";
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Search, X, Filter, ChevronDown } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuCheckboxItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import type { CommunicationFilters } from "@/data/communicationData";
+} from '@/components/ui/dropdown-menu';
+import type { CommunicationFilters } from '@/data/communicationData';
 
 interface CommunicationFiltersProps {
   onFilterChange: (filters: CommunicationFilters) => void;
@@ -21,7 +21,7 @@ interface CommunicationFiltersProps {
 const CommunicationFilters: React.FC<CommunicationFiltersProps> = ({
   onFilterChange,
 }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState({
     types: [] as string[],
     statuses: [] as string[],
@@ -70,14 +70,14 @@ const CommunicationFilters: React.FC<CommunicationFiltersProps> = ({
   };
 
   const clearFilters = () => {
-    setSearchTerm("");
+    setSearchTerm('');
     setFilters({
       types: [],
       statuses: [],
       hasAttachments: false,
     });
     onFilterChange({
-      searchTerm: "",
+      searchTerm: '',
       types: [],
       statuses: [],
       hasAttachments: false,
@@ -106,8 +106,8 @@ const CommunicationFilters: React.FC<CommunicationFiltersProps> = ({
               <button
                 type="button"
                 onClick={() => {
-                  setSearchTerm("");
-                  onFilterChange({ ...filters, searchTerm: "" });
+                  setSearchTerm('');
+                  onFilterChange({ ...filters, searchTerm: '' });
                 }}
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
               >
@@ -127,7 +127,7 @@ const CommunicationFilters: React.FC<CommunicationFiltersProps> = ({
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56">
             <div className="px-2 py-1.5 text-sm font-medium">Type</div>
-            {["email", "call", "sms", "meeting", "note"].map((type) => (
+            {['email', 'call', 'sms', 'meeting', 'note'].map((type) => (
               <DropdownMenuCheckboxItem
                 key={type}
                 checked={filters.types.includes(type)}
@@ -140,7 +140,7 @@ const CommunicationFilters: React.FC<CommunicationFiltersProps> = ({
             <DropdownMenuSeparator />
 
             <div className="px-2 py-1.5 text-sm font-medium">Status</div>
-            {["sent", "draft", "scheduled"].map((status) => (
+            {['sent', 'draft', 'scheduled'].map((status) => (
               <DropdownMenuCheckboxItem
                 key={status}
                 checked={filters.statuses.includes(status)}

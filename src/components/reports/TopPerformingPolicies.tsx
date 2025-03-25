@@ -1,11 +1,11 @@
 // src/components/reports/TopPerformingPolicies.tsx
-"use client";
+'use client';
 
-import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowUpDown } from "lucide-react";
-import { motion } from "framer-motion";
-import { formatCurrency } from "@/lib/formatters";
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ArrowUpDown, TrendingUp } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { formatCurrency } from '@/lib/formatters';
 
 interface TopPerformingPolicy {
   policyType: string;
@@ -13,20 +13,22 @@ interface TopPerformingPolicy {
   revenue: number;
   avgPremium: number;
   conversionRate: number;
+  clientSegment?: string;
+  growthRate?: number;
 }
 
 interface TopPerformingPoliciesProps {
   data: TopPerformingPolicy[];
   onSort?: (field: string) => void;
   sortField?: string;
-  sortDirection?: "asc" | "desc";
+  sortDirection?: 'asc' | 'desc';
 }
 
 const TopPerformingPolicies: React.FC<TopPerformingPoliciesProps> = ({
   data,
   onSort,
-  sortField = "revenue",
-  sortDirection = "desc",
+  sortField = 'revenue',
+  sortDirection = 'desc',
 }) => {
   const SortableHeader = ({
     field,
@@ -42,7 +44,7 @@ const TopPerformingPolicies: React.FC<TopPerformingPoliciesProps> = ({
       {children}
       <ArrowUpDown
         className={`ml-2 h-4 w-4 ${
-          sortField === field ? "opacity-100" : "opacity-40"
+          sortField === field ? 'opacity-100' : 'opacity-40'
         }`}
       />
     </div>
@@ -86,6 +88,14 @@ const TopPerformingPolicies: React.FC<TopPerformingPoliciesProps> = ({
                       Conversion Rate
                     </SortableHeader>
                   </th>
+                  <th className="px-4 py-3">
+                    <SortableHeader field="growthRate">Growth</SortableHeader>
+                  </th>
+                  <th className="px-4 py-3">
+                    <SortableHeader field="clientSegment">
+                      Primary Segment
+                    </SortableHeader>
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y">
@@ -108,6 +118,35 @@ const TopPerformingPolicies: React.FC<TopPerformingPoliciesProps> = ({
                       {formatCurrency(policy.avgPremium)}
                     </td>
                     <td className="px-4 py-4">{policy.conversionRate}%</td>
+                    <td className="px-4 py-4">
+                      {policy.growthRate !== undefined ? (
+                        <div className="flex items-center">
+                          <TrendingUp
+                            className={`h-4 w-4 mr-1 ${policy.growthRate > 0 ? 'text-green-500' : 'text-red-500'}`}
+                          />
+                          <span
+                            className={
+                              policy.growthRate > 0
+                                ? 'text-green-600'
+                                : 'text-red-600'
+                            }
+                          >
+                            {(policy.growthRate * 100).toFixed(1)}%
+                          </span>
+                        </div>
+                      ) : (
+                        'N/A'
+                      )}
+                    </td>
+                    <td className="px-4 py-4">
+                      {policy.clientSegment ? (
+                        <span className="px-2 py-1 bg-indigo-50 text-indigo-700 rounded-full text-xs">
+                          {policy.clientSegment}
+                        </span>
+                      ) : (
+                        'Various'
+                      )}
+                    </td>
                   </motion.tr>
                 ))}
               </tbody>

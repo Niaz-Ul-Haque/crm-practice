@@ -1,20 +1,20 @@
 // src/components/clients/ClientsTable.tsx
-"use client";
+'use client';
 
-import React from "react";
-import { Button } from "@/components/ui/button";
-import { Client } from "@/data/clientsData";
-import { formatDate } from "@/lib/utils";
-import { formatCurrency } from "@/lib/formatters";
-import Link from "next/link";
-import { Eye, MoreHorizontal, Edit, Trash, Mail, Phone } from "lucide-react";
+import React from 'react';
+import { Button } from '@/components/ui/button';
+import { Client } from '@/data/clientsData';
+import { formatDate } from '@/lib/utils';
+import { formatCurrency } from '@/lib/formatters';
+import Link from 'next/link';
+import { Eye, MoreHorizontal, Edit, Trash, Mail, Phone } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { motion } from "framer-motion";
+} from '@/components/ui/dropdown-menu';
+import { motion } from 'framer-motion';
 
 interface ClientsTableProps {
   clients: Client[];
@@ -60,8 +60,8 @@ const ClientsTable: React.FC<ClientsTableProps> = ({ clients }) => {
                 <span
                   className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                     client.activePolicies > 0
-                      ? "bg-green-100 text-green-800"
-                      : "bg-gray-100 text-gray-800"
+                      ? 'bg-green-100 text-green-800'
+                      : 'bg-gray-100 text-gray-800'
                   }`}
                 >
                   {client.activePolicies} Active

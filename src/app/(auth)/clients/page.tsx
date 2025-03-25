@@ -1,24 +1,24 @@
 // src/app/(auth)/clients/page.tsx (updated)
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
-import PageTitle from "@/components/shared/PageTitle";
-import { Button } from "@/components/ui/button";
-import ClientsTable from "@/components/clients/ClientsTable";
-import ClientsGrid from "@/components/clients/ClientsGrid";
-import ClientFilters from "@/components/clients/ClientFilters";
-import AddClientDialog from "@/components/clients/AddClientDialog";
-import { clientsData, Client } from "@/data/clientsData";
-import { LayoutGrid, LayoutList } from "lucide-react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from 'react';
+import PageTitle from '@/components/shared/PageTitle';
+import { Button } from '@/components/ui/button';
+import ClientsTable from '@/components/clients/ClientsTable';
+import ClientsGrid from '@/components/clients/ClientsGrid';
+import ClientFilters from '@/components/clients/ClientFilters';
+import AddClientDialog from '@/components/clients/AddClientDialog';
+import { clientsData, Client } from '@/data/clientsData';
+import { LayoutGrid, LayoutList } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function ClientsPage() {
   const [clients, setClients] = useState<Client[]>(clientsData);
   const [filteredClients, setFilteredClients] = useState<Client[]>(clientsData);
   const [isAddClientOpen, setIsAddClientOpen] = useState(false);
-  const [viewMode, setViewMode] = useState<"table" | "grid">("table");
+  const [viewMode, setViewMode] = useState<'table' | 'grid'>('table');
   const [filters, setFilters] = useState({
-    searchTerm: "",
+    searchTerm: '',
     status: [] as string[],
     policies: [] as string[],
   });
@@ -77,17 +77,17 @@ export default function ClientsPage() {
 
           <div className="flex space-x-2 ml-4">
             <Button
-              variant={viewMode === "table" ? "default" : "outline"}
+              variant={viewMode === 'table' ? 'default' : 'outline'}
               size="sm"
-              onClick={() => setViewMode("table")}
+              onClick={() => setViewMode('table')}
             >
               <LayoutList className="h-4 w-4 mr-2" />
               List
             </Button>
             <Button
-              variant={viewMode === "grid" ? "default" : "outline"}
+              variant={viewMode === 'grid' ? 'default' : 'outline'}
               size="sm"
-              onClick={() => setViewMode("grid")}
+              onClick={() => setViewMode('grid')}
             >
               <LayoutGrid className="h-4 w-4 mr-2" />
               Grid
@@ -96,7 +96,7 @@ export default function ClientsPage() {
         </div>
 
         <div className="mt-6">
-          {viewMode === "table" ? (
+          {viewMode === 'table' ? (
             <ClientsTable clients={filteredClients} />
           ) : (
             <ClientsGrid clients={filteredClients} />
