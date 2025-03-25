@@ -1,7 +1,7 @@
 // src/components/clients/AddClientDialog.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -9,12 +9,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { motion } from "framer-motion";
-import { Client } from "@/data/clientsData";
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { motion } from 'framer-motion';
+import { Client } from '@/data/clientsData';
 
 interface AddClientDialogProps {
   isOpen: boolean;
@@ -29,15 +29,15 @@ const AddClientDialog: React.FC<AddClientDialogProps> = ({
 }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [client, setClient] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    address: "",
-    city: "",
-    state: "",
-    zipCode: "",
-    dateOfBirth: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    address: '',
+    city: '',
+    state: '',
+    zipCode: '',
+    dateOfBirth: '',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,22 +51,22 @@ const AddClientDialog: React.FC<AddClientDialogProps> = ({
       ...client,
       id: Math.random().toString(36).substr(2, 9),
       activePolicies: 0,
-      lastContactDate: new Date().toISOString().split("T")[0],
+      lastContactDate: new Date().toISOString().split('T')[0],
       totalPremium: 0,
-      status: "active",
+      status: 'active',
     });
     onClose();
     setCurrentStep(1);
     setClient({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      address: "",
-      city: "",
-      state: "",
-      zipCode: "",
-      dateOfBirth: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      address: '',
+      city: '',
+      state: '',
+      zipCode: '',
+      dateOfBirth: '',
     });
   };
 

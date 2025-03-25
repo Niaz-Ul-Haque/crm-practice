@@ -1,10 +1,10 @@
 // src/components/opportunities/OpportunitySummary.tsx
-"use client";
+'use client';
 
-import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Opportunity } from "@/data/opportunitiesData";
-import { formatCurrency } from "@/lib/formatters";
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Opportunity } from '@/data/opportunitiesData';
+import { formatCurrency } from '@/lib/formatters';
 import {
   ArrowDown,
   ArrowUp,
@@ -13,8 +13,8 @@ import {
   DollarSign,
   Star,
   Zap,
-} from "lucide-react";
-import { motion } from "framer-motion";
+} from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface OpportunitySummaryProps {
   opportunities: Opportunity[];
@@ -34,25 +34,25 @@ const OpportunitySummary: React.FC<OpportunitySummaryProps> = ({
   );
 
   const highPriority = opportunities.filter(
-    (opp) => opp.priority === "high"
+    (opp) => opp.priority === 'high'
   ).length;
   const mediumPriority = opportunities.filter(
-    (opp) => opp.priority === "medium"
+    (opp) => opp.priority === 'medium'
   ).length;
   const lowPriority = opportunities.filter(
-    (opp) => opp.priority === "low"
+    (opp) => opp.priority === 'low'
   ).length;
 
   const pendingReview = opportunities.filter(
-    (opp) => opp.status === "eligible" || opp.status === "pending_review"
+    (opp) => opp.status === 'eligible' || opp.status === 'pending_review'
   ).length;
 
   const inProgress = opportunities.filter(
-    (opp) => opp.status === "in_progress" || opp.status === "recommended"
+    (opp) => opp.status === 'in_progress' || opp.status === 'recommended'
   ).length;
 
   const completed = opportunities.filter(
-    (opp) => opp.status === "completed" || opp.status === "rejected"
+    (opp) => opp.status === 'completed' || opp.status === 'rejected'
   ).length;
 
   return (

@@ -1,8 +1,8 @@
 // src/components/reports/SummaryCards.tsx
-"use client";
+'use client';
 
-import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import React from 'react';
+import { Card, CardContent } from '@/components/ui/card';
 import {
   ArrowDown,
   ArrowUp,
@@ -10,15 +10,15 @@ import {
   FileText,
   Users,
   Percent,
-} from "lucide-react";
-import { motion } from "framer-motion";
-import { formatCurrency } from "@/lib/formatters";
+} from 'lucide-react';
+import { motion } from 'framer-motion';
+import { formatCurrency } from '@/lib/formatters';
 
 interface SummaryCardProps {
   title: string;
   value: string | number;
   change?: string;
-  changeDirection?: "up" | "down";
+  changeDirection?: 'up' | 'down';
   icon: React.ReactNode;
   delay?: number;
 }
@@ -45,16 +45,16 @@ const SummaryCard: React.FC<SummaryCardProps> = ({
               <p className="text-2xl font-bold mt-1">{value}</p>
               {change && (
                 <div className="flex items-center mt-1 text-xs">
-                  {changeDirection === "up" ? (
+                  {changeDirection === 'up' ? (
                     <ArrowUp className="text-green-600 w-3 h-3 mr-1" />
                   ) : (
                     <ArrowDown className="text-red-600 w-3 h-3 mr-1" />
                   )}
                   <span
                     className={
-                      changeDirection === "up"
-                        ? "text-green-600"
-                        : "text-red-600"
+                      changeDirection === 'up'
+                        ? 'text-green-600'
+                        : 'text-red-600'
                     }
                   >
                     {change}
@@ -75,16 +75,16 @@ const SummaryCard: React.FC<SummaryCardProps> = ({
 interface SummaryCardsProps {
   revenueTotal: number;
   revenueChange: string;
-  revenueDirection: "up" | "down";
+  revenueDirection: 'up' | 'down';
   policiesSold: number;
   policiesChange: string;
-  policiesDirection: "up" | "down";
+  policiesDirection: 'up' | 'down';
   newClients: number;
   clientsChange: string;
-  clientsDirection: "up" | "down";
+  clientsDirection: 'up' | 'down';
   renewalRate: number;
   renewalChange: string;
-  renewalDirection: "up" | "down";
+  renewalDirection: 'up' | 'down';
 }
 
 const SummaryCards: React.FC<SummaryCardsProps> = ({

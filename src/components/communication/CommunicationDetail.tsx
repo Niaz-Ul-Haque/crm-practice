@@ -1,17 +1,17 @@
 // src/components/communication/CommunicationDetail.tsx
-"use client";
+'use client';
 
-import React from "react";
-import { Communication } from "@/data/communicationData";
-import { formatDate } from "@/lib/utils";
+import React from 'react';
+import { Communication } from '@/data/communicationData';
+import { formatDate } from '@/lib/utils';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardFooter,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import {
   ArrowLeft,
   Calendar,
@@ -25,11 +25,11 @@ import {
   Trash,
   FileText,
   Forward,
-} from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Client } from "@/data/clientsData";
-import { motion } from "framer-motion";
-import Link from "next/link";
+} from 'lucide-react';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Client } from '@/data/clientsData';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 interface CommunicationDetailProps {
   communication: Communication;
@@ -44,32 +44,32 @@ const CommunicationDetail: React.FC<CommunicationDetailProps> = ({
 }) => {
   const getTypeLabel = (type: string) => {
     switch (type) {
-      case "email":
-        return "Email";
-      case "call":
-        return "Phone Call";
-      case "sms":
-        return "SMS";
-      case "meeting":
-        return "Meeting";
-      case "note":
-        return "Note";
+      case 'email':
+        return 'Email';
+      case 'call':
+        return 'Phone Call';
+      case 'sms':
+        return 'SMS';
+      case 'meeting':
+        return 'Meeting';
+      case 'note':
+        return 'Note';
       default:
-        return "Communication";
+        return 'Communication';
     }
   };
 
   const getTypeIcon = (type: string) => {
     switch (type) {
-      case "email":
+      case 'email':
         return <Mail size={20} className="text-purple-500" />;
-      case "call":
+      case 'call':
         return <Phone size={20} className="text-green-500" />;
-      case "sms":
+      case 'sms':
         return <MessageSquare size={20} className="text-purple-500" />;
-      case "meeting":
+      case 'meeting':
         return <Calendar size={20} className="text-amber-500" />;
-      case "note":
+      case 'note':
         return <FileText size={20} className="text-gray-500" />;
       default:
         return <Mail size={20} className="text-purple-500" />;
@@ -78,10 +78,10 @@ const CommunicationDetail: React.FC<CommunicationDetailProps> = ({
 
   const getRecipientDisplay = () => {
     if (
-      communication.type === "note" &&
-      communication.recipient === "internal"
+      communication.type === 'note' &&
+      communication.recipient === 'internal'
     ) {
-      return "Internal Note";
+      return 'Internal Note';
     }
 
     if (client) {
@@ -92,7 +92,7 @@ const CommunicationDetail: React.FC<CommunicationDetailProps> = ({
   };
 
   const formattedContent = communication.content
-    .split("\n")
+    .split('\n')
     .map((line: string, index: number) => (
       <React.Fragment key={index}>
         {line}
@@ -125,25 +125,25 @@ const CommunicationDetail: React.FC<CommunicationDetailProps> = ({
                 <CardTitle className="ml-2">{communication.subject}</CardTitle>
               </div>
               <p className="text-sm text-gray-500 mt-1">
-                {getTypeLabel(communication.type)} •{" "}
+                {getTypeLabel(communication.type)} •{' '}
                 {formatDate(new Date(communication.sentAt))}
               </p>
             </div>
           </div>
 
-          {(communication.status === "draft" ||
-            communication.status === "scheduled") && (
+          {(communication.status === 'draft' ||
+            communication.status === 'scheduled') && (
             <div>
-              {communication.status === "draft" && (
+              {communication.status === 'draft' && (
                 <span className="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded">
                   Draft
                 </span>
               )}
-              {communication.status === "scheduled" && (
+              {communication.status === 'scheduled' && (
                 <span className="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded flex items-center">
                   <Clock size={14} className="mr-1" />
-                  Scheduled for{" "}
-                  {formatDate(new Date(communication.scheduledFor || ""))}
+                  Scheduled for{' '}
+                  {formatDate(new Date(communication.scheduledFor || ''))}
                 </span>
               )}
             </div>
@@ -256,7 +256,7 @@ const CommunicationDetail: React.FC<CommunicationDetailProps> = ({
           </Button>
 
           <div className="flex space-x-2">
-            {communication.type === "email" && (
+            {communication.type === 'email' && (
               <>
                 <Button variant="outline" size="sm">
                   <Reply size={16} className="mr-2" />
@@ -269,7 +269,7 @@ const CommunicationDetail: React.FC<CommunicationDetailProps> = ({
               </>
             )}
             <Button size="sm">
-              {communication.status === "draft" ? "Send" : "New Message"}
+              {communication.status === 'draft' ? 'Send' : 'New Message'}
             </Button>
           </div>
         </CardFooter>

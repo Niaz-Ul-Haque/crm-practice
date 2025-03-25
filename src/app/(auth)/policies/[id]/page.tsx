@@ -1,11 +1,11 @@
 // src/app/(auth)/policies/[id]/page.tsx
-"use client";
+'use client';
 
-import React from "react";
-import { useParams, useRouter } from "next/navigation";
-import PageTitle from "@/components/shared/PageTitle";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import React from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import PageTitle from '@/components/shared/PageTitle';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   ArrowLeft,
   User,
@@ -15,14 +15,14 @@ import {
   Mail,
   FileText,
   Edit,
-} from "lucide-react";
-import { getPolicyById, getClientByPolicyId } from "@/data/policiesData";
-import { formatDate } from "@/lib/utils";
-import PolicyDetails from "@/components/policies/PolicyDetails";
-import ClientAvatar from "@/components/clients/ClientAvatar";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import BestOpportunityAlert from "@/components/policies/BestOpportunityAlert";
+} from 'lucide-react';
+import { getPolicyById, getClientByPolicyId } from '@/data/policiesData';
+import { formatDate } from '@/lib/utils';
+import PolicyDetails from '@/components/policies/PolicyDetails';
+import ClientAvatar from '@/components/clients/ClientAvatar';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import BestOpportunityAlert from '@/components/policies/BestOpportunityAlert';
 
 export default function PolicyDetailPage() {
   const params = useParams();
@@ -37,7 +37,7 @@ export default function PolicyDetailPage() {
       <div className="p-8 text-center">
         <h1 className="text-2xl font-bold mb-4">Policy Not Found</h1>
         <p className="mb-6">The policy you are looking for does not exist.</p>
-        <Button onClick={() => router.push("/policies")}>
+        <Button onClick={() => router.push('/policies')}>
           <ArrowLeft className="mr-2 h-4 w-4" /> Back to Policies
         </Button>
       </div>
@@ -173,7 +173,7 @@ export default function PolicyDetailPage() {
           >
             <Card
               className={
-                daysUntilExpiration <= 30 ? "bg-amber-50 border-amber-100" : ""
+                daysUntilExpiration <= 30 ? 'bg-amber-50 border-amber-100' : ''
               }
             >
               <CardHeader>
@@ -247,7 +247,7 @@ export default function PolicyDetailPage() {
             </Card>
           </motion.div>
 
-          {policy.type === "home" && (
+          {policy.type === 'home' && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -257,9 +257,9 @@ export default function PolicyDetailPage() {
               <BestOpportunityAlert
                 policy={policy}
                 opportunity={{
-                  type: "bundle discount",
+                  type: 'bundle discount',
                   description:
-                    "This client has a home policy but no auto policy. Recommending a bundle could save them up to 15% on their premiums and increase retention.",
+                    'This client has a home policy but no auto policy. Recommending a bundle could save them up to 15% on their premiums and increase retention.',
                   potentialSavings: Math.round(policy.premium * 0.15),
                 }}
               />

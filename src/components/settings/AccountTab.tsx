@@ -1,36 +1,36 @@
 // src/components/settings/AccountTab.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Eye, EyeOff, Check } from "lucide-react";
-import { motion } from "framer-motion";
-import { useToast } from "@/components/ui/use-toast";
+import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Eye, EyeOff, Check } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { useToast } from '@/components/ui/use-toast';
 
 const AccountTab: React.FC = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    currentPassword: "",
-    newPassword: "",
-    confirmPassword: "",
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: '',
   });
   const [showPasswords, setShowPasswords] = useState({
     current: false,
     new: false,
     confirm: false,
   });
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState('light');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const togglePasswordVisibility = (field: "current" | "new" | "confirm") => {
+  const togglePasswordVisibility = (field: 'current' | 'new' | 'confirm') => {
     setShowPasswords((prev) => ({
       ...prev,
       [field]: !prev[field],
@@ -46,8 +46,8 @@ const AccountTab: React.FC = () => {
       !formData.confirmPassword
     ) {
       toast({
-        title: "Incomplete Form",
-        description: "Please fill in all password fields.",
+        title: 'Incomplete Form',
+        description: 'Please fill in all password fields.',
       });
       return;
     }
@@ -55,7 +55,7 @@ const AccountTab: React.FC = () => {
     if (formData.newPassword !== formData.confirmPassword) {
       toast({
         title: "Passwords Don't Match",
-        description: "Your new password and confirmation do not match.",
+        description: 'Your new password and confirmation do not match.',
       });
       return;
     }
@@ -65,13 +65,13 @@ const AccountTab: React.FC = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       setFormData({
-        currentPassword: "",
-        newPassword: "",
-        confirmPassword: "",
+        currentPassword: '',
+        newPassword: '',
+        confirmPassword: '',
       });
       toast({
-        title: "Password Updated",
-        description: "Your password has been updated successfully.",
+        title: 'Password Updated',
+        description: 'Your password has been updated successfully.',
       });
     }, 1000);
   };
@@ -101,7 +101,7 @@ const AccountTab: React.FC = () => {
                 <Input
                   id="currentPassword"
                   name="currentPassword"
-                  type={showPasswords.current ? "text" : "password"}
+                  type={showPasswords.current ? 'text' : 'password'}
                   value={formData.currentPassword}
                   onChange={handleChange}
                   placeholder="Enter your current password"
@@ -109,7 +109,7 @@ const AccountTab: React.FC = () => {
                 <button
                   type="button"
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                  onClick={() => togglePasswordVisibility("current")}
+                  onClick={() => togglePasswordVisibility('current')}
                 >
                   {showPasswords.current ? (
                     <EyeOff size={16} />
@@ -126,7 +126,7 @@ const AccountTab: React.FC = () => {
                 <Input
                   id="newPassword"
                   name="newPassword"
-                  type={showPasswords.new ? "text" : "password"}
+                  type={showPasswords.new ? 'text' : 'password'}
                   value={formData.newPassword}
                   onChange={handleChange}
                   placeholder="Enter new password"
@@ -134,7 +134,7 @@ const AccountTab: React.FC = () => {
                 <button
                   type="button"
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                  onClick={() => togglePasswordVisibility("new")}
+                  onClick={() => togglePasswordVisibility('new')}
                 >
                   {showPasswords.new ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
@@ -148,14 +148,14 @@ const AccountTab: React.FC = () => {
                   <li className="flex items-center">
                     <span
                       className={`w-4 h-4 rounded-full mr-2 flex items-center justify-center ${
-                        hasMinLength ? "bg-green-500 text-white" : "bg-gray-300"
+                        hasMinLength ? 'bg-green-500 text-white' : 'bg-gray-300'
                       }`}
                     >
                       {hasMinLength && <Check size={12} />}
                     </span>
                     <span
                       className={
-                        hasMinLength ? "text-green-700" : "text-gray-500"
+                        hasMinLength ? 'text-green-700' : 'text-gray-500'
                       }
                     >
                       At least 8 characters
@@ -164,14 +164,14 @@ const AccountTab: React.FC = () => {
                   <li className="flex items-center">
                     <span
                       className={`w-4 h-4 rounded-full mr-2 flex items-center justify-center ${
-                        hasUppercase ? "bg-green-500 text-white" : "bg-gray-300"
+                        hasUppercase ? 'bg-green-500 text-white' : 'bg-gray-300'
                       }`}
                     >
                       {hasUppercase && <Check size={12} />}
                     </span>
                     <span
                       className={
-                        hasUppercase ? "text-green-700" : "text-gray-500"
+                        hasUppercase ? 'text-green-700' : 'text-gray-500'
                       }
                     >
                       Uppercase letter
@@ -180,14 +180,14 @@ const AccountTab: React.FC = () => {
                   <li className="flex items-center">
                     <span
                       className={`w-4 h-4 rounded-full mr-2 flex items-center justify-center ${
-                        hasLowercase ? "bg-green-500 text-white" : "bg-gray-300"
+                        hasLowercase ? 'bg-green-500 text-white' : 'bg-gray-300'
                       }`}
                     >
                       {hasLowercase && <Check size={12} />}
                     </span>
                     <span
                       className={
-                        hasLowercase ? "text-green-700" : "text-gray-500"
+                        hasLowercase ? 'text-green-700' : 'text-gray-500'
                       }
                     >
                       Lowercase letter
@@ -196,13 +196,13 @@ const AccountTab: React.FC = () => {
                   <li className="flex items-center">
                     <span
                       className={`w-4 h-4 rounded-full mr-2 flex items-center justify-center ${
-                        hasNumber ? "bg-green-500 text-white" : "bg-gray-300"
+                        hasNumber ? 'bg-green-500 text-white' : 'bg-gray-300'
                       }`}
                     >
                       {hasNumber && <Check size={12} />}
                     </span>
                     <span
-                      className={hasNumber ? "text-green-700" : "text-gray-500"}
+                      className={hasNumber ? 'text-green-700' : 'text-gray-500'}
                     >
                       Number
                     </span>
@@ -211,15 +211,15 @@ const AccountTab: React.FC = () => {
                     <span
                       className={`w-4 h-4 rounded-full mr-2 flex items-center justify-center ${
                         hasSpecialChar
-                          ? "bg-green-500 text-white"
-                          : "bg-gray-300"
+                          ? 'bg-green-500 text-white'
+                          : 'bg-gray-300'
                       }`}
                     >
                       {hasSpecialChar && <Check size={12} />}
                     </span>
                     <span
                       className={
-                        hasSpecialChar ? "text-green-700" : "text-gray-500"
+                        hasSpecialChar ? 'text-green-700' : 'text-gray-500'
                       }
                     >
                       Special character
@@ -235,7 +235,7 @@ const AccountTab: React.FC = () => {
                 <Input
                   id="confirmPassword"
                   name="confirmPassword"
-                  type={showPasswords.confirm ? "text" : "password"}
+                  type={showPasswords.confirm ? 'text' : 'password'}
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   placeholder="Confirm new password"
@@ -243,7 +243,7 @@ const AccountTab: React.FC = () => {
                 <button
                   type="button"
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                  onClick={() => togglePasswordVisibility("confirm")}
+                  onClick={() => togglePasswordVisibility('confirm')}
                 >
                   {showPasswords.confirm ? (
                     <EyeOff size={16} />
@@ -268,7 +268,7 @@ const AccountTab: React.FC = () => {
                 disabled={isSubmitting}
                 className="relative overflow-hidden"
               >
-                <span className={isSubmitting ? "invisible" : "visible"}>
+                <span className={isSubmitting ? 'invisible' : 'visible'}>
                   Update Password
                 </span>
                 {isSubmitting && (
@@ -279,7 +279,7 @@ const AccountTab: React.FC = () => {
                       transition={{
                         duration: 1,
                         repeat: Infinity,
-                        ease: "linear",
+                        ease: 'linear',
                       }}
                     />
                   </span>
@@ -298,25 +298,25 @@ const AccountTab: React.FC = () => {
           <div className="flex space-x-4">
             <div
               className={`border p-4 rounded-md cursor-pointer ${
-                theme === "light" ? "bg-blue-50 border-blue-200" : "bg-white"
+                theme === 'light' ? 'bg-blue-50 border-blue-200' : 'bg-white'
               }`}
-              onClick={() => setTheme("light")}
+              onClick={() => setTheme('light')}
             >
               <p className="font-medium">Light Mode</p>
             </div>
             <div
               className={`border p-4 rounded-md cursor-pointer ${
-                theme === "dark" ? "bg-blue-50 border-blue-200" : "bg-white"
+                theme === 'dark' ? 'bg-blue-50 border-blue-200' : 'bg-white'
               }`}
-              onClick={() => setTheme("dark")}
+              onClick={() => setTheme('dark')}
             >
               <p className="font-medium">Dark Mode</p>
             </div>
             <div
               className={`border p-4 rounded-md cursor-pointer ${
-                theme === "system" ? "bg-blue-50 border-blue-200" : "bg-white"
+                theme === 'system' ? 'bg-blue-50 border-blue-200' : 'bg-white'
               }`}
-              onClick={() => setTheme("system")}
+              onClick={() => setTheme('system')}
             >
               <p className="font-medium">System Default</p>
             </div>

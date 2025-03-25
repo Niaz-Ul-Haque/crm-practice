@@ -1,25 +1,24 @@
 // src/app/(auth)/clients/[id]/page.tsx (updated)
-"use client";
+'use client';
 
-import React from "react";
-import { useParams, useRouter } from "next/navigation";
-import PageTitle from "@/components/shared/PageTitle";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { clientsData } from "@/data/clientsData";
-import { formatDate } from "@/lib/utils";
-import { formatCurrency } from "@/lib/formatters";
-import ClientAvatar from "@/components/clients/ClientAvatar";
-import ClientNotes from "@/components/clients/ClientNotes";
-import ClientTimeline from "@/components/clients/ClientTimeline";
-import ClientQuickActions from "@/components/clients/ClientQuickActions";
-import NextPolicyRenewal from "@/components/clients/NextPolicyRenewal";
-import { ArrowLeft, Mail, Phone, Edit, MessageSquare } from "lucide-react";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { generateTimelineData, generateClientNotes } from "@/data/timelineData";
-import ContactForm from "@/components/clients/ContactForm";
+import React from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import PageTitle from '@/components/shared/PageTitle';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { clientsData } from '@/data/clientsData';
+import { formatDate } from '@/lib/utils';
+import { formatCurrency } from '@/lib/formatters';
+import ClientAvatar from '@/components/clients/ClientAvatar';
+import ClientNotes from '@/components/clients/ClientNotes';
+import ClientTimeline from '@/components/clients/ClientTimeline';
+import ClientQuickActions from '@/components/clients/ClientQuickActions';
+import NextPolicyRenewal from '@/components/clients/NextPolicyRenewal';
+import { ArrowLeft, Mail, Phone, Edit, MessageSquare } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { generateTimelineData, generateClientNotes } from '@/data/timelineData';
+import ContactForm from '@/components/clients/ContactForm';
 
 export default function ClientDetailPage() {
   const params = useParams();
@@ -33,9 +32,9 @@ export default function ClientDetailPage() {
   const clientNotes = generateClientNotes(clientId);
 
   const nextPolicyRenewal = {
-    id: "policy-1",
-    type: "Home Insurance",
-    expirationDate: "2025-04-15",
+    id: 'policy-1',
+    type: 'Home Insurance',
+    expirationDate: '2025-04-15',
     premium: 1200,
   };
 
@@ -44,7 +43,7 @@ export default function ClientDetailPage() {
       <div className="p-8 text-center">
         <h1 className="text-2xl font-bold mb-4">Client Not Found</h1>
         <p className="mb-6">The client you are looking for does not exist.</p>
-        <Button onClick={() => router.push("/clients")}>
+        <Button onClick={() => router.push('/clients')}>
           <ArrowLeft className="mr-2 h-4 w-4" /> Back to Clients
         </Button>
       </div>
@@ -156,7 +155,7 @@ export default function ClientDetailPage() {
                         <p>
                           {client.dateOfBirth
                             ? formatDate(new Date(client.dateOfBirth))
-                            : "Not provided"}
+                            : 'Not provided'}
                         </p>
                       </div>
                       <div className="col-span-2">
@@ -164,7 +163,7 @@ export default function ClientDetailPage() {
                           Address
                         </p>
                         <p>
-                          {client.address}, {client.city}, {client.state}{" "}
+                          {client.address}, {client.city}, {client.state}{' '}
                           {client.zipCode}
                         </p>
                       </div>
@@ -204,11 +203,11 @@ export default function ClientDetailPage() {
                         </p>
                         <span
                           className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                            client.status === "active"
-                              ? "bg-green-100 text-green-800"
-                              : client.status === "inactive"
-                              ? "bg-gray-100 text-gray-800"
-                              : "bg-yellow-100 text-yellow-800"
+                            client.status === 'active'
+                              ? 'bg-green-100 text-green-800'
+                              : client.status === 'inactive'
+                                ? 'bg-gray-100 text-gray-800'
+                                : 'bg-yellow-100 text-yellow-800'
                           }`}
                         >
                           {client.status.charAt(0).toUpperCase() +
@@ -275,10 +274,10 @@ export default function ClientDetailPage() {
                             <div>
                               <h3 className="font-medium">
                                 {index === 0
-                                  ? "Home Insurance"
+                                  ? 'Home Insurance'
                                   : index === 1
-                                  ? "Auto Insurance"
-                                  : "Life Insurance"}
+                                    ? 'Auto Insurance'
+                                    : 'Life Insurance'}
                               </h3>
                               <p className="text-sm text-gray-500">
                                 Policy #{(10000 + index).toString()}
@@ -344,27 +343,27 @@ export default function ClientDetailPage() {
                             <div>
                               <h3 className="font-medium">
                                 {index === 0
-                                  ? "Policy Renewal Discussion"
+                                  ? 'Policy Renewal Discussion'
                                   : index === 1
-                                  ? "Follow-up Call"
-                                  : "Welcome Email"}
+                                    ? 'Follow-up Call'
+                                    : 'Welcome Email'}
                               </h3>
                               <p className="text-sm text-gray-500">
                                 {index === 0
-                                  ? "Email"
+                                  ? 'Email'
                                   : index === 1
-                                  ? "Phone Call"
-                                  : "Email"}{" "}
+                                    ? 'Phone Call'
+                                    : 'Email'}{' '}
                                 • March {5 - index}, 2025
                               </p>
                             </div>
                           </div>
                           <p className="text-sm mt-2">
                             {index === 0
-                              ? "Discussed options for home insurance renewal. Client interested in increasing coverage."
+                              ? 'Discussed options for home insurance renewal. Client interested in increasing coverage.'
                               : index === 1
-                              ? "Called to follow up on recent policy changes. Client confirmed satisfaction with new terms."
-                              : "Sent welcome email with policy documentation and next steps."}
+                                ? 'Called to follow up on recent policy changes. Client confirmed satisfaction with new terms.'
+                                : 'Sent welcome email with policy documentation and next steps.'}
                           </p>
                         </div>
                       ))}

@@ -1,22 +1,22 @@
 // src/components/clients/ClientsGrid.tsx
-"use client";
+'use client';
 
-import React from "react";
-import { Client } from "@/data/clientsData";
-import { formatDate } from "@/lib/utils";
-import { formatCurrency } from "@/lib/formatters";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
-import ClientAvatar from "@/components/clients/ClientAvatar";
-import { Mail, Phone, ExternalLink, MoreHorizontal } from "lucide-react";
+import React from 'react';
+import { Client } from '@/data/clientsData';
+import { formatDate } from '@/lib/utils';
+import { formatCurrency } from '@/lib/formatters';
+import Link from 'next/link';
+import { Card, CardContent } from '@/components/ui/card';
+import ClientAvatar from '@/components/clients/ClientAvatar';
+import { Mail, Phone, ExternalLink, MoreHorizontal } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 
 interface ClientsGridProps {
   clients: Client[];
@@ -50,11 +50,11 @@ const ClientsGrid: React.FC<ClientsGridProps> = ({ clients }) => {
                     </h3>
                     <span
                       className={`inline-flex items-center px-2 py-0.5 mt-1 rounded text-xs font-medium ${
-                        client.status === "active"
-                          ? "bg-green-100 text-green-800"
-                          : client.status === "inactive"
-                          ? "bg-gray-100 text-gray-800"
-                          : "bg-yellow-100 text-yellow-800"
+                        client.status === 'active'
+                          ? 'bg-green-100 text-green-800'
+                          : client.status === 'inactive'
+                            ? 'bg-gray-100 text-gray-800'
+                            : 'bg-yellow-100 text-yellow-800'
                       }`}
                     >
                       {client.status.charAt(0).toUpperCase() +

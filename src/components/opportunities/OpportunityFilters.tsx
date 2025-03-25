@@ -1,17 +1,17 @@
 // src/components/opportunities/OpportunityFilters.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Search, X, Filter, ChevronDown } from "lucide-react";
+import React, { useState } from 'react';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Search, X, Filter, ChevronDown } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuCheckboxItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu';
 
 interface OpportunityFiltersProps {
   onFilterChange: (filters: any) => void;
@@ -20,7 +20,7 @@ interface OpportunityFiltersProps {
 const OpportunityFilters: React.FC<OpportunityFiltersProps> = ({
   onFilterChange,
 }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState({
     types: [] as string[],
     statuses: [] as string[],
@@ -28,24 +28,24 @@ const OpportunityFilters: React.FC<OpportunityFiltersProps> = ({
   });
 
   const opportunityTypes = [
-    "policy_renewal",
-    "coverage_increase",
-    "bundle_discount",
-    "premium_adjustment",
-    "new_policy",
-    "policy_review",
+    'policy_renewal',
+    'coverage_increase',
+    'bundle_discount',
+    'premium_adjustment',
+    'new_policy',
+    'policy_review',
   ];
 
   const opportunityStatuses = [
-    "eligible",
-    "pending_review",
-    "in_progress",
-    "recommended",
-    "rejected",
-    "completed",
+    'eligible',
+    'pending_review',
+    'in_progress',
+    'recommended',
+    'rejected',
+    'completed',
   ];
 
-  const opportunityPriorities = ["high", "medium", "low"];
+  const opportunityPriorities = ['high', 'medium', 'low'];
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -95,14 +95,14 @@ const OpportunityFilters: React.FC<OpportunityFiltersProps> = ({
   };
 
   const clearFilters = () => {
-    setSearchTerm("");
+    setSearchTerm('');
     setFilters({
       types: [],
       statuses: [],
       priorities: [],
     });
     onFilterChange({
-      searchTerm: "",
+      searchTerm: '',
       types: [],
       statuses: [],
       priorities: [],
@@ -116,9 +116,9 @@ const OpportunityFilters: React.FC<OpportunityFiltersProps> = ({
     filters.priorities.length > 0;
   const formatLabel = (text: string) => {
     return text
-      .split("_")
+      .split('_')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
+      .join(' ');
   };
 
   return (
@@ -137,8 +137,8 @@ const OpportunityFilters: React.FC<OpportunityFiltersProps> = ({
               <button
                 type="button"
                 onClick={() => {
-                  setSearchTerm("");
-                  onFilterChange({ ...filters, searchTerm: "" });
+                  setSearchTerm('');
+                  onFilterChange({ ...filters, searchTerm: '' });
                 }}
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
               >

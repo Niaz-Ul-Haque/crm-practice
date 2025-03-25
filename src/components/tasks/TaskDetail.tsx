@@ -1,18 +1,18 @@
 // src/components/tasks/TaskDetail.tsx
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardFooter,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Task } from "@/data/tasksData";
-import { Client } from "@/data/clientsData";
-import { formatDate } from "@/lib/utils";
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Task } from '@/data/tasksData';
+import { Client } from '@/data/clientsData';
+import { formatDate } from '@/lib/utils';
 import {
   Bell,
   Calendar,
@@ -27,10 +27,10 @@ import {
   User,
   FileEdit,
   AlertCircle,
-} from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { motion } from "framer-motion";
-import Link from "next/link";
+} from 'lucide-react';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 interface TaskDetailProps {
   task: Task;
@@ -51,17 +51,17 @@ const TaskDetail: React.FC<TaskDetailProps> = ({
 }) => {
   const getTaskTypeIcon = (type: string) => {
     switch (type) {
-      case "call":
+      case 'call':
         return <Phone size={20} className="text-purple-500" />;
-      case "meeting":
+      case 'meeting':
         return <Calendar size={20} className="text-green-500" />;
-      case "email":
+      case 'email':
         return <Mail size={20} className="text-purple-500" />;
-      case "follow_up":
+      case 'follow_up':
         return <Clock size={20} className="text-amber-500" />;
-      case "review":
+      case 'review':
         return <FileEdit size={20} className="text-indigo-500" />;
-      case "other":
+      case 'other':
       default:
         return <AlertCircle size={20} className="text-gray-500" />;
     }
@@ -69,51 +69,51 @@ const TaskDetail: React.FC<TaskDetailProps> = ({
 
   const getPriorityStyles = (priority: string) => {
     switch (priority) {
-      case "high":
-        return "text-red-600";
-      case "medium":
-        return "text-amber-600";
-      case "low":
-        return "text-purple-600";
+      case 'high':
+        return 'text-red-600';
+      case 'medium':
+        return 'text-amber-600';
+      case 'low':
+        return 'text-purple-600';
       default:
-        return "text-gray-600";
+        return 'text-gray-600';
     }
   };
 
   const getStatusStyles = (status: string) => {
     switch (status) {
-      case "pending":
-        return "bg-blue-100 text-purple-800";
-      case "in_progress":
-        return "bg-amber-100 text-amber-800";
-      case "completed":
-        return "bg-green-100 text-green-800";
-      case "cancelled":
-        return "bg-gray-100 text-gray-800";
+      case 'pending':
+        return 'bg-blue-100 text-purple-800';
+      case 'in_progress':
+        return 'bg-amber-100 text-amber-800';
+      case 'completed':
+        return 'bg-green-100 text-green-800';
+      case 'cancelled':
+        return 'bg-gray-100 text-gray-800';
       default:
-        return "bg-gray-100 text-gray-800";
+        return 'bg-gray-100 text-gray-800';
     }
   };
 
   const formatStatus = (status: string) => {
     return status
-      .split("_")
+      .split('_')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
+      .join(' ');
   };
 
   const formatTaskType = (type: string) => {
     return type
-      .split("_")
+      .split('_')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
+      .join(' ');
   };
 
   const isOverdue = () => {
     const today = new Date();
     const dueDate = new Date(task.dueDate);
     return (
-      (task.status === "pending" || task.status === "in_progress") &&
+      (task.status === 'pending' || task.status === 'in_progress') &&
       dueDate < today
     );
   };
@@ -145,7 +145,7 @@ const TaskDetail: React.FC<TaskDetailProps> = ({
                 >
                   <Flag size={16} className="mr-1" />
                   {task.priority.charAt(0).toUpperCase() +
-                    task.priority.slice(1)}{" "}
+                    task.priority.slice(1)}{' '}
                   Priority
                 </span>
                 <span className="text-sm text-gray-500">
@@ -171,7 +171,7 @@ const TaskDetail: React.FC<TaskDetailProps> = ({
               <div>
                 <p className="text-sm text-gray-500">Due Date</p>
                 <p
-                  className={`font-medium ${isOverdue() ? "text-red-600" : ""}`}
+                  className={`font-medium ${isOverdue() ? 'text-red-600' : ''}`}
                 >
                   {formatDate(new Date(task.dueDate))}
                 </p>
@@ -306,11 +306,11 @@ const TaskDetail: React.FC<TaskDetailProps> = ({
               Edit
             </Button>
 
-            {task.status !== "completed" && (
+            {task.status !== 'completed' && (
               <Button
                 size="sm"
                 onClick={() =>
-                  onStatusChange && onStatusChange(task.id, "completed")
+                  onStatusChange && onStatusChange(task.id, 'completed')
                 }
               >
                 <CheckSquare size={16} className="mr-2" />

@@ -1,15 +1,15 @@
 // src/app/(auth)/settings/page.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import PageTitle from "@/components/shared/PageTitle";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import ProfileTab from "@/components/settings/ProfileTab";
-import AccountTab from "@/components/settings/AccountTab";
-import NotificationsTab from "@/components/settings/NotificationsTab";
-import UserFeedbackWidget from "@/components/shared/UserFeedbackWidget";
-import { useAppSelector } from "@/app/redux/hooks";
-import { motion } from "framer-motion";
+import React, { useState } from 'react';
+import PageTitle from '@/components/shared/PageTitle';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import ProfileTab from '@/components/settings/ProfileTab';
+import AccountTab from '@/components/settings/AccountTab';
+import NotificationsTab from '@/components/settings/NotificationsTab';
+import UserFeedbackWidget from '@/components/shared/UserFeedbackWidget';
+import { useAppSelector } from '@/app/redux/hooks';
+import { motion } from 'framer-motion';
 
 export default function SettingsPage() {
   const [showFeedback, setShowFeedback] = useState(false);

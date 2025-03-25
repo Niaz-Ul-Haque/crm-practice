@@ -1,36 +1,36 @@
 // src/app/(auth)/policies/page.tsx
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
-import PageTitle from "@/components/shared/PageTitle";
-import { Button } from "@/components/ui/button";
-import PoliciesTable from "@/components/policies/PoliciesTable";
-import PolicyFilters from "@/components/policies/PolicyFilters";
+import React, { useState, useEffect } from 'react';
+import PageTitle from '@/components/shared/PageTitle';
+import { Button } from '@/components/ui/button';
+import PoliciesTable from '@/components/policies/PoliciesTable';
+import PolicyFilters from '@/components/policies/PolicyFilters';
 import {
   policiesData,
   Policy,
   PolicyType,
   PolicyStatus,
-} from "@/data/policiesData";
-import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+} from '@/data/policiesData';
+import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 export default function PoliciesPage() {
   const router = useRouter();
   const [policies] = useState<Policy[]>(policiesData);
   const [filteredPolicies, setFilteredPolicies] =
     useState<Policy[]>(policiesData);
-  const [sortField, setSortField] = useState<string>("endDate");
-  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
+  const [sortField, setSortField] = useState<string>('endDate');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
   const [filters, setFilters] = useState({
-    searchTerm: "",
+    searchTerm: '',
     types: [] as PolicyType[],
     statuses: [] as PolicyStatus[],
   });
 
   const handleSort = (field: string) => {
     setSortField(field);
-    setSortDirection((current) => (current === "asc" ? "desc" : "asc"));
+    setSortDirection((current) => (current === 'asc' ? 'desc' : 'asc'));
   };
 
   useEffect(() => {
@@ -57,30 +57,30 @@ export default function PoliciesPage() {
       let comparison = 0;
 
       switch (sortField) {
-        case "policyNumber":
+        case 'policyNumber':
           comparison = a.policyNumber.localeCompare(b.policyNumber);
           break;
-        case "client":
+        case 'client':
           comparison = a.clientId.localeCompare(b.clientId);
           break;
-        case "type":
+        case 'type':
           comparison = a.type.localeCompare(b.type);
           break;
-        case "endDate":
+        case 'endDate':
           comparison =
             new Date(a.endDate).getTime() - new Date(b.endDate).getTime();
           break;
-        case "premium":
+        case 'premium':
           comparison = a.premium - b.premium;
           break;
-        case "status":
+        case 'status':
           comparison = a.status.localeCompare(b.status);
           break;
         default:
           comparison = 0;
       }
 
-      return sortDirection === "asc" ? comparison : -comparison;
+      return sortDirection === 'asc' ? comparison : -comparison;
     });
 
     setFilteredPolicies(result);
@@ -97,7 +97,7 @@ export default function PoliciesPage() {
           title="Policies"
           subtitle={`${filteredPolicies.length} policies`}
         />
-        <Button onClick={() => router.push("/policies/new")}>
+        <Button onClick={() => router.push('/policies/new')}>
           Add New Policy
         </Button>
       </div>
@@ -126,7 +126,7 @@ export default function PoliciesPage() {
               variant="outline"
               onClick={() => {
                 setFilters({
-                  searchTerm: "",
+                  searchTerm: '',
                   types: [],
                   statuses: [],
                 });

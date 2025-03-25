@@ -1,17 +1,17 @@
 // src/app/(auth)/dashboard/page.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import PageTitle from "@/components/shared/PageTitle";
-import SummaryCard from "@/components/dashboard/SummaryCard";
-import ChartCard from "@/components/dashboard/ChartCard";
-import MonthlyRenewalsChart from "@/components/dashboard/MonthlyRenewalsChart";
-import PerformanceTrendsChart from "@/components/dashboard/PerformanceTrendsChart";
-import BestOpportunityAlert from "@/components/dashboard/BestOpportunityAlert";
-import RecentActivity from "@/components/dashboard/RecentActivity";
-import UserFeedbackWidget from "@/components/shared/UserFeedbackWidget";
-import { dashboardData } from "@/data/dashboardData";
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import PageTitle from '@/components/shared/PageTitle';
+import SummaryCard from '@/components/dashboard/SummaryCard';
+import ChartCard from '@/components/dashboard/ChartCard';
+import MonthlyRenewalsChart from '@/components/dashboard/MonthlyRenewalsChart';
+import PerformanceTrendsChart from '@/components/dashboard/PerformanceTrendsChart';
+import BestOpportunityAlert from '@/components/dashboard/BestOpportunityAlert';
+import RecentActivity from '@/components/dashboard/RecentActivity';
+import UserFeedbackWidget from '@/components/shared/UserFeedbackWidget';
+import { dashboardData } from '@/data/dashboardData';
 
 export default function DashboardPage() {
   const [showFeedback, setShowFeedback] = useState(false);
@@ -32,7 +32,6 @@ export default function DashboardPage() {
         </Button>
       </div>
 
-      {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         {dashboardData.summaryCards.map((card, index) => (
           <SummaryCard
@@ -46,7 +45,6 @@ export default function DashboardPage() {
         ))}
       </div>
 
-      {/* Charts Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <ChartCard title="Monthly Renewals" delay={3}>
           <MonthlyRenewalsChart data={dashboardData.monthlyRenewals} />
@@ -56,7 +54,6 @@ export default function DashboardPage() {
         </ChartCard>
       </div>
 
-      {/* Bottom Section: Best Opportunity and Recent Activity */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="md:col-span-2">
           <BestOpportunityAlert
@@ -69,7 +66,6 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Feedback Widget Modal */}
       {showFeedback && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="max-w-md w-full">

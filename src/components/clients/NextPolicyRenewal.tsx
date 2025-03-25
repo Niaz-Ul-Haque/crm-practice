@@ -1,13 +1,13 @@
 // src/components/clients/NextPolicyRenewal.tsx
-"use client";
+'use client';
 
-import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { CalendarClock, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
-import { formatDate } from "@/lib/utils";
-import { formatCurrency } from "@/lib/formatters";
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { CalendarClock, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { formatDate } from '@/lib/utils';
+import { formatCurrency } from '@/lib/formatters';
 
 interface NextPolicyRenewalProps {
   client: {
@@ -33,9 +33,9 @@ const NextPolicyRenewal: React.FC<NextPolicyRenewalProps> = ({
   );
 
   const getUrgencyColor = () => {
-    if (daysUntilExpiration <= 7) return "bg-red-50 border-red-100";
-    if (daysUntilExpiration <= 30) return "bg-amber-50 border-amber-100";
-    return "bg-blue-50 border-blue-100";
+    if (daysUntilExpiration <= 7) return 'bg-red-50 border-red-100';
+    if (daysUntilExpiration <= 30) return 'bg-amber-50 border-amber-100';
+    return 'bg-blue-50 border-blue-100';
   };
 
   return (
@@ -53,8 +53,8 @@ const NextPolicyRenewal: React.FC<NextPolicyRenewalProps> = ({
         </CardHeader>
         <CardContent>
           <p className="mb-4">
-            <span className="font-medium">{policy.type}</span> policy for{" "}
-            {client.firstName} {client.lastName} is set to expire in{" "}
+            <span className="font-medium">{policy.type}</span> policy for{' '}
+            {client.firstName} {client.lastName} is set to expire in{' '}
             <span className="font-medium">{daysUntilExpiration} days</span>.
           </p>
 

@@ -1,5 +1,5 @@
 // src/app/(guest)/layout.tsx
-import Logo from "@/components/shared/Logo";
+import Logo from '@/components/shared/Logo';
 
 export default function GuestLayout({
   children,

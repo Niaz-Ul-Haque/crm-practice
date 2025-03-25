@@ -1,30 +1,29 @@
 // src/components/clients/ClientFilters.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
   DropdownMenuCheckboxItem,
   DropdownMenuSeparator,
-} from "@/components/ui/dropdown-menu";
-import { Filter, X, Search, ChevronDown } from "lucide-react";
-import { Filters } from "@/data/clientsData";
+} from '@/components/ui/dropdown-menu';
+import { Filter, X, Search, ChevronDown } from 'lucide-react';
+import { Filters } from '@/data/clientsData';
 
 interface ClientFilterProps {
   onFilterChange: (filters: Filters) => void;
 }
 
 const ClientFilters: React.FC<ClientFilterProps> = ({ onFilterChange }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState({
     status: [] as string[],
     policies: [] as string[],
   });
-  // const [showFilters, setShowFilters] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,13 +59,13 @@ const ClientFilters: React.FC<ClientFilterProps> = ({ onFilterChange }) => {
   };
 
   const clearFilters = () => {
-    setSearchTerm("");
+    setSearchTerm('');
     setFilters({
       status: [],
       policies: [],
     });
     onFilterChange({
-      searchTerm: "",
+      searchTerm: '',
       status: [],
       policies: [],
     });
@@ -91,8 +90,8 @@ const ClientFilters: React.FC<ClientFilterProps> = ({ onFilterChange }) => {
               <button
                 type="button"
                 onClick={() => {
-                  setSearchTerm("");
-                  onFilterChange({ ...filters, searchTerm: "" });
+                  setSearchTerm('');
+                  onFilterChange({ ...filters, searchTerm: '' });
                 }}
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
               >
@@ -113,20 +112,20 @@ const ClientFilters: React.FC<ClientFilterProps> = ({ onFilterChange }) => {
           <DropdownMenuContent className="w-56">
             <div className="px-2 py-1.5 text-sm font-medium">Status</div>
             <DropdownMenuCheckboxItem
-              checked={filters.status.includes("active")}
-              onCheckedChange={() => handleStatusChange("active")}
+              checked={filters.status.includes('active')}
+              onCheckedChange={() => handleStatusChange('active')}
             >
               Active
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
-              checked={filters.status.includes("inactive")}
-              onCheckedChange={() => handleStatusChange("inactive")}
+              checked={filters.status.includes('inactive')}
+              onCheckedChange={() => handleStatusChange('inactive')}
             >
               Inactive
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
-              checked={filters.status.includes("pending")}
-              onCheckedChange={() => handleStatusChange("pending")}
+              checked={filters.status.includes('pending')}
+              onCheckedChange={() => handleStatusChange('pending')}
             >
               Pending
             </DropdownMenuCheckboxItem>
@@ -135,20 +134,20 @@ const ClientFilters: React.FC<ClientFilterProps> = ({ onFilterChange }) => {
 
             <div className="px-2 py-1.5 text-sm font-medium">Policy Type</div>
             <DropdownMenuCheckboxItem
-              checked={filters.policies.includes("home")}
-              onCheckedChange={() => handlePolicyChange("home")}
+              checked={filters.policies.includes('home')}
+              onCheckedChange={() => handlePolicyChange('home')}
             >
               Home Insurance
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
-              checked={filters.policies.includes("auto")}
-              onCheckedChange={() => handlePolicyChange("auto")}
+              checked={filters.policies.includes('auto')}
+              onCheckedChange={() => handlePolicyChange('auto')}
             >
               Auto Insurance
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
-              checked={filters.policies.includes("life")}
-              onCheckedChange={() => handlePolicyChange("life")}
+              checked={filters.policies.includes('life')}
+              onCheckedChange={() => handlePolicyChange('life')}
             >
               Life Insurance
             </DropdownMenuCheckboxItem>

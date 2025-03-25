@@ -1,12 +1,12 @@
 // src/app/(auth)/policies/new/page.tsx
-"use client";
+'use client';
 
-import React from "react";
-import PageTitle from "@/components/shared/PageTitle";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
-import { useRouter } from "next/navigation";
-import PolicyForm from "@/components/policies/PolicyForm";
+import React from 'react';
+import PageTitle from '@/components/shared/PageTitle';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import PolicyForm from '@/components/policies/PolicyForm';
 
 export default function NewPolicyPage() {
   const router = useRouter();

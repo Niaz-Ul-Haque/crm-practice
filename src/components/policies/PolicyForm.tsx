@@ -1,51 +1,51 @@
 // src/components/policies/PolicyForm.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardFooter,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { useRouter } from "next/navigation";
-import { clientsData } from "@/data/clientsData";
-import { PolicyType, PolicyStatus, policyProviders } from "@/data/policiesData";
-import { formatPolicyType } from "@/lib/formatters";
-import { useToast } from "@/components/ui/use-toast";
-import { motion } from "framer-motion";
+} from '@/components/ui/select';
+import { useRouter } from 'next/navigation';
+import { clientsData } from '@/data/clientsData';
+import { PolicyType, PolicyStatus, policyProviders } from '@/data/policiesData';
+import { formatPolicyType } from '@/lib/formatters';
+import { useToast } from '@/components/ui/use-toast';
+import { motion } from 'framer-motion';
 
 const emptyPolicy = {
-  id: "",
-  policyNumber: "",
-  clientId: "",
-  type: "home" as PolicyType,
-  provider: "ABC Insurance",
-  status: "active" as PolicyStatus,
-  startDate: new Date().toISOString().split("T")[0],
+  id: '',
+  policyNumber: '',
+  clientId: '',
+  type: 'home' as PolicyType,
+  provider: 'ABC Insurance',
+  status: 'active' as PolicyStatus,
+  startDate: new Date().toISOString().split('T')[0],
   endDate: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
     .toISOString()
-    .split("T")[0],
+    .split('T')[0],
   premium: 0,
   coverageAmount: 0,
-  description: "",
-  paymentFrequency: "annual" as
-    | "monthly"
-    | "quarterly"
-    | "semiannual"
-    | "annual",
+  description: '',
+  paymentFrequency: 'annual' as
+    | 'monthly'
+    | 'quarterly'
+    | 'semiannual'
+    | 'annual',
   lastUpdated: new Date().toISOString(),
 };
 
@@ -74,7 +74,7 @@ const PolicyForm: React.FC<PolicyFormProps> = ({
     const { name, value } = e.target;
     setFormData((prev: any) => ({
       ...prev,
-      [name]: value === "" ? 0 : Number(value),
+      [name]: value === '' ? 0 : Number(value),
     }));
   };
 
@@ -89,32 +89,32 @@ const PolicyForm: React.FC<PolicyFormProps> = ({
     setTimeout(() => {
       setIsSubmitting(false);
       toast({
-        title: isEditing ? "Policy Updated" : "Policy Created",
-        description: `Policy ${formData.policyNumber || "new"} has been ${
-          isEditing ? "updated" : "created"
+        title: isEditing ? 'Policy Updated' : 'Policy Created',
+        description: `Policy ${formData.policyNumber || 'new'} has been ${
+          isEditing ? 'updated' : 'created'
         } successfully.`,
       });
 
-      router.push(isEditing ? `/policies/${policy.id}` : "/policies");
+      router.push(isEditing ? `/policies/${policy.id}` : '/policies');
     }, 1000);
   };
 
   const policyTypes: PolicyType[] = [
-    "home",
-    "auto",
-    "life",
-    "health",
-    "business",
-    "renters",
-    "umbrella",
+    'home',
+    'auto',
+    'life',
+    'health',
+    'business',
+    'renters',
+    'umbrella',
   ];
   const policyStatuses: PolicyStatus[] = [
-    "active",
-    "pending",
-    "expired",
-    "cancelled",
+    'active',
+    'pending',
+    'expired',
+    'cancelled',
   ];
-  const paymentFrequencies = ["monthly", "quarterly", "semiannual", "annual"];
+  const paymentFrequencies = ['monthly', 'quarterly', 'semiannual', 'annual'];
 
   return (
     <motion.div
@@ -126,7 +126,7 @@ const PolicyForm: React.FC<PolicyFormProps> = ({
         <Card>
           <CardHeader>
             <CardTitle>
-              {isEditing ? "Edit Policy" : "Add New Policy"}
+              {isEditing ? 'Edit Policy' : 'Add New Policy'}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -149,7 +149,7 @@ const PolicyForm: React.FC<PolicyFormProps> = ({
                   name="clientId"
                   value={formData.clientId}
                   onValueChange={(value) =>
-                    handleSelectChange("clientId", value)
+                    handleSelectChange('clientId', value)
                   }
                 >
                   <SelectTrigger>
@@ -170,7 +170,7 @@ const PolicyForm: React.FC<PolicyFormProps> = ({
                 <Select
                   name="type"
                   value={formData.type}
-                  onValueChange={(value) => handleSelectChange("type", value)}
+                  onValueChange={(value) => handleSelectChange('type', value)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select type" />
@@ -191,7 +191,7 @@ const PolicyForm: React.FC<PolicyFormProps> = ({
                   name="provider"
                   value={formData.provider}
                   onValueChange={(value) =>
-                    handleSelectChange("provider", value)
+                    handleSelectChange('provider', value)
                   }
                 >
                   <SelectTrigger>
@@ -212,7 +212,7 @@ const PolicyForm: React.FC<PolicyFormProps> = ({
                 <Select
                   name="status"
                   value={formData.status}
-                  onValueChange={(value) => handleSelectChange("status", value)}
+                  onValueChange={(value) => handleSelectChange('status', value)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select status" />
@@ -233,7 +233,7 @@ const PolicyForm: React.FC<PolicyFormProps> = ({
                   name="paymentFrequency"
                   value={formData.paymentFrequency}
                   onValueChange={(value) =>
-                    handleSelectChange("paymentFrequency", value)
+                    handleSelectChange('paymentFrequency', value)
                   }
                 >
                   <SelectTrigger>
@@ -306,7 +306,7 @@ const PolicyForm: React.FC<PolicyFormProps> = ({
               <Textarea
                 id="description"
                 name="description"
-                value={formData.description || ""}
+                value={formData.description || ''}
                 onChange={handleChange}
                 placeholder="Enter policy details and notes..."
                 className="min-h-[120px]"
@@ -328,10 +328,10 @@ const PolicyForm: React.FC<PolicyFormProps> = ({
             >
               <span
                 className={`inline-block transition-all duration-200 ${
-                  isSubmitting ? "opacity-0" : "opacity-100"
+                  isSubmitting ? 'opacity-0' : 'opacity-100'
                 }`}
               >
-                {isEditing ? "Update Policy" : "Create Policy"}
+                {isEditing ? 'Update Policy' : 'Create Policy'}
               </span>
               {isSubmitting && (
                 <span className="absolute inset-0 flex items-center justify-center">
@@ -341,7 +341,7 @@ const PolicyForm: React.FC<PolicyFormProps> = ({
                     transition={{
                       duration: 1,
                       repeat: Infinity,
-                      ease: "linear",
+                      ease: 'linear',
                     }}
                   />
                 </span>

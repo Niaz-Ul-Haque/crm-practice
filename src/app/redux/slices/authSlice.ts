@@ -1,6 +1,6 @@
 // src/app/redux/slices/authSlice.ts
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { HYDRATE } from "next-redux-wrapper";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { HYDRATE } from 'next-redux-wrapper';
 
 export interface AuthState {
   isAuthenticated: boolean;
@@ -17,14 +17,14 @@ const initialState: AuthState = {
 };
 
 export const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
     setAuthState(state, action: PayloadAction<AuthState>) {
       state.isAuthenticated = action.payload.isAuthenticated;
       state.user = action.payload.user;
     },
-    loginSuccess(state, action: PayloadAction<{ user: AuthState["user"] }>) {
+    loginSuccess(state, action: PayloadAction<{ user: AuthState['user'] }>) {
       state.isAuthenticated = true;
       state.user = action.payload.user;
     },

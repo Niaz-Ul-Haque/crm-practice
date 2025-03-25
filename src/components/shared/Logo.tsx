@@ -1,23 +1,23 @@
 // src/components/shared/Logo.tsx
-import React from "react";
-import { Shield } from "lucide-react";
-import { cn } from "@/lib/utils";
+import React from 'react';
+import { Shield } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface LogoProps {
-  size?: "sm" | "md" | "lg";
+  size?: 'sm' | 'md' | 'lg';
   className?: string;
   collapsed?: boolean;
 }
 
 const Logo: React.FC<LogoProps> = ({
-  size = "md",
-  className = "",
+  size = 'md',
+  className = '',
   collapsed = false,
 }) => {
   const sizesMap = {
-    sm: "text-base",
-    md: "text-xl",
-    lg: "text-2xl",
+    sm: 'text-base',
+    md: 'text-xl',
+    lg: 'text-2xl',
   };
 
   const iconSize = {

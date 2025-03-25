@@ -1,26 +1,26 @@
 // src/components/reports/ReportFilters.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import React, { useState } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
-import { Calendar, Download, Printer } from "lucide-react";
+} from '@/components/ui/select';
+import { Label } from '@/components/ui/label';
+import { Calendar, Download, Printer } from 'lucide-react';
 
 interface ReportFiltersProps {
   onFilterChange: (filters: any) => void;
 }
 
 const ReportFilters: React.FC<ReportFiltersProps> = ({ onFilterChange }) => {
-  const [dateRange, setDateRange] = useState("last30Days");
-  const [policyType, setPolicyType] = useState("all");
+  const [dateRange, setDateRange] = useState('last30Days');
+  const [policyType, setPolicyType] = useState('all');
 
   const handleDateRangeChange = (value: string) => {
     setDateRange(value);

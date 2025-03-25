@@ -1,21 +1,21 @@
 // src/app/(auth)/opportunities/page.tsx
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
-import PageTitle from "@/components/shared/PageTitle";
-import OpportunitiesTable from "@/components/opportunities/OpportunitiesTable";
-import OpportunityFilters from "@/components/opportunities/OpportunityFilters";
-import OpportunityDetail from "@/components/opportunities/OpportunityDetail";
+import React, { useState, useEffect } from 'react';
+import PageTitle from '@/components/shared/PageTitle';
+import OpportunitiesTable from '@/components/opportunities/OpportunitiesTable';
+import OpportunityFilters from '@/components/opportunities/OpportunityFilters';
+import OpportunityDetail from '@/components/opportunities/OpportunityDetail';
 import {
   opportunitiesData,
   Opportunity,
   getClientForOpportunity,
   getPolicyForOpportunity,
-} from "@/data/opportunitiesData";
-import { motion, AnimatePresence } from "framer-motion";
-import OpportunitySummary from "@/components/opportunities/OpportunitySummary";
-import OpportunityRecommendations from "@/components/opportunities/OpportunityRecommendations";
-import { Button } from "@/components/ui/button";
+} from '@/data/opportunitiesData';
+import { motion, AnimatePresence } from 'framer-motion';
+import OpportunitySummary from '@/components/opportunities/OpportunitySummary';
+import OpportunityRecommendations from '@/components/opportunities/OpportunityRecommendations';
+import { Button } from '@/components/ui/button';
 
 export default function OpportunitiesPage() {
   const [opportunities] = useState<Opportunity[]>(opportunitiesData);
@@ -24,10 +24,10 @@ export default function OpportunitiesPage() {
   const [selectedOpportunity, setSelectedOpportunity] = useState<string | null>(
     null
   );
-  const [sortField, setSortField] = useState<string>("priority");
-  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
+  const [sortField, setSortField] = useState<string>('priority');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
   const [filters, setFilters] = useState({
-    searchTerm: "",
+    searchTerm: '',
     types: [] as string[],
     statuses: [] as string[],
     priorities: [] as string[],
@@ -35,7 +35,7 @@ export default function OpportunitiesPage() {
 
   const handleSort = (field: string) => {
     setSortField(field);
-    setSortDirection((current) => (current === "asc" ? "desc" : "asc"));
+    setSortDirection((current) => (current === 'asc' ? 'desc' : 'asc'));
   };
 
   const handleViewDetails = (id: string) => {
@@ -80,16 +80,16 @@ export default function OpportunitiesPage() {
       let comparison = 0;
 
       switch (sortField) {
-        case "client":
+        case 'client':
           comparison = a.clientId.localeCompare(b.clientId);
           break;
-        case "type":
+        case 'type':
           comparison = a.type.localeCompare(b.type);
           break;
-        case "description":
+        case 'description':
           comparison = a.description.localeCompare(b.description);
           break;
-        case "priority":
+        case 'priority':
           const priorityMap: Record<string, number> = {
             high: 3,
             medium: 2,
@@ -97,14 +97,14 @@ export default function OpportunitiesPage() {
           };
           comparison = priorityMap[a.priority] - priorityMap[b.priority];
           break;
-        case "status":
+        case 'status':
           comparison = a.status.localeCompare(b.status);
           break;
         default:
           comparison = 0;
       }
 
-      return sortDirection === "asc" ? comparison : -comparison;
+      return sortDirection === 'asc' ? comparison : -comparison;
     });
 
     setFilteredOpportunities(result);

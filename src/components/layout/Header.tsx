@@ -1,8 +1,8 @@
 // src/components/layout/Header.tsx
-"use client";
+'use client';
 
-import React from "react";
-import { Button } from "@/components/ui/button";
+import React from 'react';
+import { Button } from '@/components/ui/button';
 import {
   Bell,
   ChevronDown,
@@ -10,25 +10,25 @@ import {
   Settings,
   HelpCircle,
   LogOut,
-} from "lucide-react";
+} from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useAppSelector } from "@/app/redux/hooks";
-import { useLogout } from "@/app/actions/auth";
-import Link from "next/link";
+} from '@/components/ui/dropdown-menu';
+import { useAppSelector } from '@/app/redux/hooks';
+import { useLogout } from '@/app/actions/auth';
+import Link from 'next/link';
 
 const Header: React.FC = () => {
   const user = useAppSelector((state) => state.auth.user);
   const logout = useLogout();
 
   const getInitials = () => {
-    if (!user?.name) return "U";
-    const parts = user.name.split(" ");
+    if (!user?.name) return 'U';
+    const parts = user.name.split(' ');
     if (parts.length === 1) return parts[0][0].toUpperCase();
     return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
   };
@@ -79,7 +79,7 @@ const Header: React.FC = () => {
                 <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-purple-500 font-bold">
                   {getInitials()}
                 </div>
-                <span className="hidden sm:inline">{user?.name || "User"}</span>
+                <span className="hidden sm:inline">{user?.name || 'User'}</span>
                 <ChevronDown size={16} />
               </Button>
             </DropdownMenuTrigger>

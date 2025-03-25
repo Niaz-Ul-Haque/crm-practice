@@ -1,20 +1,20 @@
 // src/components/opportunities/OpportunityDetail.tsx
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardFooter,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Opportunity } from "@/data/opportunitiesData";
-import { Client } from "@/data/clientsData";
-import { Policy } from "@/data/policiesData";
-import { formatDate } from "@/lib/utils";
-import { formatCurrency, formatPolicyType } from "@/lib/formatters";
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Opportunity } from '@/data/opportunitiesData';
+import { Client } from '@/data/clientsData';
+import { Policy } from '@/data/policiesData';
+import { formatDate } from '@/lib/utils';
+import { formatCurrency, formatPolicyType } from '@/lib/formatters';
 import {
   Calendar,
   CheckSquare,
@@ -23,10 +23,10 @@ import {
   Shield,
   Star,
   User,
-} from "lucide-react";
-import ClientAvatar from "@/components/clients/ClientAvatar";
-import Link from "next/link";
-import { motion } from "framer-motion";
+} from 'lucide-react';
+import ClientAvatar from '@/components/clients/ClientAvatar';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 interface OpportunityDetailProps {
   opportunity: Opportunity;
@@ -43,40 +43,40 @@ const OpportunityDetail: React.FC<OpportunityDetailProps> = ({
 }) => {
   const getStatusStyles = (status: string) => {
     switch (status) {
-      case "eligible":
-        return "bg-blue-100 text-purple-800";
-      case "pending_review":
-        return "bg-amber-100 text-amber-800";
-      case "in_progress":
-        return "bg-purple-100 text-purple-800";
-      case "recommended":
-        return "bg-indigo-100 text-indigo-800";
-      case "rejected":
-        return "bg-red-100 text-red-800";
-      case "completed":
-        return "bg-green-100 text-green-800";
+      case 'eligible':
+        return 'bg-blue-100 text-purple-800';
+      case 'pending_review':
+        return 'bg-amber-100 text-amber-800';
+      case 'in_progress':
+        return 'bg-purple-100 text-purple-800';
+      case 'recommended':
+        return 'bg-indigo-100 text-indigo-800';
+      case 'rejected':
+        return 'bg-red-100 text-red-800';
+      case 'completed':
+        return 'bg-green-100 text-green-800';
       default:
-        return "bg-gray-100 text-gray-800";
+        return 'bg-gray-100 text-gray-800';
     }
   };
 
   const formatStatus = (status: string) => {
     return status
-      .split("_")
+      .split('_')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
+      .join(' ');
   };
 
   const getPriorityStyles = (priority: string) => {
     switch (priority) {
-      case "high":
-        return "text-red-600";
-      case "medium":
-        return "text-amber-600";
-      case "low":
-        return "text-purple-600";
+      case 'high':
+        return 'text-red-600';
+      case 'medium':
+        return 'text-amber-600';
+      case 'low':
+        return 'text-purple-600';
       default:
-        return "text-gray-600";
+        return 'text-gray-600';
     }
   };
 
@@ -194,7 +194,7 @@ const OpportunityDetail: React.FC<OpportunityDetailProps> = ({
               >
                 <Star className="w-4 h-4 mr-1" />
                 {opportunity.priority.charAt(0).toUpperCase() +
-                  opportunity.priority.slice(1)}{" "}
+                  opportunity.priority.slice(1)}{' '}
                 Priority
               </div>
             </div>
@@ -204,9 +204,9 @@ const OpportunityDetail: React.FC<OpportunityDetailProps> = ({
                 <p className="text-sm text-gray-500">Type</p>
                 <p className="font-medium">
                   {opportunity.type
-                    .split("_")
+                    .split('_')
                     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                    .join(" ")}
+                    .join(' ')}
                 </p>
               </div>
               <div>

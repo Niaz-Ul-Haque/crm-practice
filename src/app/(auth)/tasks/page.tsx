@@ -1,18 +1,18 @@
 // src/app/(auth)/tasks/page.tsx
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
-import PageTitle from "@/components/shared/PageTitle";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
-import TaskList from "@/components/tasks/TaskList";
-import TaskDetail from "@/components/tasks/TaskDetail";
-import TaskForm from "@/components/tasks/TaskForm";
-import TaskFilters from "@/components/tasks/TaskFilters";
-import CalendarView from "@/components/tasks/CalenderView";
-import { tasksData, Task, getClientForTask } from "@/data/tasksData";
-import { useToast } from "@/components/ui/use-toast";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from 'react';
+import PageTitle from '@/components/shared/PageTitle';
+import { Button } from '@/components/ui/button';
+import { Plus } from 'lucide-react';
+import TaskList from '@/components/tasks/TaskList';
+import TaskDetail from '@/components/tasks/TaskDetail';
+import TaskForm from '@/components/tasks/TaskForm';
+import TaskFilters from '@/components/tasks/TaskFilters';
+import CalendarView from '@/components/tasks/CalenderView';
+import { tasksData, Task, getClientForTask } from '@/data/tasksData';
+import { useToast } from '@/components/ui/use-toast';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function TasksPage() {
   const { toast } = useToast();
@@ -21,13 +21,13 @@ export default function TasksPage() {
   const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [viewMode, setViewMode] = useState<"list" | "calendar">("list");
+  const [viewMode, setViewMode] = useState<'list' | 'calendar'>('list');
   const [filters, setFilters] = useState({
-    searchTerm: "",
+    searchTerm: '',
     types: [] as string[],
     statuses: [] as string[],
     priorities: [] as string[],
-    dateRange: "all" as "all" | "today" | "week" | "month" | "overdue",
+    dateRange: 'all' as 'all' | 'today' | 'week' | 'month' | 'overdue',
   });
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function TasksPage() {
       );
     }
 
-    if (filters.dateRange !== "all") {
+    if (filters.dateRange !== 'all') {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
 
@@ -71,30 +71,30 @@ export default function TasksPage() {
       endOfMonth.setHours(23, 59, 59, 999);
 
       switch (filters.dateRange) {
-        case "today":
+        case 'today':
           result = result.filter((task) => {
             const dueDate = new Date(task.dueDate);
             return dueDate >= today && dueDate <= endOfDay;
           });
           break;
-        case "week":
+        case 'week':
           result = result.filter((task) => {
             const dueDate = new Date(task.dueDate);
             return dueDate >= today && dueDate <= endOfWeek;
           });
           break;
-        case "month":
+        case 'month':
           result = result.filter((task) => {
             const dueDate = new Date(task.dueDate);
             return dueDate >= today && dueDate <= endOfMonth;
           });
           break;
-        case "overdue":
+        case 'overdue':
           result = result.filter((task) => {
             const dueDate = new Date(task.dueDate);
             return (
               dueDate < today &&
-              (task.status === "pending" || task.status === "in_progress")
+              (task.status === 'pending' || task.status === 'in_progress')
             );
           });
           break;
@@ -112,7 +112,7 @@ export default function TasksPage() {
     setFilters(newFilters);
   };
 
-  const handleViewModeChange = (mode: "list" | "calendar") => {
+  const handleViewModeChange = (mode: 'list' | 'calendar') => {
     setViewMode(mode);
   };
 
@@ -144,7 +144,7 @@ export default function TasksPage() {
               status: status as any,
               updatedAt: new Date().toISOString(),
               completedAt:
-                status === "completed"
+                status === 'completed'
                   ? new Date().toISOString()
                   : task.completedAt,
             }
@@ -153,7 +153,7 @@ export default function TasksPage() {
     );
 
     toast({
-      title: "Task Updated",
+      title: 'Task Updated',
       description: `Task status has been updated to ${
         status.charAt(0).toUpperCase() + status.slice(1)
       }.`,
@@ -165,8 +165,8 @@ export default function TasksPage() {
     setSelectedTaskId(null);
 
     toast({
-      title: "Task Deleted",
-      description: "The task has been deleted successfully.",
+      title: 'Task Deleted',
+      description: 'The task has been deleted successfully.',
     });
   };
 
@@ -202,13 +202,13 @@ export default function TasksPage() {
   const client = selectedTaskId ? getClientForTask(selectedTaskId) : null;
 
   const pendingTasks = filteredTasks.filter(
-    (task) => task.status === "pending"
+    (task) => task.status === 'pending'
   );
   const inProgressTasks = filteredTasks.filter(
-    (task) => task.status === "in_progress"
+    (task) => task.status === 'in_progress'
   );
   const completedTasks = filteredTasks.filter(
-    (task) => task.status === "completed"
+    (task) => task.status === 'completed'
   );
 
   return (
@@ -247,7 +247,7 @@ export default function TasksPage() {
             onStatusChange={handleUpdateTaskStatus}
             onDelete={handleDeleteTask}
           />
-        ) : viewMode === "list" ? (
+        ) : viewMode === 'list' ? (
           <motion.div
             key="list-view"
             initial={{ opacity: 0 }}

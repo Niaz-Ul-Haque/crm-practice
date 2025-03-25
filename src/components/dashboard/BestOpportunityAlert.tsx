@@ -1,24 +1,43 @@
 // src/components/dashboard/BestOpportunityAlert.tsx
-import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { CalendarClock } from "lucide-react";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { formatDate } from "@/lib/utils";
+import React from 'react';
+import { Card } from '@/components/ui/card';
+import { motion } from 'framer-motion';
+import { format } from 'date-fns';
+import { formatCurrency } from '@/lib/formatters';
 
-interface Opportunity {
+export interface ClientOpportunity {
   clientName: string;
+  clientId: string;
   policyType: string;
   expiryDate: string;
   opportunity: string;
-  potentialSavings: string;
+  opportunityId: string;
+  potentialRevenue: number;
+  potentialSavings?: number;
+  priority: string;
 }
 
 interface BestOpportunityAlertProps {
-  opportunities: Opportunity[];
+  opportunities: ClientOpportunity[];
   delay?: number;
 }
+
+const formatDate = (dateString: string) => {
+  if (!dateString || dateString.trim() === '') {
+    return 'N/A';
+  }
+
+  try {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+      return 'N/A';
+    }
+    return format(date, 'MMM d, yyyy');
+  } catch (error) {
+    console.error('Date formatting error:', error);
+    return 'N/A';
+  }
+};
 
 const BestOpportunityAlert: React.FC<BestOpportunityAlertProps> = ({
   opportunities,
@@ -26,57 +45,57 @@ const BestOpportunityAlert: React.FC<BestOpportunityAlertProps> = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: delay * 0.1 }}
+      transition={{ duration: 0.5, delay: delay * 0.1 }}
     >
-      <Card className="bg-blue-50 border border-blue-100">
-        <CardHeader>
-          <CardTitle className="text-purple-700 flex items-center">
-            <CalendarClock className="mr-2" size={20} />
-            Best Opportunity Alert
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-purple-600 mb-4">
-            {opportunities.length} clients have policies expiring soon. These
-            represent your best opportunities.
-          </p>
-
-          <div className="space-y-3 mb-4">
-            {opportunities.slice(0, 2).map((opp, index) => (
-              <div
-                key={index}
-                className="bg-white p-3 rounded-md border border-blue-200 flex justify-between items-center"
-              >
+      <Card className="p-6">
+        <h3 className="text-lg font-medium mb-4">
+          High Priority Opportunities
+        </h3>
+        <div className="space-y-4">
+          {opportunities.map((opportunity) => (
+            <div
+              key={opportunity.opportunityId}
+              className="bg-white p-4 rounded-lg border border-gray-100 hover:border-primary hover:shadow-md transition-all duration-200"
+            >
+              <div className="flex justify-between items-start">
                 <div>
-                  <p className="font-medium">{opp.clientName}</p>
-                  <p className="text-sm text-gray-600">
-                    {opp.policyType} • Expires{" "}
-                    {formatDate(new Date(opp.expiryDate))}
-                  </p>
-                  <p className="text-sm mt-1">
-                    <span className="text-purple-600 font-medium">
-                      Opportunity:
-                    </span>{" "}
-                    {opp.opportunity}
-                    {opp.potentialSavings !== "$0" && (
-                      <span className="text-green-600 ml-2">
-                        Save {opp.potentialSavings}
-                      </span>
-                    )}
+                  <h4 className="font-medium text-gray-900">
+                    {opportunity.clientName}
+                  </h4>
+                  <p className="text-sm text-gray-600 mt-1">
+                    {opportunity.policyType}
                   </p>
                 </div>
+                <div className="flex flex-col items-end">
+                  <span className="text-sm font-medium text-primary">
+                    {formatCurrency(opportunity.potentialRevenue)}
+                  </span>
+                  {opportunity.potentialSavings &&
+                    opportunity.potentialSavings > 0 && (
+                      <span className="text-xs text-green-600 mt-1">
+                        Save: {formatCurrency(opportunity.potentialSavings)}
+                      </span>
+                    )}
+                </div>
               </div>
-            ))}
-          </div>
+              <div className="mt-3 flex justify-between items-center">
+                <div className="flex items-center">
+                  <span className="text-xs text-gray-500">
+                    {opportunity.opportunity}
+                  </span>
+                </div>
 
-          <Link href="/opportunities">
-            <Button variant="outline" className="bg-white">
-              View All Opportunities
-            </Button>
-          </Link>
-        </CardContent>
+                {opportunity.expiryDate && (
+                  <span className="text-xs bg-amber-50 text-amber-800 py-1 px-2 rounded">
+                    Expires: {formatDate(opportunity.expiryDate)}
+                  </span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
       </Card>
     </motion.div>
   );

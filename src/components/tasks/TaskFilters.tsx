@@ -1,22 +1,22 @@
 // src/components/tasks/TaskFilters.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuCheckboxItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Search, X, Filter, ChevronDown, Calendar, List } from "lucide-react";
+} from '@/components/ui/dropdown-menu';
+import { Search, X, Filter, ChevronDown, Calendar, List } from 'lucide-react';
 
 interface TaskFiltersProps {
   onFilterChange: (filters: any) => void;
-  onViewModeChange: (mode: "list" | "calendar") => void;
-  currentViewMode: "list" | "calendar";
+  onViewModeChange: (mode: 'list' | 'calendar') => void;
+  currentViewMode: 'list' | 'calendar';
 }
 
 const TaskFilters: React.FC<TaskFiltersProps> = ({
@@ -24,12 +24,12 @@ const TaskFilters: React.FC<TaskFiltersProps> = ({
   onViewModeChange,
   currentViewMode,
 }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState({
     types: [] as string[],
     statuses: [] as string[],
     priorities: [] as string[],
-    dateRange: "all" as "all" | "today" | "week" | "month" | "overdue",
+    dateRange: 'all' as 'all' | 'today' | 'week' | 'month' | 'overdue',
   });
 
   const handleSearch = (e: React.FormEvent) => {
@@ -90,19 +90,19 @@ const TaskFilters: React.FC<TaskFiltersProps> = ({
   };
 
   const clearFilters = () => {
-    setSearchTerm("");
+    setSearchTerm('');
     setFilters({
       types: [],
       statuses: [],
       priorities: [],
-      dateRange: "all",
+      dateRange: 'all',
     });
     onFilterChange({
-      searchTerm: "",
+      searchTerm: '',
       types: [],
       statuses: [],
       priorities: [],
-      dateRange: "all",
+      dateRange: 'all',
     });
   };
 
@@ -111,13 +111,13 @@ const TaskFilters: React.FC<TaskFiltersProps> = ({
     filters.types.length > 0 ||
     filters.statuses.length > 0 ||
     filters.priorities.length > 0 ||
-    filters.dateRange !== "all";
+    filters.dateRange !== 'all';
 
   const formatLabel = (text: string) => {
     return text
-      .split("_")
+      .split('_')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
+      .join(' ');
   };
 
   return (
@@ -136,8 +136,8 @@ const TaskFilters: React.FC<TaskFiltersProps> = ({
               <button
                 type="button"
                 onClick={() => {
-                  setSearchTerm("");
-                  onFilterChange({ ...filters, searchTerm: "" });
+                  setSearchTerm('');
+                  onFilterChange({ ...filters, searchTerm: '' });
                 }}
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
               >
@@ -157,7 +157,7 @@ const TaskFilters: React.FC<TaskFiltersProps> = ({
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56">
             <div className="px-2 py-1.5 text-sm font-medium">Task Type</div>
-            {["call", "meeting", "email", "follow_up", "review", "other"].map(
+            {['call', 'meeting', 'email', 'follow_up', 'review', 'other'].map(
               (type) => (
                 <DropdownMenuCheckboxItem
                   key={type}
@@ -172,7 +172,7 @@ const TaskFilters: React.FC<TaskFiltersProps> = ({
             <DropdownMenuSeparator />
 
             <div className="px-2 py-1.5 text-sm font-medium">Status</div>
-            {["pending", "in_progress", "completed", "cancelled"].map(
+            {['pending', 'in_progress', 'completed', 'cancelled'].map(
               (status) => (
                 <DropdownMenuCheckboxItem
                   key={status}
@@ -187,7 +187,7 @@ const TaskFilters: React.FC<TaskFiltersProps> = ({
             <DropdownMenuSeparator />
 
             <div className="px-2 py-1.5 text-sm font-medium">Priority</div>
-            {["high", "medium", "low"].map((priority) => (
+            {['high', 'medium', 'low'].map((priority) => (
               <DropdownMenuCheckboxItem
                 key={priority}
                 checked={filters.priorities.includes(priority)}
@@ -201,32 +201,32 @@ const TaskFilters: React.FC<TaskFiltersProps> = ({
 
             <div className="px-2 py-1.5 text-sm font-medium">Date Range</div>
             <DropdownMenuCheckboxItem
-              checked={filters.dateRange === "all"}
-              onCheckedChange={() => handleDateRangeChange("all")}
+              checked={filters.dateRange === 'all'}
+              onCheckedChange={() => handleDateRangeChange('all')}
             >
               All Tasks
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
-              checked={filters.dateRange === "today"}
-              onCheckedChange={() => handleDateRangeChange("today")}
+              checked={filters.dateRange === 'today'}
+              onCheckedChange={() => handleDateRangeChange('today')}
             >
               Due Today
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
-              checked={filters.dateRange === "week"}
-              onCheckedChange={() => handleDateRangeChange("week")}
+              checked={filters.dateRange === 'week'}
+              onCheckedChange={() => handleDateRangeChange('week')}
             >
               Due This Week
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
-              checked={filters.dateRange === "month"}
-              onCheckedChange={() => handleDateRangeChange("month")}
+              checked={filters.dateRange === 'month'}
+              onCheckedChange={() => handleDateRangeChange('month')}
             >
               Due This Month
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
-              checked={filters.dateRange === "overdue"}
-              onCheckedChange={() => handleDateRangeChange("overdue")}
+              checked={filters.dateRange === 'overdue'}
+              onCheckedChange={() => handleDateRangeChange('overdue')}
             >
               Overdue Tasks
             </DropdownMenuCheckboxItem>
@@ -249,18 +249,18 @@ const TaskFilters: React.FC<TaskFiltersProps> = ({
 
         <div className="flex space-x-1 border rounded-md overflow-hidden">
           <Button
-            variant={currentViewMode === "list" ? "default" : "ghost"}
+            variant={currentViewMode === 'list' ? 'default' : 'ghost'}
             size="sm"
-            onClick={() => onViewModeChange("list")}
+            onClick={() => onViewModeChange('list')}
             className="rounded-none"
           >
             <List size={16} className="mr-1" />
             List
           </Button>
           <Button
-            variant={currentViewMode === "calendar" ? "default" : "ghost"}
+            variant={currentViewMode === 'calendar' ? 'default' : 'ghost'}
             size="sm"
-            onClick={() => onViewModeChange("calendar")}
+            onClick={() => onViewModeChange('calendar')}
             className="rounded-none"
           >
             <Calendar size={16} className="mr-1" />
@@ -301,7 +301,7 @@ const TaskFilters: React.FC<TaskFiltersProps> = ({
               Priority: {priority.charAt(0).toUpperCase() + priority.slice(1)}
             </span>
           ))}
-          {filters.dateRange !== "all" && (
+          {filters.dateRange !== 'all' && (
             <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 mr-2 mb-1">
               Range: {formatLabel(filters.dateRange)}
             </span>

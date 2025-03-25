@@ -1,55 +1,55 @@
 // src/components/tasks/TaskForm.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardFooter,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { clientsData } from "@/data/clientsData";
-import { Task, TaskPriority, TaskStatus, TaskType } from "@/data/tasksData";
-import { Bell } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
-import { motion } from "framer-motion";
+} from '@/components/ui/select';
+import { clientsData } from '@/data/clientsData';
+import { Task, TaskPriority, TaskStatus, TaskType } from '@/data/tasksData';
+import { Bell } from 'lucide-react';
+import { useToast } from '@/components/ui/use-toast';
+import { motion } from 'framer-motion';
 
 const getCurrentTime = () => {
   const now = new Date();
-  return `${String(now.getHours()).padStart(2, "0")}:${String(
+  return `${String(now.getHours()).padStart(2, '0')}:${String(
     now.getMinutes()
-  ).padStart(2, "0")}`;
+  ).padStart(2, '0')}`;
 };
 
 const getCurrentDate = () => {
   const now = new Date();
   return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(
     2,
-    "0"
-  )}-${String(now.getDate()).padStart(2, "0")}`;
+    '0'
+  )}-${String(now.getDate()).padStart(2, '0')}`;
 };
 
 const defaultFormValues = {
-  title: "",
-  description: "",
-  clientId: "",
+  title: '',
+  description: '',
+  clientId: '',
   dueDate: getCurrentDate(),
   dueTime: getCurrentTime(),
-  priority: "medium" as TaskPriority,
-  type: "follow_up" as TaskType,
-  status: "pending" as TaskStatus,
+  priority: 'medium' as TaskPriority,
+  type: 'follow_up' as TaskType,
+  status: 'pending' as TaskStatus,
   setReminder: false,
   reminderDate: getCurrentDate(),
   reminderTime: getCurrentTime(),
@@ -78,23 +78,23 @@ const TaskForm: React.FC<TaskFormProps> = ({
 
     return {
       title: task.title,
-      description: task.description || "",
-      clientId: task.clientId || "",
-      dueDate: dueDate.toISOString().split("T")[0],
-      dueTime: `${String(dueDate.getHours()).padStart(2, "0")}:${String(
+      description: task.description || '',
+      clientId: task.clientId || '',
+      dueDate: dueDate.toISOString().split('T')[0],
+      dueTime: `${String(dueDate.getHours()).padStart(2, '0')}:${String(
         dueDate.getMinutes()
-      ).padStart(2, "0")}`,
+      ).padStart(2, '0')}`,
       priority: task.priority,
       type: task.type,
       status: task.status,
       setReminder: Boolean(reminderDate),
       reminderDate: reminderDate
-        ? reminderDate.toISOString().split("T")[0]
+        ? reminderDate.toISOString().split('T')[0]
         : getCurrentDate(),
       reminderTime: reminderDate
-        ? `${String(reminderDate.getHours()).padStart(2, "0")}:${String(
+        ? `${String(reminderDate.getHours()).padStart(2, '0')}:${String(
             reminderDate.getMinutes()
-          ).padStart(2, "0")}`
+          ).padStart(2, '0')}`
         : getCurrentTime(),
     };
   };
@@ -122,8 +122,8 @@ const TaskForm: React.FC<TaskFormProps> = ({
 
     if (!formData.title) {
       toast({
-        title: "Incomplete Form",
-        description: "Task title is required.",
+        title: 'Incomplete Form',
+        description: 'Task title is required.',
       });
       return;
     }
@@ -144,11 +144,11 @@ const TaskForm: React.FC<TaskFormProps> = ({
       priority: formData.priority,
       status: formData.status,
       type: formData.type,
-      assignedTo: "user1",
+      assignedTo: 'user1',
       createdAt: task?.createdAt || new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       completedAt:
-        formData.status === "completed"
+        formData.status === 'completed'
           ? new Date().toISOString()
           : task?.completedAt,
       reminderAt: reminderDateTimeStr,
@@ -162,10 +162,10 @@ const TaskForm: React.FC<TaskFormProps> = ({
       }
 
       toast({
-        title: isEditing ? "Task Updated" : "Task Created",
+        title: isEditing ? 'Task Updated' : 'Task Created',
         description: isEditing
-          ? "Your task has been updated successfully."
-          : "Your task has been created successfully.",
+          ? 'Your task has been updated successfully.'
+          : 'Your task has been created successfully.',
       });
 
       if (onCancel) onCancel();
@@ -181,7 +181,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
       <form onSubmit={handleSubmit}>
         <Card className="w-full max-w-4xl mx-auto shadow-lg">
           <CardHeader className="border-b">
-            <CardTitle>{isEditing ? "Edit Task" : "Create New Task"}</CardTitle>
+            <CardTitle>{isEditing ? 'Edit Task' : 'Create New Task'}</CardTitle>
           </CardHeader>
 
           <CardContent className="space-y-4 pt-4">
@@ -215,7 +215,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
                 <Select
                   value={formData.clientId}
                   onValueChange={(value) =>
-                    handleSelectChange("clientId", value)
+                    handleSelectChange('clientId', value)
                   }
                 >
                   <SelectTrigger>
@@ -236,7 +236,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
                 <Label htmlFor="type">Task Type</Label>
                 <Select
                   value={formData.type}
-                  onValueChange={(value) => handleSelectChange("type", value)}
+                  onValueChange={(value) => handleSelectChange('type', value)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select type" />
@@ -257,7 +257,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
                 <Select
                   value={formData.priority}
                   onValueChange={(value) =>
-                    handleSelectChange("priority", value)
+                    handleSelectChange('priority', value)
                   }
                 >
                   <SelectTrigger>
@@ -277,7 +277,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
                   <Select
                     value={formData.status}
                     onValueChange={(value) =>
-                      handleSelectChange("status", value)
+                      handleSelectChange('status', value)
                     }
                   >
                     <SelectTrigger>
@@ -322,13 +322,13 @@ const TaskForm: React.FC<TaskFormProps> = ({
               <div className="flex items-center mb-4">
                 <Button
                   type="button"
-                  variant={formData.setReminder ? "default" : "outline"}
+                  variant={formData.setReminder ? 'default' : 'outline'}
                   size="sm"
                   onClick={toggleReminder}
                   className="mr-4"
                 >
                   <Bell size={16} className="mr-2" />
-                  {formData.setReminder ? "Reminder Set" : "Set Reminder"}
+                  {formData.setReminder ? 'Reminder Set' : 'Set Reminder'}
                 </Button>
               </div>
 
@@ -366,7 +366,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
             </Button>
 
             <Button type="submit" disabled={isSubmitting}>
-              {isEditing ? "Update Task" : "Create Task"}
+              {isEditing ? 'Update Task' : 'Create Task'}
               {isSubmitting && (
                 <span className="ml-2">
                   <motion.div
@@ -375,7 +375,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
                     transition={{
                       duration: 1,
                       repeat: Infinity,
-                      ease: "linear",
+                      ease: 'linear',
                     }}
                   />
                 </span>

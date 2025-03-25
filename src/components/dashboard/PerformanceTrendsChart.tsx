@@ -1,5 +1,5 @@
 // src/components/dashboard/PerformanceTrendsChart.tsx
-import React from "react";
+import React from 'react';
 import {
   LineChart,
   Line,
@@ -9,83 +9,82 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-} from "recharts";
+} from 'recharts';
+import { motion } from 'framer-motion';
 
 interface PerformanceTrendsChartProps {
   data: {
     labels: string[];
-    policies: number[];
-    revenue: number[];
+    datasets: {
+      name: string;
+      data: number[];
+      color?: string;
+    }[];
   };
 }
 
 const PerformanceTrendsChart: React.FC<PerformanceTrendsChartProps> = ({
   data,
 }) => {
-  const chartData = data.labels.map((label, index) => ({
-    name: label,
-    policies: data.policies[index],
-    revenue: data.revenue[index],
-  }));
+  const chartData = data.labels.map((week, index) => {
+    const dataPoint: any = { week };
+
+    data.datasets.forEach((dataset) => {
+      dataPoint[dataset.name] = dataset.data[index];
+    });
+
+    return dataPoint;
+  });
 
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <LineChart
-        data={chartData}
-        margin={{ top: 10, right: 30, left: 10, bottom: 20 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" vertical={false} />
-        <XAxis
-          dataKey="name"
-          tick={{ fontSize: 12 }}
-          axisLine={{ stroke: "#E5E7EB" }}
-          tickLine={false}
-        />
-        <YAxis
-          yAxisId="left"
-          tick={{ fontSize: 12 }}
-          axisLine={{ stroke: "#E5E7EB" }}
-          tickLine={false}
-        />
-        <YAxis
-          yAxisId="right"
-          orientation="right"
-          tick={{ fontSize: 12 }}
-          axisLine={{ stroke: "#E5E7EB" }}
-          tickLine={false}
-        />
-        <Tooltip
-          contentStyle={{
-            borderRadius: "8px",
-            boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
-            border: "none",
-          }}
-          formatter={(value, name) => {
-            if (name === "revenue") return [`$${value}`, "Revenue"];
-            return [value, "Policies Sold"];
-          }}
-        />
-        <Legend />
-        <Line
-          yAxisId="left"
-          type="monotone"
-          dataKey="policies"
-          stroke="#C43BF6AA"
-          strokeWidth={2}
-          dot={{ r: 4 }}
-          activeDot={{ r: 6 }}
-        />
-        <Line
-          yAxisId="right"
-          type="monotone"
-          dataKey="revenue"
-          stroke="#10B981"
-          strokeWidth={2}
-          dot={{ r: 4 }}
-          activeDot={{ r: 6 }}
-        />
-      </LineChart>
-    </ResponsiveContainer>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="h-72"
+    >
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart
+          data={chartData}
+          margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" vertical={false} />
+          <XAxis dataKey="week" />
+          <YAxis yAxisId="left" />
+          <YAxis yAxisId="right" orientation="right" />
+          <Tooltip />
+          <Legend />
+
+          {data.datasets.map((dataset, index) => {
+            if (dataset.name.includes('Revenue')) {
+              return (
+                <Line
+                  key={dataset.name}
+                  yAxisId="right"
+                  type="monotone"
+                  dataKey={dataset.name}
+                  stroke={dataset.color || '#10B981'}
+                  activeDot={{ r: 8 }}
+                  strokeWidth={2}
+                />
+              );
+            } else {
+              return (
+                <Line
+                  key={dataset.name}
+                  yAxisId="left"
+                  type="monotone"
+                  dataKey={dataset.name}
+                  stroke={dataset.color || '#4F46E5'}
+                  activeDot={{ r: 8 }}
+                  strokeWidth={2}
+                />
+              );
+            }
+          })}
+        </LineChart>
+      </ResponsiveContainer>
+    </motion.div>
   );
 };
 

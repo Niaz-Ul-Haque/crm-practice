@@ -1,45 +1,45 @@
 // src/components/policies/PolicyFilters.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Search, X, Filter, ChevronDown } from "lucide-react";
+import React, { useState } from 'react';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Search, X, Filter, ChevronDown } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuCheckboxItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { PolicyType, PolicyStatus } from "@/data/policiesData";
-import { formatPolicyType, formatPolicyStatus } from "@/lib/formatters";
+} from '@/components/ui/dropdown-menu';
+import { PolicyType, PolicyStatus } from '@/data/policiesData';
+import { formatPolicyType, formatPolicyStatus } from '@/lib/formatters';
 
 interface PolicyFiltersProps {
   onFilterChange: (filters: any) => void;
 }
 
 const PolicyFilters: React.FC<PolicyFiltersProps> = ({ onFilterChange }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState({
     types: [] as PolicyType[],
     statuses: [] as PolicyStatus[],
   });
 
   const policyTypes: PolicyType[] = [
-    "home",
-    "auto",
-    "life",
-    "health",
-    "business",
-    "renters",
-    "umbrella",
+    'home',
+    'auto',
+    'life',
+    'health',
+    'business',
+    'renters',
+    'umbrella',
   ];
   const policyStatuses: PolicyStatus[] = [
-    "active",
-    "pending",
-    "expired",
-    "cancelled",
+    'active',
+    'pending',
+    'expired',
+    'cancelled',
   ];
 
   const handleSearch = (e: React.FormEvent) => {
@@ -76,13 +76,13 @@ const PolicyFilters: React.FC<PolicyFiltersProps> = ({ onFilterChange }) => {
   };
 
   const clearFilters = () => {
-    setSearchTerm("");
+    setSearchTerm('');
     setFilters({
       types: [],
       statuses: [],
     });
     onFilterChange({
-      searchTerm: "",
+      searchTerm: '',
       types: [],
       statuses: [],
     });
@@ -107,8 +107,8 @@ const PolicyFilters: React.FC<PolicyFiltersProps> = ({ onFilterChange }) => {
               <button
                 type="button"
                 onClick={() => {
-                  setSearchTerm("");
-                  onFilterChange({ ...filters, searchTerm: "" });
+                  setSearchTerm('');
+                  onFilterChange({ ...filters, searchTerm: '' });
                 }}
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
               >

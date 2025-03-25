@@ -1,29 +1,29 @@
 // src/app/(guest)/reset-password/page.tsx
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { motion } from "framer-motion";
-import { Eye, EyeOff, Check } from "lucide-react";
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { motion } from 'framer-motion';
+import { Eye, EyeOff, Check } from 'lucide-react';
 
 export default function ResetPasswordPage() {
   const router = useRouter();
   const [form, setForm] = useState({
-    password: "",
-    confirmPassword: "",
+    password: '',
+    confirmPassword: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [focusedField, setFocusedField] = useState<string | null>(null);
@@ -37,26 +37,26 @@ export default function ResetPasswordPage() {
     e.preventDefault();
 
     if (!form.password || !form.confirmPassword) {
-      setError("Both fields are required");
+      setError('Both fields are required');
       return;
     }
 
     if (form.password !== form.confirmPassword) {
-      setError("Passwords do not match");
+      setError('Passwords do not match');
       return;
     }
 
     if (form.password.length < 8) {
-      setError("Password must be at least 8 characters long");
+      setError('Password must be at least 8 characters long');
       return;
     }
 
     setIsSubmitting(true);
-    setError("");
+    setError('');
 
     setTimeout(() => {
       setIsSubmitting(false);
-      router.push("/login");
+      router.push('/login');
     }, 1000);
   };
 
@@ -87,7 +87,7 @@ export default function ResetPasswordPage() {
               <motion.div
                 className="bg-red-50 text-red-600 p-3 rounded-md text-sm"
                 initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
+                animate={{ opacity: 1, height: 'auto' }}
                 transition={{ duration: 0.2 }}
               >
                 {error}
@@ -98,7 +98,7 @@ export default function ResetPasswordPage() {
               <Label
                 htmlFor="password"
                 className={`transition-colors duration-200 ${
-                  focusedField === "password" ? "text-purple-600" : ""
+                  focusedField === 'password' ? 'text-purple-600' : ''
                 }`}
               >
                 New Password
@@ -107,15 +107,15 @@ export default function ResetPasswordPage() {
                 <Input
                   id="password"
                   name="password"
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword ? 'text' : 'password'}
                   value={form.password}
                   onChange={handleChange}
-                  onFocus={() => setFocusedField("password")}
+                  onFocus={() => setFocusedField('password')}
                   onBlur={() => setFocusedField(null)}
                   className={`pr-10 transition-all duration-200 ${
-                    focusedField === "password"
-                      ? "border-blue-400 ring-1 ring-blue-200"
-                      : ""
+                    focusedField === 'password'
+                      ? 'border-blue-400 ring-1 ring-blue-200'
+                      : ''
                   }`}
                 />
                 <button
@@ -136,14 +136,14 @@ export default function ResetPasswordPage() {
                   <li className="flex items-center">
                     <span
                       className={`w-4 h-4 rounded-full mr-2 flex items-center justify-center ${
-                        hasMinLength ? "bg-green-500 text-white" : "bg-gray-300"
+                        hasMinLength ? 'bg-green-500 text-white' : 'bg-gray-300'
                       }`}
                     >
                       {hasMinLength && <Check size={12} />}
                     </span>
                     <span
                       className={
-                        hasMinLength ? "text-green-700" : "text-gray-500"
+                        hasMinLength ? 'text-green-700' : 'text-gray-500'
                       }
                     >
                       At least 8 characters
@@ -152,14 +152,14 @@ export default function ResetPasswordPage() {
                   <li className="flex items-center">
                     <span
                       className={`w-4 h-4 rounded-full mr-2 flex items-center justify-center ${
-                        hasUppercase ? "bg-green-500 text-white" : "bg-gray-300"
+                        hasUppercase ? 'bg-green-500 text-white' : 'bg-gray-300'
                       }`}
                     >
                       {hasUppercase && <Check size={12} />}
                     </span>
                     <span
                       className={
-                        hasUppercase ? "text-green-700" : "text-gray-500"
+                        hasUppercase ? 'text-green-700' : 'text-gray-500'
                       }
                     >
                       Uppercase letter
@@ -168,14 +168,14 @@ export default function ResetPasswordPage() {
                   <li className="flex items-center">
                     <span
                       className={`w-4 h-4 rounded-full mr-2 flex items-center justify-center ${
-                        hasLowercase ? "bg-green-500 text-white" : "bg-gray-300"
+                        hasLowercase ? 'bg-green-500 text-white' : 'bg-gray-300'
                       }`}
                     >
                       {hasLowercase && <Check size={12} />}
                     </span>
                     <span
                       className={
-                        hasLowercase ? "text-green-700" : "text-gray-500"
+                        hasLowercase ? 'text-green-700' : 'text-gray-500'
                       }
                     >
                       Lowercase letter
@@ -184,13 +184,13 @@ export default function ResetPasswordPage() {
                   <li className="flex items-center">
                     <span
                       className={`w-4 h-4 rounded-full mr-2 flex items-center justify-center ${
-                        hasNumber ? "bg-green-500 text-white" : "bg-gray-300"
+                        hasNumber ? 'bg-green-500 text-white' : 'bg-gray-300'
                       }`}
                     >
                       {hasNumber && <Check size={12} />}
                     </span>
                     <span
-                      className={hasNumber ? "text-green-700" : "text-gray-500"}
+                      className={hasNumber ? 'text-green-700' : 'text-gray-500'}
                     >
                       Number
                     </span>
@@ -199,15 +199,15 @@ export default function ResetPasswordPage() {
                     <span
                       className={`w-4 h-4 rounded-full mr-2 flex items-center justify-center ${
                         hasSpecialChar
-                          ? "bg-green-500 text-white"
-                          : "bg-gray-300"
+                          ? 'bg-green-500 text-white'
+                          : 'bg-gray-300'
                       }`}
                     >
                       {hasSpecialChar && <Check size={12} />}
                     </span>
                     <span
                       className={
-                        hasSpecialChar ? "text-green-700" : "text-gray-500"
+                        hasSpecialChar ? 'text-green-700' : 'text-gray-500'
                       }
                     >
                       Special character
@@ -221,7 +221,7 @@ export default function ResetPasswordPage() {
               <Label
                 htmlFor="confirmPassword"
                 className={`transition-colors duration-200 ${
-                  focusedField === "confirmPassword" ? "text-purple-600" : ""
+                  focusedField === 'confirmPassword' ? 'text-purple-600' : ''
                 }`}
               >
                 Confirm New Password
@@ -230,15 +230,15 @@ export default function ResetPasswordPage() {
                 <Input
                   id="confirmPassword"
                   name="confirmPassword"
-                  type={showConfirmPassword ? "text" : "password"}
+                  type={showConfirmPassword ? 'text' : 'password'}
                   value={form.confirmPassword}
                   onChange={handleChange}
-                  onFocus={() => setFocusedField("confirmPassword")}
+                  onFocus={() => setFocusedField('confirmPassword')}
                   onBlur={() => setFocusedField(null)}
                   className={`pr-10 transition-all duration-200 ${
-                    focusedField === "confirmPassword"
-                      ? "border-blue-400 ring-1 ring-blue-200"
-                      : ""
+                    focusedField === 'confirmPassword'
+                      ? 'border-blue-400 ring-1 ring-blue-200'
+                      : ''
                   }`}
                 />
                 <button
@@ -269,7 +269,7 @@ export default function ResetPasswordPage() {
             >
               <span
                 className={`inline-block transition-all duration-200 ${
-                  isSubmitting ? "opacity-0" : "opacity-100"
+                  isSubmitting ? 'opacity-0' : 'opacity-100'
                 }`}
               >
                 Reset Password
@@ -282,7 +282,7 @@ export default function ResetPasswordPage() {
                     transition={{
                       duration: 1,
                       repeat: Infinity,
-                      ease: "linear",
+                      ease: 'linear',
                     }}
                   />
                 </span>

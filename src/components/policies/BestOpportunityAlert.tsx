@@ -1,14 +1,14 @@
 // src/components/policies/BestOpportunityAlert.tsx
-"use client";
+'use client';
 
-import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CalendarClock, ArrowRight, DollarSign } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Policy, getClientNameById } from "@/data/policiesData";
-import { formatCurrency, formatPolicyType } from "@/lib/formatters";
-import { formatDate } from "@/lib/utils";
-import { motion } from "framer-motion";
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CalendarClock, ArrowRight, DollarSign } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Policy, getClientNameById } from '@/data/policiesData';
+import { formatCurrency, formatPolicyType } from '@/lib/formatters';
+import { formatDate } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 interface BestOpportunityAlertProps {
   policy: Policy;
@@ -40,8 +40,8 @@ const BestOpportunityAlert: React.FC<BestOpportunityAlertProps> = ({
         </CardHeader>
         <CardContent>
           <p className="mb-4">
-            <span className="font-medium">{formatPolicyType(policy.type)}</span>{" "}
-            policy for {clientName} has been identified as an opportunity for{" "}
+            <span className="font-medium">{formatPolicyType(policy.type)}</span>{' '}
+            policy for {clientName} has been identified as an opportunity for{' '}
             {opportunity.type}.
           </p>
 

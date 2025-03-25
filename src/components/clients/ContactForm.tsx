@@ -1,14 +1,14 @@
 // src/components/clients/ContactForm.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { motion } from "framer-motion";
-import { useToast } from "@/components/ui/use-toast";
+import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { motion } from 'framer-motion';
+import { useToast } from '@/components/ui/use-toast';
 
 interface ContactFormProps {
   clientName: string;
@@ -21,8 +21,8 @@ const ContactForm: React.FC<ContactFormProps> = ({
 }) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    subject: "",
-    message: "",
+    subject: '',
+    message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   console.log(clientEmail);
@@ -38,12 +38,11 @@ const ContactForm: React.FC<ContactFormProps> = ({
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
-      setFormData({ subject: "", message: "" });
+      setFormData({ subject: '', message: '' });
       toast({
-        title: "Message sent",
+        title: 'Message sent',
         description: `Your message to ${clientName} has been sent.`,
       });
     }, 1000);
@@ -87,7 +86,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             >
               <span
                 className={`inline-block transition-all duration-200 ${
-                  isSubmitting ? "opacity-0" : "opacity-100"
+                  isSubmitting ? 'opacity-0' : 'opacity-100'
                 }`}
               >
                 Send Message
@@ -100,7 +99,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                     transition={{
                       duration: 1,
                       repeat: Infinity,
-                      ease: "linear",
+                      ease: 'linear',
                     }}
                   />
                 </span>

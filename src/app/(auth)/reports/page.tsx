@@ -1,35 +1,35 @@
 // src/app/(auth)/reports/page.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import PageTitle from "@/components/shared/PageTitle";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import ReportFilters from "@/components/reports/ReportFilters";
-import SummaryCards from "@/components/reports/SummaryCard";
-import MonthlySalesChart from "@/components/reports/MonthlySalesChart";
-import PolicyDistributionChart from "@/components/reports/PolicyDistributionChart";
-import TopPerformingPolicies from "@/components/reports/TopPerformingPolicies";
+import React, { useState } from 'react';
+import PageTitle from '@/components/shared/PageTitle';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import ReportFilters from '@/components/reports/ReportFilters';
+import SummaryCards from '@/components/reports/SummaryCard';
+import MonthlySalesChart from '@/components/reports/MonthlySalesChart';
+import PolicyDistributionChart from '@/components/reports/PolicyDistributionChart';
+import TopPerformingPolicies from '@/components/reports/TopPerformingPolicies';
 import {
   monthlyPerformanceData,
   policyDistributionData,
   topPerformingPoliciesData,
   renewalRateData,
   clientAcquisitionData,
-} from "@/data/reportsData";
-import { motion } from "framer-motion";
+} from '@/data/reportsData';
+import { motion } from 'framer-motion';
 
 export default function ReportsPage() {
   const [filters, setFilters] = useState({
-    dateRange: "last30Days",
-    policyType: "all",
+    dateRange: 'last30Days',
+    policyType: 'all',
   });
 
-  const [distributionView, setDistributionView] = useState<"count" | "revenue">(
-    "count"
+  const [distributionView, setDistributionView] = useState<'count' | 'revenue'>(
+    'count'
   );
 
-  const [sortField, setSortField] = useState("revenue");
-  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
+  const [sortField, setSortField] = useState('revenue');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
 
   const handleFilterChange = (newFilters: typeof filters) => {
     setFilters(newFilters);
@@ -37,7 +37,7 @@ export default function ReportsPage() {
 
   const handleSort = (field: string) => {
     setSortField(field);
-    setSortDirection((current) => (current === "asc" ? "desc" : "asc"));
+    setSortDirection((current) => (current === 'asc' ? 'desc' : 'asc'));
   };
 
   const calculateTotals = () => {
@@ -73,26 +73,26 @@ export default function ReportsPage() {
     let comparison = 0;
 
     switch (sortField) {
-      case "policyType":
+      case 'policyType':
         comparison = a.policyType.localeCompare(b.policyType);
         break;
-      case "totalSold":
+      case 'totalSold':
         comparison = a.totalSold - b.totalSold;
         break;
-      case "revenue":
+      case 'revenue':
         comparison = a.revenue - b.revenue;
         break;
-      case "avgPremium":
+      case 'avgPremium':
         comparison = a.avgPremium - b.avgPremium;
         break;
-      case "conversionRate":
+      case 'conversionRate':
         comparison = a.conversionRate - b.conversionRate;
         break;
       default:
         comparison = 0;
     }
 
-    return sortDirection === "asc" ? comparison : -comparison;
+    return sortDirection === 'asc' ? comparison : -comparison;
   });
 
   return (
@@ -147,21 +147,21 @@ export default function ReportsPage() {
               <div className="flex items-center space-x-2">
                 <button
                   className={`px-3 py-1 text-sm rounded-md ${
-                    distributionView === "count"
-                      ? "bg-blue-100 text-purple-800"
-                      : "bg-gray-100 text-gray-800"
+                    distributionView === 'count'
+                      ? 'bg-blue-100 text-purple-800'
+                      : 'bg-gray-100 text-gray-800'
                   }`}
-                  onClick={() => setDistributionView("count")}
+                  onClick={() => setDistributionView('count')}
                 >
                   By Count
                 </button>
                 <button
                   className={`px-3 py-1 text-sm rounded-md ${
-                    distributionView === "revenue"
-                      ? "bg-blue-100 text-purple-800"
-                      : "bg-gray-100 text-gray-800"
+                    distributionView === 'revenue'
+                      ? 'bg-blue-100 text-purple-800'
+                      : 'bg-gray-100 text-gray-800'
                   }`}
-                  onClick={() => setDistributionView("revenue")}
+                  onClick={() => setDistributionView('revenue')}
                 >
                   By Revenue
                 </button>

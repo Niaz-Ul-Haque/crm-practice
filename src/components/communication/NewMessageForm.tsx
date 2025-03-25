@@ -1,29 +1,29 @@
 // src/components/communication/NewMessageForm.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardFooter,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Paperclip, Calendar, Clock, X } from "lucide-react";
-import { clientsData } from "@/data/clientsData";
-import { useToast } from "@/components/ui/use-toast";
-import { motion } from "framer-motion";
+} from '@/components/ui/select';
+import { Paperclip, Calendar, Clock, X } from 'lucide-react';
+import { clientsData } from '@/data/clientsData';
+import { useToast } from '@/components/ui/use-toast';
+import { motion } from 'framer-motion';
 
 interface NewMessageFormProps {
   onCancel?: () => void;
@@ -45,16 +45,16 @@ const NewMessageForm: React.FC<NewMessageFormProps> = ({
 }) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    type: "email",
-    clientId: "",
-    subject: "",
-    message: "",
+    type: 'email',
+    clientId: '',
+    subject: '',
+    message: '',
     attachments: [] as string[],
     schedule: false,
-    scheduledDate: "",
-    scheduledTime: "",
+    scheduledDate: '',
+    scheduledTime: '',
   });
-  const [attachmentName, setAttachmentName] = useState("");
+  const [attachmentName, setAttachmentName] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
@@ -78,7 +78,7 @@ const NewMessageForm: React.FC<NewMessageFormProps> = ({
         ...prev,
         attachments: [...prev.attachments, attachmentName.trim()],
       }));
-      setAttachmentName("");
+      setAttachmentName('');
     }
   };
 
@@ -94,8 +94,8 @@ const NewMessageForm: React.FC<NewMessageFormProps> = ({
 
     if (!formData.clientId || !formData.subject || !formData.message) {
       toast({
-        title: "Incomplete Form",
-        description: "Please fill in all required fields before sending.",
+        title: 'Incomplete Form',
+        description: 'Please fill in all required fields before sending.',
       });
       return;
     }
@@ -110,10 +110,10 @@ const NewMessageForm: React.FC<NewMessageFormProps> = ({
       }
 
       toast({
-        title: formData.schedule ? "Message Scheduled" : "Message Sent",
+        title: formData.schedule ? 'Message Scheduled' : 'Message Sent',
         description: formData.schedule
-          ? "Your message has been scheduled for sending."
-          : "Your message has been sent successfully.",
+          ? 'Your message has been scheduled for sending.'
+          : 'Your message has been sent successfully.',
       });
 
       if (onCancel) onCancel();
@@ -138,7 +138,7 @@ const NewMessageForm: React.FC<NewMessageFormProps> = ({
                 <Label htmlFor="type">Message Type</Label>
                 <Select
                   value={formData.type}
-                  onValueChange={(value) => handleSelectChange("type", value)}
+                  onValueChange={(value) => handleSelectChange('type', value)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select type" />
@@ -157,7 +157,7 @@ const NewMessageForm: React.FC<NewMessageFormProps> = ({
                 <Select
                   value={formData.clientId}
                   onValueChange={(value) =>
-                    handleSelectChange("clientId", value)
+                    handleSelectChange('clientId', value)
                   }
                 >
                   <SelectTrigger>
@@ -237,13 +237,13 @@ const NewMessageForm: React.FC<NewMessageFormProps> = ({
             <div className="border-t pt-4 flex items-center">
               <Button
                 type="button"
-                variant={formData.schedule ? "default" : "outline"}
+                variant={formData.schedule ? 'default' : 'outline'}
                 size="sm"
                 onClick={toggleSchedule}
                 className="mr-4"
               >
                 <Calendar size={16} className="mr-2" />
-                {formData.schedule ? "Scheduled" : "Schedule for later"}
+                {formData.schedule ? 'Scheduled' : 'Schedule for later'}
               </Button>
 
               {formData.schedule && (
@@ -279,8 +279,8 @@ const NewMessageForm: React.FC<NewMessageFormProps> = ({
                 variant="outline"
                 onClick={() => {
                   toast({
-                    title: "Draft Saved",
-                    description: "Your message has been saved as a draft.",
+                    title: 'Draft Saved',
+                    description: 'Your message has been saved as a draft.',
                   });
                   if (onCancel) onCancel();
                 }}
@@ -288,7 +288,7 @@ const NewMessageForm: React.FC<NewMessageFormProps> = ({
                 Save as Draft
               </Button>
               <Button type="submit" disabled={isSubmitting}>
-                {formData.schedule ? "Schedule" : "Send"}
+                {formData.schedule ? 'Schedule' : 'Send'}
                 {isSubmitting && (
                   <span className="ml-2">
                     <motion.div
@@ -297,7 +297,7 @@ const NewMessageForm: React.FC<NewMessageFormProps> = ({
                       transition={{
                         duration: 1,
                         repeat: Infinity,
-                        ease: "linear",
+                        ease: 'linear',
                       }}
                     />
                   </span>
